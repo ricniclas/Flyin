@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="So tinha esquecido da imagem de background" />
+    <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="So tinha esquecido da imagem de background">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="306">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
               <folding>
                 <element signature="e#1#14#0" expanded="true" />
               </folding>
@@ -25,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="670" column="25" selection-start-line="670" selection-start-column="25" selection-end-line="670" selection-end-column="25" />
+            <state relative-caret-position="195">
+              <caret line="23" column="89" lean-forward="true" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -34,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
+            <state relative-caret-position="136">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -80,7 +84,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Flying-Fist" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -92,8 +96,8 @@
         <option value="$PROJECT_DIR$/venv/Personagem_Animacao.py" />
         <option value="$PROJECT_DIR$/quadrado.py" />
         <option value="$PROJECT_DIR$/venv/Tela_Inicial.py" />
-        <option value="$PROJECT_DIR$/Personagem_Animacao.py" />
         <option value="$PROJECT_DIR$/PlayerNovo.py" />
+        <option value="$PROJECT_DIR$/Personagem_Animacao.py" />
         <option value="$PROJECT_DIR$/Flying_Fist.py" />
       </list>
     </option>
@@ -200,7 +204,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ptext" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="player" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="quadrado" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -212,7 +216,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ptext.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/player.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -245,10 +249,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Flying_Fist" />
+        <item itemvalue="Python.player" />
         <item itemvalue="Python.PlayerNovo" />
         <item itemvalue="Python.qexamples" />
         <item itemvalue="Python.example" />
-        <item itemvalue="Python.ptext" />
       </list>
     </recent_temporary>
   </component>
@@ -341,18 +345,11 @@
     <entry file="file://$PROJECT_DIR$/PlayerNovo.py" />
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="306">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
           <folding>
             <element signature="e#1#14#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -363,10 +360,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="670" column="25" selection-start-line="670" selection-start-column="25" selection-end-line="670" selection-end-column="25" />
+        <state relative-caret-position="195">
+          <caret line="23" column="89" lean-forward="true" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
         </state>
       </provider>
     </entry>

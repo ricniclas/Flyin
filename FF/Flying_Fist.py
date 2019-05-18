@@ -24,12 +24,12 @@ AndarDireita = [pygame.image.load('images\Personagem_Sprites\Personagem__Andando
                 pygame.image.load('images\Personagem_Sprites\Personagem__Andando_5.png'),
                 pygame.image.load('images\Personagem_Sprites\Personagem__Andando_6.png'),
                 ]
-AndarEsquerda = [pygame.image.load('images\Personagem_Sprites\Personagem__Andando_1.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Andando_2.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Andando_3.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Andando_4.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Andando_5.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Andando_6.png'),
+AndarEsquerda = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_1.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_2.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_3.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_4.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_5.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_6.png'),
                  ]
 
 Soco = [pygame.image.load('images\Personagem_Sprites\Personagem__Soco_0.png'),
