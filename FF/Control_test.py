@@ -80,6 +80,26 @@ class player(object):
         self.hitbox = (self.x + 17, self.y + 11, 70, 90)
         pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
 
+
+def redrawGameWindow():
+
+
+
+
+        # Janela.blit ( Texto_Timer , ((Largura / 2) - 17 , 10) )
+        # Janela.blit ( Texto_Placar , (190 , 30) )
+
+
+        pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
+        Classe.draw(Janela)
+
+
+        pygame.display.update()
+
+
+
+
+
 Classe = player(200, 410, 64, 64, 64, 64)
 
 circleRadius = 25
@@ -98,7 +118,7 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-        Classe.draw(Janela)
+
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
@@ -119,8 +139,9 @@ while run:
 
 
 
-    Janela.fill((0,0,0))
+
     pygame.display.update()
+    redrawGameWindow()
 
 
 

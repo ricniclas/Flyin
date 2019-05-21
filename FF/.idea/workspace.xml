@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="So tinha esquecido da imagem de background">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Control_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Control_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flying-Fist" beforeDir="false" afterPath="$PROJECT_DIR$/Flying-Fist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="119">
+              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding>
                 <element signature="e#1#14#0" expanded="true" />
               </folding>
@@ -27,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="462" column="39" lean-forward="true" selection-start-line="462" selection-start-column="39" selection-end-line="462" selection-end-column="39" />
+            <state relative-caret-position="121">
+              <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -37,19 +40,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Control_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="101" selection-start-line="101" selection-end-line="110" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state>
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -114,9 +108,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="633" />
-    <option name="width" value="654" />
-    <option name="height" value="1001" />
+    <option name="x" value="740" />
+    <option name="y" value="-19" />
+    <option name="width" value="1090" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -131,6 +126,11 @@
             <path>
               <item name="FF" type="b2602c69:ProjectViewProjectNode" />
               <item name="FF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FF" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FF" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -308,15 +308,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14228936" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2889785" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920508" visible="true" weight="0.22006841" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.30736545" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -365,10 +364,17 @@
     <entry file="file://$PROJECT_DIR$/../pygame-text-master/pygame-text-master/example.py" />
     <entry file="file://$PROJECT_DIR$/../pygame-text-master/pygame-text-master/qexamples.py" />
     <entry file="file://$PROJECT_DIR$/PlayerNovo.py" />
+    <entry file="file://$PROJECT_DIR$/Control_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="917">
+          <caret line="134" lean-forward="true" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="119">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
             <element signature="e#1#14#0" expanded="true" />
           </folding>
@@ -377,8 +383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -389,17 +395,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Control_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="101" selection-start-line="101" selection-end-line="110" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="462" column="39" lean-forward="true" selection-start-line="462" selection-start-column="39" selection-end-line="462" selection-end-column="39" />
+        <state relative-caret-position="121">
+          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>

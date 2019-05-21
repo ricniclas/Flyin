@@ -38,7 +38,14 @@ Soco = [pygame.image.load('images\Personagem_Sprites\Personagem__Soco_0.png'),
         pygame.image.load('images\Personagem_Sprites\Personagem__Soco_4.png')
         ]
 
-char = pygame.image.load('images\Personagem_Sprites\Personagem__Parado_0.png')
+char = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_0.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_1.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_2.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_3.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_4.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_5.png'),
+                 ]
+
 
 clock = pygame.time.Clock()
 
@@ -82,6 +89,10 @@ class player(object):
             Janela.blit(Soco[self.ContarPassos // 50], (self.x, self.y))
             self.ContarPassos += 3
 
+        elif self.parado:
+            Janela.blit(char[self.ContarPassos//10], (self.x, self.y))
+            self.ContarPassos += 3
+
 
 
 
@@ -123,6 +134,10 @@ class inimigo(object):
                 pygame.image.load('images\inimigo\L9E.png'),
                 pygame.image.load('images\inimigo\L10E.png'), pygame.image.load('images\inimigo\L11E.png')]
 
+    parado = [pygame.image.load('images\inimiga snack beijin\D1.png'), pygame.image.load('images\inimiga snack beijin\D2.png')]
+
+
+
     def __init__(self, x, y, width, height, end):
         self.x = x
         self.y = y
@@ -135,6 +150,7 @@ class inimigo(object):
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.health = 10
         self.visible = True
+        self.estado = 0
 
     def draw(self, win):
         self.move()
@@ -142,7 +158,11 @@ class inimigo(object):
             if self.walkCount + 1 >= 33:
                 self.walkCount = 0
 
-            if self.vel > 0:
+            elif self.vel == 0:
+                win.blit(self.parado[self.walkCount // 333], (self.x, self.y))
+                self.walkCount += 1
+
+            elif self.vel > 0:
                 win.blit(self.Direta[self.walkCount // 3], (self.x, self.y))
                 self.walkCount += 1
             else:
@@ -154,31 +174,60 @@ class inimigo(object):
                              (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             # pygame.draw.rect(win, (255,0,0), self.hitbox,2)
+            print ( "sodk" , inimigo.walkCount )
+
+
 
     def move(self):
-        if self.vel > 0:
-            if self.x + self.vel < self.path[1]:
-                self.x += self.vel
-            else:
-                self.vel = self.vel * -1
-                self.walkCount = 0
-        else:
-            if self.x - self.vel > self.path[0]:
+
+        if self.estado == 1:
+            self.vel = 0
+            if self.walkCount == 30:
+                self.estado = 0
+                self.vel = 3
+
+        if self.estado == 0:
+            if self.x + self.vel < self.path[1] :
                 self.x += self.vel
             else:
                 self.vel = self.vel * -1
                 self.walkCount = 0
 
+        else:
+            if self.x - self.vel > self.path[0] :
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
     def hit(self):
+        self.walkCount=0
         if self.health > 0:
             self.health -= 1
+            self.estado = 1
+            self.vel = 3
+            print("oooooo merda ", self.walkCount)
+
         else:
             self.visible = False
-        print('miseravi')
+
+
+        print('miseravi', self.estado)
 
 
 # Classes e seus parametros
-
 
 Classe = player(200, 410, 64, 64, 64, 64)
 inimigo = inimigo(100, 410, 64, 64, 450)
@@ -405,6 +454,8 @@ run = True
 
 while run:
 
+
+
     keys = pygame.key.get_pressed()
 
     # Essa parte do código é referente ao SideScrolling e posição do personagem na tela. Para entender, ver https://www.youtube.com/watch?v=AX8YU2hLBUg&t=478s
@@ -498,16 +549,20 @@ while run:
 
 
 
+
+
     else:
         Classe.direita = False
         Classe.esquerda = False
         Classe.baixo = False
         Classe.cima = False
         Classe.soco = False
-        Classe.parado = True
+        Classe.parado=False
         Classe.playerVelocityY = 0
         Classe.playerVelocityX = 0
-        Classe.ContarPassos = 0
+
+        if Classe.playerVelocityX == 0:
+           Classe.parado = True
 
         # Essa parte do código incrementa a posição do jogador com a variavel de velocidade, relativa a X e Y
 
