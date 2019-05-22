@@ -38,6 +38,29 @@ Soco = [pygame.image.load('images\Personagem_Sprites\Personagem__Soco_0.png'),
         pygame.image.load('images\Personagem_Sprites\Personagem__Soco_4.png')
         ]
 
+
+
+
+
+
+
+SocoVirado = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_0.png'),
+        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_1.png'),
+        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_3.png'),
+        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_4.png')
+        ]
+
+
+virado = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_R0.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_1.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_2.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_3.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_4.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_5.png'),
+                 ]
+
+
+
 char = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_0.png'),
                  pygame.image.load('images\Personagem_Sprites\Personagem__Parado_1.png'),
                  pygame.image.load('images\Personagem_Sprites\Personagem__Parado_2.png'),
@@ -46,6 +69,9 @@ char = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_0.png'),
                  pygame.image.load('images\Personagem_Sprites\Personagem__Parado_5.png'),
                  ]
 
+
+
+parado = [pygame.image.load('images\inimiga snack beijin\D1.png'), pygame.image.load('images\inimiga snack beijin\D2.png')]
 
 clock = pygame.time.Clock()
 
@@ -64,6 +90,8 @@ class player(object):
         self.cima = False
         self.soco = False
         self.parado = False
+        self.Virado=False
+        self.socovirado=False
         self.ContarPassos = 0
         self.HP = 155
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
@@ -75,6 +103,11 @@ class player(object):
         if self.esquerda:
             Janela.blit(AndarEsquerda[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
+
+        elif self.Virado:
+            Janela.blit(virado[self.ContarPassos // 10], (self.x, self.y))
+            self.ContarPassos += 3
+
         elif self.direita:
             Janela.blit(AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
@@ -86,7 +119,7 @@ class player(object):
             self.ContarPassos += 3
 
         elif self.soco:
-            Janela.blit(Soco[self.ContarPassos // 50], (self.x, self.y))
+            Janela.blit(Soco[self.ContarPassos // 10], (self.x, self.y))
             self.ContarPassos += 3
 
         elif self.parado:
@@ -107,15 +140,29 @@ class player(object):
 
 class projetosoco(object):
     def __init__(self, x, y, raio, cor, mira):
-        self.x = x
-        self.y = y
+
+        self.x = x + 60
+        self.y = y + 5
         self.raio = raio
         self.cor = cor
         self.mira = mira
-        self.vel = 8 * mira
+        self.vel = 0 * mira
+        self.tavenon=True
+
+
+
+
 
     def draw(self, Janela):
+      if self.tavenon:
         pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
+
+
+
+
+
+
+
 
 
 class inimigo(object):
@@ -150,17 +197,24 @@ class inimigo(object):
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.health = 10
         self.visible = True
+        self.aleatorio = random.randint ( 0 , 3 )
         self.estado = 0
+        self.pare= False
+
 
     def draw(self, win):
+
         self.move()
         if self.visible:
             if self.walkCount + 1 >= 33:
                 self.walkCount = 0
 
-            elif self.vel == 0:
-                win.blit(self.parado[self.walkCount // 333], (self.x, self.y))
-                self.walkCount += 1
+
+            elif self.parado and self.vel==0:
+
+                win.blit ( parado[self.walkCount // 20] , (self.x , self.y) )
+
+                self.walkCount += 3
 
             elif self.vel > 0:
                 win.blit(self.Direta[self.walkCount // 3], (self.x, self.y))
@@ -174,11 +228,14 @@ class inimigo(object):
                              (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             # pygame.draw.rect(win, (255,0,0), self.hitbox,2)
-            print ( "sodk" , inimigo.walkCount )
+
 
 
 
     def move(self):
+
+
+
 
         if self.estado == 1:
             self.vel = 0
@@ -201,15 +258,22 @@ class inimigo(object):
                 self.walkCount = 0
 
 
+    '''''''''''''''def Penis(self):
+     if self.x - self.vel > self.path[0]:
+        if self.aleatorio == 0:
+            self.x += 0.1
 
+        elif self.aleatorio == 1:
+            self.y += 0.1
 
+        elif self.aleatorio == 2:
+            self.y -= 0.1
 
+        elif self.aleatorio == 3:
+            self.x -= 0.1
 
-
-
-
-
-
+        else:
+            self.walkCount = 0'''''''''''''''
 
 
     def hit(self):
@@ -218,11 +282,15 @@ class inimigo(object):
             self.health -= 1
             self.estado = 1
             self.vel = 3
-            print("oooooo merda ", self.walkCount)
+            self.pare=False
+
+
+
+
+
 
         else:
             self.visible = False
-
 
         print('miseravi', self.estado)
 
@@ -231,6 +299,7 @@ class inimigo(object):
 
 Classe = player(200, 410, 64, 64, 64, 64)
 inimigo = inimigo(100, 410, 64, 64, 450)
+soco=projetosoco(200, 410, 64, 64, 64)
 loop = 0
 socobala = []
 
@@ -489,33 +558,53 @@ while run:
             run = False
 
     for bullet in socobala:
-        if bullet.y - bullet.raio < inimigo.hitbox[1] + inimigo.hitbox[3] and bullet.y + bullet.raio > inimigo.hitbox[
+        if  inimigo.hitbox[1] + inimigo.hitbox[3] and inimigo.hitbox[
             1]:
             if bullet.x + bullet.raio > inimigo.hitbox[0] and bullet.x - bullet.raio < inimigo.hitbox[0] + \
                     inimigo.hitbox[2]:
                 inimigo.hit()
                 socobala.pop(socobala.index(bullet))
 
-        if bullet.x < 500 and bullet.x > 0:
-            bullet.x += bullet.vel
-        else:
-            socobala.pop(socobala.index(bullet))
+
+
+            else:
+             socobala.pop(socobala.index(bullet))
+
+
+
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
 
     if keys[pygame.K_LEFT]:
+
+            Classe.playerVelocityX=0
+            Classe.esquerda = True
+            Classe.direita = False
+            Classe.Virado=True
+
+
+
+
+    if keys[pygame.K_LEFT] :
         Classe.playerVelocityX = -4
         Classe.x += Classe.playerVelocityX
         Classe.esquerda = True
         Classe.direita = False
+
+
+
+
+
 
     elif keys[pygame.K_RIGHT]:
         Classe.playerVelocityX = 4
         Classe.x += Classe.playerVelocityX
         Classe.direita = True
         Classe.esquerda = False
+        Classe.Virado=False
 
     elif keys[pygame.K_UP]:
         Classe.playerVelocityY = -4
@@ -544,6 +633,7 @@ while run:
         shootLoop = 1
 
         Classe.soco = True
+
 
 
 
