@@ -71,26 +71,94 @@ char = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_0.png'),
 
 
 
+
+
+AndarDireita2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Andando_1.png'),
+                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_2.png'),
+                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_3.png'),
+                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_4.png'),
+                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_5.png'),
+                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_6.png'),
+                ]
+AndarEsquerda2 = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_1.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_2.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_3.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_4.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_5.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_6.png'),
+                 ]
+
+Soco2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Soco_0.png'),
+        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_1.png'),
+        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_3.png'),
+        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_4.png')
+        ]
+
+
+
+
+
+
+
+SocoVirado2 =[pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_0.png'),
+        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_1.png'),
+        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_3.png'),
+        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_4.png')
+        ]
+
+
+virado2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_R0.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_1.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_2.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_3.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_4.png'),
+                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_5.png'),
+                 ]
+
+
+
+char2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_0.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_1.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_2.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_3.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_4.png'),
+                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_5.png'),
+                 ]
+
+
+
+
+
+
+
+
+
+
+
+
 parado = [pygame.image.load('images\inimiga snack beijin\D1.png'), pygame.image.load('images\inimiga snack beijin\D2.png')]
 
 clock = pygame.time.Clock()
 
 
-class player(object):
-    def __init__(self, x, y, largura, altura, playerVelocityX, playerVelocityY):
+class Player(object):
+    def __init__(self, x, y, largura, altura, playerVelocityX, playerVelocityY, apertou1):
         self.x = x
         self.y = y
         self.largura = largura
         self.altura = altura
         self.playerVelocityX = playerVelocityX
-        self.playerVelocityY = playerVelocityX
+        self.playerVelocityY = playerVelocityY
         self.esquerda = False
+        self.apertou1=True
         self.direita = False
         self.baixo = False
         self.cima = False
         self.soco = False
         self.parado = False
         self.Virado=False
+        self.cimaEs=False
+        self.baixoEs=False
         self.socovirado=False
         self.ContarPassos = 0
         self.HP = 155
@@ -118,9 +186,22 @@ class player(object):
             Janela.blit(AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
 
-        elif self.soco:
-            Janela.blit(Soco[self.ContarPassos // 10], (self.x, self.y))
+        elif self.cimaEs:
+            Janela.blit(AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
+
+        elif self.baixoEs:
+            Janela.blit(AndarDireita[self.ContarPassos // 5], (self.x, self.y))
+            self.ContarPassos += 3
+
+        elif self.soco:
+            Janela.blit(Soco[self.ContarPassos // 7], (self.x, self.y))
+            self.ContarPassos =7
+
+        elif self.socovirado:
+            Janela.blit(SocoVirado[self.ContarPassos // 7], (self.x, self.y))
+            self.ContarPassos =7
+
 
         elif self.parado:
             Janela.blit(char[self.ContarPassos//10], (self.x, self.y))
@@ -138,6 +219,74 @@ class player(object):
         pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
 
 
+
+class Player2(object):
+    def __init__(self, x, y, largura, altura, playerVelocityX, playerVelocityY):
+        self.x = x
+        self.y = y
+        self.largura = largura
+        self.altura = altura
+        self.playerVelocityX = playerVelocityX
+        self.playerVelocityY = playerVelocityY
+        self.esquerda = False
+        self.direita = False
+        self.baixo = False
+        self.cima = False
+        self.soco = False
+        self.parado = False
+        self.Virado=False
+        self.socovirado=False
+        self.apertou2 = True
+        self.ContarPassos = 0
+        self.HP = 155
+        self.hitbox = (self.x + 17, self.y + 11, 29, 52)
+
+    def draw(self, Janela):
+        if self.ContarPassos + 1 >= 27:
+            self.ContarPassos = 0
+
+        if self.esquerda:
+            Janela.blit(AndarEsquerda2[self.ContarPassos // 5], (self.x, self.y))
+            self.ContarPassos += 3
+
+        elif self.Virado:
+            Janela.blit(virado2[self.ContarPassos // 10], (self.x, self.y))
+            self.ContarPassos += 3
+
+        elif self.direita:
+            Janela.blit(AndarDireita2[self.ContarPassos // 5], (self.x, self.y))
+            self.ContarPassos += 3
+        elif self.cima:
+            Janela.blit(AndarDireita2[self.ContarPassos // 5], (self.x, self.y))
+            self.ContarPassos += 3
+        elif self.baixo:
+            Janela.blit(AndarDireita2[self.ContarPassos // 5], (self.x, self.y))
+            self.ContarPassos += 3
+
+        elif self.soco:
+            Janela.blit(Soco2[self.ContarPassos // 10], (self.x, self.y))
+            self.ContarPassos += 3
+
+        elif self.parado:
+            Janela.blit(char2[self.ContarPassos//10], (self.x, self.y))
+            self.ContarPassos += 3
+
+        elif self.socovirado:
+            Janela.blit(SocoVirado2[self.ContarPassos // 7], (self.x, self.y))
+            self.ContarPassos =7
+
+
+
+
+        else:
+            if self.direita:
+                Janela.blit(AndarDireita2[0], (self.x, self.y))
+            else:
+                Janela.blit(AndarDireita2[0], (self.x, self.y))
+        self.hitbox = (self.x + 17, self.y + 11, 70, 90)
+        pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
+
+
 class projetosoco(object):
     def __init__(self, x, y, raio, cor, mira):
 
@@ -149,6 +298,12 @@ class projetosoco(object):
         self.vel = 0 * mira
         self.tavenon=True
 
+        if Classe.apertou1 == False:
+            self.x = self.x + (-73)
+            self.y = self.y + (-5)
+            # print(self.x,y)
+
+
 
 
 
@@ -159,13 +314,31 @@ class projetosoco(object):
 
 
 
+class projetosoco2(object):
+    def __init__(self, x, y, raio, cor, mira):
+
+        self.x = x + 60
+        self.y = y + 5
+        self.raio = raio
+        self.cor = cor
+        self.mira = mira
+        self.vel = 0 * mira
+        self.tavenon=True
+
+        if Classe2.apertou2 == False:
+            self.x = self.x + (-73)
+            self.y = self.y + (-5)
+            # print(self.x,y)
+
+    def draw(self, Janela):
+      if self.tavenon:
+        pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
 
 
 
 
 
-
-class inimigo(object):
+class InimigoBase(object):
     Direta = [pygame.image.load('images\inimigo\R1E.png'), pygame.image.load('images\inimigo\R2E.png'),
               pygame.image.load('images\inimigo\R3E.png'),
               pygame.image.load('images\inimigo\R4E.png'), pygame.image.load('images\inimigo\R5E.png'),
@@ -234,12 +407,12 @@ class inimigo(object):
 
     def move(self):
 
-
-
-
         if self.estado == 1:
             self.vel = 0
-            if self.walkCount == 30:
+
+
+
+        if self.walkCount == 30:
                 self.estado = 0
                 self.vel = 3
 
@@ -258,20 +431,29 @@ class inimigo(object):
                 self.walkCount = 0
 
 
+        if self.x > Classe.x and Classe.x>=400:
+                self.x -= self.vel
+        elif self.x < Classe.x:
+                self.x += self.vel
+        if self.y < Classe.y:
+                self.y += self.vel
+        elif self.y > Classe.y:
+                self.y -= self.vel
+
+
+        #print(self.x)
+
+
     '''''''''''''''def Penis(self):
      if self.x - self.vel > self.path[0]:
         if self.aleatorio == 0:
             self.x += 0.1
-
         elif self.aleatorio == 1:
             self.y += 0.1
-
         elif self.aleatorio == 2:
             self.y -= 0.1
-
         elif self.aleatorio == 3:
             self.x -= 0.1
-
         else:
             self.walkCount = 0'''''''''''''''
 
@@ -297,11 +479,21 @@ class inimigo(object):
 
 # Classes e seus parametros
 
-Classe = player(200, 410, 64, 64, 64, 64)
-inimigo = inimigo(100, 410, 64, 64, 450)
+Classe = Player(200, 410, 64, 64, 64, 64, 64)
+Classe2 = Player2(200, 410, 64, 64, 64, 64)
+inimigo = InimigoBase(100, 410, 64, 64, 450)
+inimigo2 = InimigoBase(100, 410, 64, 64, 450)
+
+
+
+
 soco=projetosoco(200, 410, 64, 64, 64)
+soco2=projetosoco2(200, 410, 64, 64, 64)
 loop = 0
 socobala = []
+
+socobala2 = []
+
 
 # Propriedades da Janela a ser aberta
 Largura, Altura = 640, 448
@@ -401,57 +593,40 @@ Cutscene2 = pygame.image.load("images/Tela_Inicial/Cutscene2.jpg").convert()
 Cutscene3 = pygame.image.load("images/Tela_Inicial/Cutscene3.jpg").convert()
 
 text_orig = """O mundo já não é
-
 mais o mesmo """
 
 text_orig2 = """As guerras apagaram 
-
 todos os registros 
-
 históricos """
 
 text_orig3 = """Não existe mais passado
-
 ou futuro.
-
 Apenas sobrevivência """
 
 text_orig4 = """Sem família, a única
-
 coisa que importa para
-
 Akira é lutar """
 
 text_orig5 = """Seu mestre reconhece seu 
-
 potencial, mas a fúria de
-
 Akira é seu maior inimigo. """
 
 text_orig6 = """Após a morte de seu
-
 mestre, Akira decide voltar
-
 Para seu vilarejo """
 
 text_orig7 = """Mas a raiva que banhava
-
 seu coração também era a
-
 realidade de sua vila """
 
 text_orig8 = """Sua cidade era dominada
-
 pela gangue de Kobra """
 
 text_orig9 = """E somente ele poderia 
-
 defender seu lar """
 
 text_orig10 = """Esse é seu destino.
-
 Akira irá pulverizar todos 
-
 que ameacem o seu povo! """
 
 text_orig11 = """E com suas próprias
@@ -500,7 +675,11 @@ def redrawGameWindow():
         Janela.blit(Personagem_HUD, (10, 10))
         pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
         Classe.draw(Janela)
+        Classe2.draw(Janela)
+        inimigo2.draw(Janela)
         inimigo.draw(Janela)
+
+
 
         seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
@@ -514,6 +693,9 @@ def redrawGameWindow():
         for balau in socobala:
             balau.draw(Janela)
 
+        for balau2 in socobala2:
+            balau2.draw(Janela)
+
         pygame.display.update()
 
 
@@ -524,23 +706,32 @@ run = True
 while run:
 
 
+    apertou2=0
 
     keys = pygame.key.get_pressed()
 
     # Essa parte do código é referente ao SideScrolling e posição do personagem na tela. Para entender, ver https://www.youtube.com/watch?v=AX8YU2hLBUg&t=478s
     # Controlador_Jogo é igual a 1, você está na tela de título
 
-    if Classe.x > Fase_Largura:
+    if Classe.x and Classe2.x > Fase_Largura:
         Classe.x = Fase_Largura
-    if Classe.x < circleRadius:
+        Classe2.x = Fase_Largura
+
+    if Classe.x and Classe2.x < circleRadius:
         Classe.x = circleRadius
-    if Classe.x < startScrollingPosX:
+        Classe2.x = circleRadius
+    if Classe.x and Classe2.x  < startScrollingPosX:
         Classe.x = Classe.x
-    elif Classe.x > Fase_Largura - startScrollingPosX:
+        Classe2.x = Classe2.x
+    elif Classe.x and Classe2.x > Fase_Largura - startScrollingPosX:
         Classe.x = Classe.x - Fase_Largura + Largura
+        Classe2.x = Classe2.x - Fase_Largura + Largura
     else:
         Classe.x = startScrollingPosX
         Background_Fase_Posicao += -Classe.playerVelocityX
+
+        Classe2.x = startScrollingPosX
+        Background_Fase_Posicao += -Classe2.playerVelocityX
 
     rel_x = Background_Fase_Posicao % Background_Largura
 
@@ -567,10 +758,25 @@ while run:
 
 
 
+
+
             else:
              socobala.pop(socobala.index(bullet))
 
 
+    for bullet in socobala2:
+        if  inimigo.hitbox[1] + inimigo.hitbox[3] and inimigo.hitbox[
+            1]:
+            if bullet.x + bullet.raio > inimigo.hitbox[0] and bullet.x - bullet.raio < inimigo.hitbox[0] + \
+                    inimigo.hitbox[2]:
+                inimigo.hit()
+                socobala2.pop(socobala2.index(bullet))
+
+
+
+
+            else:
+             socobala2.pop(socobala2.index(bullet))
 
 
 
@@ -578,21 +784,36 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
+
+
+
     if keys[pygame.K_LEFT]:
 
             Classe.playerVelocityX=0
             Classe.esquerda = True
             Classe.direita = False
             Classe.Virado=True
+            Classe.apertou1 = True
 
 
 
 
-    if keys[pygame.K_LEFT] :
+
+
+
+
+
+    if keys[pygame.K_LEFT]  :
         Classe.playerVelocityX = -4
         Classe.x += Classe.playerVelocityX
         Classe.esquerda = True
         Classe.direita = False
+        Classe.Virado=False
+        Classe.apertou1 = False
+        #print(Classe.apertou1)
+
+
+
 
 
 
@@ -605,6 +826,8 @@ while run:
         Classe.direita = True
         Classe.esquerda = False
         Classe.Virado=False
+        Classe.apertou1 = True
+        print(Classe.apertou1)
 
     elif keys[pygame.K_UP]:
         Classe.playerVelocityY = -4
@@ -619,7 +842,8 @@ while run:
         Classe.baixo = True
 
 
-    elif keys[pygame.K_a]:
+    elif keys[pygame.K_m]:
+
         SFX_Miss.play(0)
         if Classe.esquerda:
             mira = -1
@@ -631,8 +855,34 @@ while run:
                             mira))
 
         shootLoop = 1
+        if Classe.apertou1==True:
+            Classe.soco = True
+        if Classe.apertou1 == False:
+            Classe.socovirado = True
+            Classe.Virado=False
+        else:
+            Classe.socovirado=False
+            print(Classe2.socovirado)
 
-        Classe.soco = True
+
+
+
+
+
+
+
+
+
+        print("PORRADA !! *20:", Classe.socovirado)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -647,17 +897,103 @@ while run:
         Classe.baixo = False
         Classe.cima = False
         Classe.soco = False
+        Classe.socovirado=False
         Classe.parado=False
         Classe.playerVelocityY = 0
         Classe.playerVelocityX = 0
+        #print ( "Vira ? !! *20:" , Classe.Virado )
 
-        if Classe.playerVelocityX == 0:
+        if Classe.playerVelocityX == 0 :
            Classe.parado = True
+        if Classe.apertou1==False:
+            Classe.Virado=True
 
         # Essa parte do código incrementa a posição do jogador com a variavel de velocidade, relativa a X e Y
 
         # Classe.x += Classe.playerVelocityX
         # Classe.y += Classe.playerVelocityY
+#Player2
+    if keys[pygame.K_a]:
+        Classe2.playerVelocityX = 0
+        Classe2.esquerda = True
+        Classe2.direita = False
+        Classe2.Virado = True
+        Classe2.apertou2 = True
+
+    if keys[pygame.K_a]:
+        Classe2.playerVelocityX = -4
+        Classe2.x += Classe2.playerVelocityX
+        Classe2.esquerda = True
+        Classe2.direita = False
+        Classe2.Virado = False
+        Classe2.apertou2 = False
+
+
+
+
+
+
+
+    elif keys[pygame.K_d]:
+        Classe2.playerVelocityX = 4
+        Classe2.x += Classe2.playerVelocityX
+        Classe2.direita = True
+        Classe2.esquerda = False
+        Classe2.Virado = False
+        Classe2.apertou2 = True
+
+    elif keys[pygame.K_w]:
+        Classe2.playerVelocityY = -4
+        Classe2.y += Classe2.playerVelocityY
+        Classe2.baixo = False
+        Classe2.cima = True
+
+    elif keys[pygame.K_s]:
+        Classe2.playerVelocityY = 4
+        Classe2.y += Classe2.playerVelocityY
+        Classe2.cima = False
+        Classe2.baixo = True
+
+
+    elif keys[pygame.K_i]:
+        SFX_Miss.play ( 0 )
+        if Classe2.esquerda:
+            mira2 = -1
+        else:
+            mira2 = 1
+        if len ( socobala2 ) < 1:
+            socobala2.append (
+                projetosoco2 ( round ( Classe2.x + Classe2.largura // 2 ) , round ( Classe2.y + Classe2.altura // 2 ) , 6 ,
+                              (0 , 0 , 0) ,
+                              mira2 ) )
+
+        shootLoop2 = 1
+
+        if Classe2.apertou2 == True:
+            Classe2.soco = True
+        if Classe2.apertou2 == False:
+            Classe2.socovirado = True
+            Classe2.Virado = False
+            Classe2.parado=False
+        else:
+            Classe2.socovirado = False
+
+
+    else:
+        Classe2.direita = False
+        Classe2.esquerda = False
+        Classe2.baixo = False
+        Classe2.cima = False
+        Classe2.soco = False
+        Classe2.socovirado = False
+        Classe2.parado = False
+        Classe2.playerVelocityY = 0
+        Classe2.playerVelocityX = 0
+
+        if Classe2.playerVelocityX == 0:
+            Classe2.parado = True
+        if Classe2.apertou2 == False:
+            Classe2.Virado = True
 
     if Controlador_Jogo == 1:
 
