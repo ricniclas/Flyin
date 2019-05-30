@@ -521,7 +521,8 @@ fonte_med = pygame.font.Font("fontes/start.ttf", 25)
 fonte_big = pygame.font.Font("fontes/start.ttf", 35)
 
 # Carrega as imagem do jogo em geral
-Background_Fase = pygame.image.load("images/Background_Fase.png").convert()
+Background_Fase = pygame.image.load("images/Background_Fase.png").convert_alpha()
+Background_Fase_0 = pygame.image.load("images/Background_Fase_0.png").convert()
 Background_Tela_Inicial = pygame.image.load("images/Tela_Inicial/Tela_de_Titulo.png").convert()
 Personagem_HUD = pygame.image.load("images/Personagem_Vida.png").convert_alpha()
 
@@ -532,6 +533,7 @@ Background_Largura, Background_Altura = Background_Fase.get_rect().size
 Fase_Largura = Background_Largura * 10
 # Define a posicao do background da fase em relação a janela
 Background_Fase_Posicao = 0
+Background_Fase_Posicao_0 = 0
 startScrollingPosX = HW
 
 # Propriedades da Janela a ser aberta
@@ -647,6 +649,7 @@ def redrawGameWindow():
 
         pygame.display.update()
     if Controlador_Jogo == 0:
+        Janela.blit(Background_Fase_0, (rel_x2, 0))
         Janela.blit(Background_Fase, (rel_x, 0), )
         # Janela.blit ( Texto_Timer , ((Largura / 2) - 17 , 10) )
         # Janela.blit ( Texto_Placar , (190 , 30) )
@@ -694,23 +697,25 @@ while run:
     if Classe.x and Classe2.x > Fase_Largura:
         Classe.x = Fase_Largura
         Classe2.x = Fase_Largura
-    if Classe.x and Classe2.x < circleRadius:
-        Classe.x = circleRadius
-        Classe2.x = circleRadius
-    if Classe.x and Classe2.x  < startScrollingPosX:
+    if Classe.x and Classe2.x  <= startScrollingPosX:
         Classe.x = Classe.x
         Classe2.x = Classe2.x
     elif Classe.x and Classe2.x > Fase_Largura - startScrollingPosX:
         Classe.x = Classe.x - Fase_Largura + Largura
         Classe2.x = Classe2.x - Fase_Largura + Largura
-    else:
+    elif Classe.playerVelocityX >= 0 or Classe2.playerVelocityX >=0:
         Classe.x = startScrollingPosX
         Background_Fase_Posicao += -Classe.playerVelocityX
+        Background_Fase_Posicao_0 += -1
         Classe2.x = startScrollingPosX
         Background_Fase_Posicao += -Classe2.playerVelocityX
-
+        Background_Fase_Posicao_0 += -1
     rel_x = Background_Fase_Posicao % Background_Largura
+    rel_x2 = Background_Fase_Posicao_0 % Background_Largura
 
+
+
+    Janela.blit(Background_Fase_0, (rel_x2 - Background_Largura, 0))
     Janela.blit(Background_Fase, (rel_x - Background_Largura, 0))
 
     clock.tick(27)
