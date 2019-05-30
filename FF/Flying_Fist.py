@@ -130,10 +130,28 @@ class Player(object):
         self.HP = 155
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
 
+    def danoPlayer(self):
+        if Classe.estado == False:
+            SFX_Punch1.play()
+            Classe.estado = True
+            Classe.ContarPassos = 0
+            Classe.Virado = False
+            Classe.direita = False
+            Classe.esquerda = False
+            Classe.baixo = False
+            Classe.cima = False
+            Classe.soco = False
+            Classe.socovirado = False
+            Classe.parado = False
+            Classe.HP -= 5
+            print("foi")
+
+
 
     def draw(self, Janela):
         if self.ContarPassos + 1 >= 27:
             self.ContarPassos = 0
+            self.estado = False
 
         if self.estado == True:
             if self.ContarPassos == 27:
@@ -189,7 +207,6 @@ class Player(object):
                 Janela.blit(DanoVirado[self.ContarPassos // 9], (self.x, self.y))
                 self.ContarPassos += 1
                 print("socoesquerda")
-
 
 
         else:
@@ -266,6 +283,7 @@ class Player2(object):
                 Janela.blit(AndarDireita2[0], (self.x, self.y))
         self.hitbox = (self.x + 17, self.y + 11, 70, 90)
         pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
+
 
 #Classe do hitbox do Player 1
 class projetosoco(object):
@@ -798,6 +816,10 @@ while run:
             Classe.ContarPassos = 0
             Classe.estado = True
 
+    elif keys[pygame.K_x]:
+        if Classe.estado == False:
+            Classe.danoPlayer()
+
 
 
 
@@ -825,20 +847,22 @@ while run:
             print("PORRADA !! *20:", Classe.socovirado)
 
     else:
-        Classe.direita = False
-        Classe.esquerda = False
-        Classe.baixo = False
-        Classe.cima = False
-        Classe.soco = False
-        Classe.socovirado=False
-        Classe.parado=False
-        Classe.estado = False
-        Classe.playerVelocityY = 0
-        Classe.playerVelocityX = 0
-        #print ( "Vira ? !! *20:" , Classe.Virado )
+        if Classe.estado == False:
+            Classe.direita = False
+            Classe.esquerda = False
+            Classe.baixo = False
+            Classe.cima = False
+            Classe.soco = False
+            Classe.socovirado=False
+            Classe.parado=False
+            #Classe.estado = False
+            Classe.playerVelocityY = 0
+            Classe.playerVelocityX = 0
+            #print ( "Vira ? !! *20:" , Classe.Virado )
 
         if Classe.playerVelocityX == 0 :
-           Classe.parado = True
+            if Classe.estado == False:
+                Classe.parado = True
         if Classe.apertou1==False:
             if Classe.estado == False:
                 Classe.Virado=True

@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L10E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L11E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L1E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L2E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L3E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L4E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L5E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L6E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L7E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L8E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/L9E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R10E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R11E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R1E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R2E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R3E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R4E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R5E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R6E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R7E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R8E.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Inimigo/R9E.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_2.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="354" column="35" lean-forward="true" selection-start-line="354" selection-start-column="35" selection-end-line="354" selection-end-column="35" />
+            <state relative-caret-position="206">
+              <caret line="829" column="25" lean-forward="true" selection-start-line="829" selection-start-column="25" selection-end-line="829" selection-end-column="25" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -377,15 +356,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13284865" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14308426" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920508" visible="true" weight="0.305949" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920508" visible="true" weight="0.30672747" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39541548" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -480,8 +459,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="354" column="35" lean-forward="true" selection-start-line="354" selection-start-column="35" selection-end-line="354" selection-end-column="35" />
+        <state relative-caret-position="206">
+          <caret line="829" column="25" lean-forward="true" selection-start-line="829" selection-start-column="25" selection-end-line="829" selection-end-column="25" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
