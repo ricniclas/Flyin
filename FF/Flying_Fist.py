@@ -28,14 +28,14 @@ AndarEsquerda = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Anda
                  pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_5.png'),
                  pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_6.png'),
                  ]
-Soco = [pygame.image.load('images\Personagem_Sprites\Personagem__Soco_0.png'),
+Soco = [pygame.image.load('images\Personagem_Sprites\Personagem__Soco_2.png'),
         pygame.image.load('images\Personagem_Sprites\Personagem__Soco_1.png'),
-        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_3.png'),
+        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_0.png'),
         pygame.image.load('images\Personagem_Sprites\Personagem__Soco_4.png')
         ]
-SocoVirado = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_0.png'),
+SocoVirado = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_2.png'),
         pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_1.png'),
-        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_3.png'),
+        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_0.png'),
         pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_4.png')
         ]
 virado = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_R0.png'),
@@ -126,6 +126,7 @@ class Player(object):
         self.baixoEs=False
         self.socovirado=False
         self.estado = False
+        self.socoestado = False
         self.ContarPassos = 0
         self.HP = 155
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
@@ -142,6 +143,7 @@ class Player(object):
             Classe.cima = False
             Classe.soco = False
             Classe.socovirado = False
+
             Classe.parado = False
             Classe.HP -= 5
             print("foi")
@@ -149,14 +151,16 @@ class Player(object):
 
 
     def draw(self, Janela):
+        print(self.ContarPassos)
+
+
         if self.ContarPassos + 1 >= 27:
             self.ContarPassos = 0
             self.estado = False
+            self.socoestado = False
+            print("aqui?")
 
-        if self.estado == True:
-            if self.ContarPassos == 27:
-                self.estado = False
-                print("aqui")
+
 
 
         if self.esquerda:
@@ -187,11 +191,12 @@ class Player(object):
 
         elif self.soco:
             Janela.blit(Soco[self.ContarPassos // 7], (self.x, self.y))
-            self.ContarPassos =7
+            self.ContarPassos += 3
+
 
         elif self.socovirado:
             Janela.blit(SocoVirado[self.ContarPassos // 7], (self.x, self.y))
-            self.ContarPassos =7
+            self.ContarPassos += 3
 
 
         elif self.parado:
@@ -270,8 +275,8 @@ class Player2(object):
             self.ContarPassos += 3
 
         elif self.socovirado:
-            Janela.blit(SocoVirado2[self.ContarPassos // 7], (self.x, self.y))
-            self.ContarPassos =7
+            Janela.blit(SocoVirado2[self.ContarPassos // 10], (self.x, self.y))
+            self.ContarPassos +=3
 
 
 
@@ -752,7 +757,7 @@ while run:
              socobala2.pop(socobala2.index(bullet))
 
 #Tirar esse primeiro
-    print(Classe.estado, Classe.ContarPassos, Classe.apertou1)
+    print (Classe.socoestado,Classe.estado)
 
     if keys[pygame.K_r]:
         textoPlacar = mostrarPlacar(Load_Top_Scores)
@@ -767,45 +772,50 @@ while run:
 
     if keys[pygame.K_LEFT]:
         if Classe.estado == False:
-            Classe.playerVelocityX=0
-            Classe.esquerda = True
-            Classe.direita = False
-            Classe.Virado=True
-            Classe.apertou1 = True
+            if Classe.socoestado == False:
+                Classe.playerVelocityX=0
+                Classe.esquerda = True
+                Classe.direita = False
+                Classe.Virado=True
+                Classe.apertou1 = True
 
     if keys[pygame.K_LEFT]  :
         if Classe.estado == False:
-            Classe.playerVelocityX = -4
-            Classe.x += Classe.playerVelocityX
-            Classe.esquerda = True
-            Classe.direita = False
-            Classe.Virado=False
-            Classe.apertou1 = False
-            #print(Classe.apertou1)
+            if Classe.socoestado == False:
+                Classe.playerVelocityX = -4
+                Classe.x += Classe.playerVelocityX
+                Classe.esquerda = True
+                Classe.direita = False
+                Classe.Virado=False
+                Classe.apertou1 = False
+                #print(Classe.apertou1)
 
     elif keys[pygame.K_RIGHT]:
         if Classe.estado == False:
-            Classe.playerVelocityX = 4
-            Classe.x += Classe.playerVelocityX
-            Classe.direita = True
-            Classe.esquerda = False
-            Classe.Virado=False
-            Classe.apertou1 = True
-            print(Classe.apertou1)
+            if Classe.socoestado == False:
+                Classe.playerVelocityX = 4
+                Classe.x += Classe.playerVelocityX
+                Classe.direita = True
+                Classe.esquerda = False
+                Classe.Virado=False
+                Classe.apertou1 = True
+                print(Classe.apertou1)
 
     elif keys[pygame.K_UP]:
         if Classe.estado == False:
-            Classe.playerVelocityY = -4
-            Classe.y += Classe.playerVelocityY
-            Classe.baixo = False
-            Classe.cima = True
+            if Classe.socoestado == False:
+                Classe.playerVelocityY = -4
+                Classe.y += Classe.playerVelocityY
+                Classe.baixo = False
+                Classe.cima = True
 
     elif keys[pygame.K_DOWN]:
         if Classe.estado == False:
-            Classe.playerVelocityY = 4
-            Classe.y += Classe.playerVelocityY
-            Classe.cima = False
-            Classe.baixo = True
+            if Classe.socoestado == False:
+                Classe.playerVelocityY = 4
+                Classe.y += Classe.playerVelocityY
+                Classe.cima = False
+                Classe.baixo = True
 
     elif keys[pygame.K_f]:
         if Classe.estado == False:
@@ -830,47 +840,54 @@ while run:
 
     elif keys[pygame.K_m]:
         if Classe.estado == False:
-            SFX_Miss.play(0)
-            if Classe.esquerda:
-                mira = -1
-            else:
-                mira = 1
-            if len(socobala) < 1:
-                socobala.append(
-                    projetosoco(round(Classe.x + Classe.largura // 2), round(Classe.y + Classe.altura // 2), 6, (0, 0, 0),
-                                mira))
+            if Classe.socoestado == False:
+                Classe.ContarPassos = 0
+                Classe.socoestado = True
+                SFX_Miss.play(0)
+                if Classe.esquerda:
+                    mira = -1
+                else:
+                    mira = 1
+                if len(socobala) < 1:
+                    socobala.append(
+                        projetosoco(round(Classe.x + Classe.largura // 2), round(Classe.y + Classe.altura // 2), 6, (0, 0, 0),
+                                    mira))
 
-            shootLoop = 1
-            if Classe.apertou1==True:
-                Classe.soco = True
-            if Classe.apertou1 == False:
-                Classe.socovirado = True
-                Classe.Virado=False
-            else:
-                Classe.socovirado=False
-                print(Classe2.socovirado)
-            print("PORRADA !! *20:", Classe.socovirado)
+                shootLoop = 1
+                if Classe.apertou1==True:
+                    Classe.soco = True
+
+                if Classe.apertou1 == False:
+                    Classe.socovirado = True
+                    Classe.Virado=False
+                else:
+                    Classe.socovirado=False
+                    print(Classe2.socovirado)
+                print("PORRADA !! *20:", Classe.socovirado)
 
     else:
         if Classe.estado == False:
-            Classe.direita = False
-            Classe.esquerda = False
-            Classe.baixo = False
-            Classe.cima = False
-            Classe.soco = False
-            Classe.socovirado=False
-            Classe.parado=False
-            #Classe.estado = False
-            Classe.playerVelocityY = 0
-            Classe.playerVelocityX = 0
-            #print ( "Vira ? !! *20:" , Classe.Virado )
+            if Classe.socoestado == False:
+                Classe.direita = False
+                Classe.esquerda = False
+                Classe.baixo = False
+                Classe.cima = False
+                Classe.soco = False
+                Classe.socovirado=False
+                Classe.parado=False
+                #Classe.estado = False
+                Classe.playerVelocityY = 0
+                Classe.playerVelocityX = 0
+                #print ( "Vira ? !! *20:" , Classe.Virado )
 
         if Classe.playerVelocityX == 0 :
             if Classe.estado == False:
-                Classe.parado = True
+                if Classe.socoestado == False:
+                    Classe.parado = True
         if Classe.apertou1==False:
             if Classe.estado == False:
-                Classe.Virado=True
+                if Classe.socoestado == False:
+                    Classe.Virado=True
         # Essa parte do código incrementa a posição do jogador com a variavel de velocidade, relativa a X e Y
         # Classe.x += Classe.playerVelocityX
         # Classe.y += Classe.playerVelocityY

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Personagem_Sprites/L_Personagem__Dano_2.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="829" column="25" lean-forward="true" selection-start-line="829" selection-start-column="25" selection-end-line="829" selection-end-column="25" />
+            <state relative-caret-position="-1956">
+              <caret line="30" column="71" selection-start-line="30" selection-start-column="71" selection-end-line="30" selection-end-column="71" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -139,6 +138,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,7 +155,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,7 +364,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920508" visible="true" weight="0.30672747" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39541548" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3945268" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -459,8 +458,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="829" column="25" lean-forward="true" selection-start-line="829" selection-start-column="25" selection-end-line="829" selection-end-column="25" />
+        <state relative-caret-position="-1956">
+          <caret line="30" column="71" selection-start-line="30" selection-start-column="71" selection-end-line="30" selection-end-column="71" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
