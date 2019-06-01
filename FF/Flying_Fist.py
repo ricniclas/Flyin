@@ -577,6 +577,7 @@ Leaderboard = [
 # pickle.dump(Leaderboard, open("top_scores", "wb"))
 
 showPoints = False
+primeira_fase = 0
 
 def showPointFunc():
     pygame.mixer.fadeout(2)
@@ -750,6 +751,8 @@ def redrawGameWindow():
     if Controlador_Jogo == 0:
         Janela.blit(Background_Fase_0, (rel_x2, 0))
         Janela.blit(Background_Fase, (rel_x, 0), )
+        Janela.blit(Background_Fase_0, (rel_x2 - Background_Largura, 0))
+        Janela.blit(Background_Fase, (rel_x - Background_Largura, 0))
         # Janela.blit ( Texto_Timer , ((Largura / 2) - 17 , 10) )
         # Janela.blit ( Texto_Placar , (190 , 30) )
 
@@ -787,7 +790,7 @@ def redrawGameWindow():
 
 
 while run:
-
+    print(Controlador_Jogo)
     apertou2=0
     keys = pygame.key.get_pressed()
 
@@ -814,8 +817,7 @@ while run:
 
 
 
-    Janela.blit(Background_Fase_0, (rel_x2 - Background_Largura, 0))
-    Janela.blit(Background_Fase, (rel_x - Background_Largura, 0))
+
 
     clock.tick(27)
 
@@ -830,7 +832,10 @@ while run:
 
 
         if event.type == SONG_END:
-            Controlador_Jogo = 3
+            if primeira_fase == 0:
+                Controlador_Jogo = 3
+                primeira_fase+=1
+                textnumber = 13
 
 #Testa a colisão do soco do Player 1
     for bullet in socobala:
