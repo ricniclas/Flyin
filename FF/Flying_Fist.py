@@ -426,7 +426,6 @@ class InimigoBase(object):
         Classe.parartela=True
         #print(Classe.parartela)
 
-        print ( Classe.parartela )
 
 
 
@@ -463,7 +462,6 @@ class InimigoBase(object):
          # print(Classe.parartela)
          Classe.andarcount = 0
          Classe2.andarcount = 0
-         print ( Classe.parartela )
 
     def move(self):
         if self.estado == 1:
@@ -511,6 +509,8 @@ class InimigoBase(object):
             self.walkCount = 0'''''''''''''''
 
     def hit(self):
+        global showPoints
+        global Score
         self.walkCount=0
         SFX_Punch1.play()
         if self.health > 0:
@@ -520,6 +520,9 @@ class InimigoBase(object):
             self.pare=False
         else:
             self.visible = False
+            Score+=500
+            showPoints = True
+            showPointFunc()
         print('miseravi', self.estado)
 
 # Criação dos objetos (Personagens e NPCS) com seus atributos:
@@ -573,6 +576,13 @@ Leaderboard = [
 
 # pickle.dump(Leaderboard, open("top_scores", "wb"))
 
+showPoints = False
+
+def showPointFunc():
+    pygame.mixer.fadeout(2)
+    pygame.mixer.music.set_endevent(SONG_END)
+    pygame.mixer.music.load('Musica_SFX/Fanfare.mp3')
+    pygame.mixer.music.play(1)
 
 
 def mostrarPlacar(Pontos):
@@ -591,7 +601,6 @@ def mostrarPlacar(Pontos):
         D += C
         D += "\n"
 
-    print(D)
     return D
 
 Load_Top_Scores = pickle.load(open("top_scores", "rb"))
@@ -642,6 +651,7 @@ inimigo.y = 300
 
 # Musica é tocada assim que executa o jogo, mas não em loop
 # Musica_Fase = pygame.mixer.music.load('Musica_SFX\Musica_Fase.wav')
+SONG_END = pygame.USEREVENT + 1
 pygame.mixer.music.load('Musica_SFX\intro.mp3')
 pygame.mixer.music.play(1)
 
@@ -649,7 +659,7 @@ SFX_Punch1 = pygame.mixer.Sound('Musica_SFX\SFX\Punch_1.wav')
 SFX_Punch1.set_volume(0.5)
 SFX_Punch2 = pygame.mixer.Sound('Musica_SFX\SFX\Punch_2.wav')
 SFX_Miss = pygame.mixer.Sound('Musica_SFX\SFX\Punch_miss.wav')
-SFX_Miss.set_volume(0.3)
+SFX_Miss.set_volume(0.5)
 SFX_Death = pygame.mixer.Sound('Musica_SFX\SFX\Death.wav')
 SFX_Text = pygame.mixer.Sound('Musica_SFX\SFX\Death.wav')
 SFX_Text.set_volume(0.05)
@@ -698,6 +708,9 @@ que ameacem o seu povo! """
 text_orig11 = """E com suas próprias
 mãos! """
 
+text_orig12 = """Você zerou o
+jogo! """
+
 # Create an iterator so that we can get one character after the other.
 text_iterator = iter(text_orig)
 text_iterator2 = iter(text_orig2)
@@ -710,6 +723,7 @@ text_iterator8 = iter(text_orig8)
 text_iterator9 = iter(text_orig9)
 text_iterator10 = iter(text_orig10)
 text_iterator11 = iter(text_orig11)
+text_iterator12 = iter(text_orig12)
 
 text = ''
 text2 = ''
@@ -722,6 +736,7 @@ text8 = ''
 text9 = ''
 text10 = ''
 text11 = ''
+text12 = ''
 
 textnumber = 1
 
@@ -761,12 +776,12 @@ def redrawGameWindow():
         for balau2 in socobala2:
             balau2.draw(Janela)
 
-        if keys[pygame.K_y]:
-            print(textoPlacar)
+        if showPoints == True:
             ptext.draw(str(textoPlacar), center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf",
                        color=(255, 255, 255),
                        gcolor=(150, 150, 150),
                        shadow=(3, 3), scolor="#000000")
+
 
         pygame.display.update()
 
@@ -813,6 +828,10 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
+
+        if event.type == SONG_END:
+            Controlador_Jogo = 3
+
 #Testa a colisão do soco do Player 1
     for bullet in socobala:
         if  inimigo.hitbox[1] + inimigo.hitbox[3] and inimigo.hitbox[
@@ -836,7 +855,6 @@ while run:
              socobala2.pop(socobala2.index(bullet))
 
 #Tirar esse primeiro
-    print (Classe.apertou1)
 
     if keys[pygame.K_r]:
         textoPlacar = mostrarPlacar(Load_Top_Scores)
@@ -1281,6 +1299,25 @@ while run:
             pygame.mixer.music.stop()
             pygame.mixer.music.load('Musica_SFX\Musica_Fase.wav')
             pygame.mixer.music.play(-1)
+            textnumber = 13
+
+        if textnumber == 13:
+            Janela.blit(Cutscene2, (0, 0))
+            if len(text12) < len(text_orig12):
+                text12 += next(text_iterator12)
+                SFX_Text.play(0)
+
+        ptext.draw(text12, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+                   gcolor=(150, 150, 150),
+                   shadow=(3, 3), scolor="#000000")
+
+        if len(text12) == len(text_orig12):
+            Janela.fill((0, 0, 0))
+            textnumber = 12
+            time.sleep(2)
+            text12 += " "
+            Janela.fill((0, 0, 0))
+
 
         # Teste de Leaderboards com valores atualizados
 
