@@ -131,6 +131,7 @@ class Player(object):
         self.baixo = False
         self.cima = False
         self.soco = False
+        self.andarcount = 0
         self.parado = False
         self.Virado=False
         self.cimaEs=False
@@ -138,6 +139,7 @@ class Player(object):
         self.socovirado=False
         self.estado = False
         self.socoestado = False
+        self.parartela = False
         self.ContarPassos = 0
         self.HP = 155
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
@@ -182,6 +184,7 @@ class Player(object):
         elif self.direita:
             Janela.blit(AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
+            self.andarcount += 1
         elif self.cima:
             Janela.blit(AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
@@ -253,6 +256,7 @@ class Player2(object):
         self.estado = False
         self.socoestado = False
         self.ContarPassos = 0
+        self.andarcount = 0
         self.HP = 155
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
 
@@ -295,6 +299,7 @@ class Player2(object):
         elif self.direita:
             Janela.blit(AndarDireita2[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
+            self.andarcount += 1
         elif self.cima:
             Janela.blit(AndarDireita2[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
@@ -413,7 +418,20 @@ class InimigoBase(object):
         self.estado = 0
         self.pare= False
 
+
     def draw(self , win):
+     if Classe.andarcount >=200 or Classe2.andarcount >=200:
+
+
+        Classe.parartela=True
+        #print(Classe.parartela)
+
+        print ( Classe.parartela )
+
+
+
+
+
 
         self.move ()
         if self.visible:
@@ -438,7 +456,14 @@ class InimigoBase(object):
             pygame.draw.rect ( win , (0 , 128 , 0) ,
                                (self.hitbox[0] , self.hitbox[1] - 20 , 50 - (5 * (10 - self.health)) , 10) )
             self.hitbox = (self.x + 17 , self.y + 2 , 31 , 57)
+
             # pygame.draw.rect(win, (255,0,0), self.hitbox,2)
+     if inimigo.visible==False:
+         Classe.parartela = False
+         # print(Classe.parartela)
+         Classe.andarcount = 0
+         Classe2.andarcount = 0
+         print ( Classe.parartela )
 
     def move(self):
         if self.estado == 1:
@@ -752,25 +777,25 @@ while run:
     keys = pygame.key.get_pressed()
 
     # Essa parte do código é referente ao SideScrolling e posição do personagem na tela. Para entender, ver https://www.youtube.com/watch?v=AX8YU2hLBUg&t=478s
-
-    if Classe.x and Classe2.x > Fase_Largura:
-        Classe.x = Fase_Largura
-        Classe2.x = Fase_Largura
-    if Classe.x and Classe2.x  <= startScrollingPosX:
-        Classe.x = Classe.x
-        Classe2.x = Classe2.x
-    elif Classe.x and Classe2.x > Fase_Largura - startScrollingPosX:
-        Classe.x = Classe.x - Fase_Largura + Largura
-        Classe2.x = Classe2.x - Fase_Largura + Largura
-    elif Classe.playerVelocityX >= 0 or Classe2.playerVelocityX >=0:
-        Classe.x = startScrollingPosX
-        Background_Fase_Posicao += -Classe.playerVelocityX
-        Background_Fase_Posicao_0 += -1
-        Classe2.x = startScrollingPosX
-        Background_Fase_Posicao += -Classe2.playerVelocityX
-        Background_Fase_Posicao_0 += -1
-    rel_x = Background_Fase_Posicao % Background_Largura
-    rel_x2 = Background_Fase_Posicao_0 % Background_Largura
+    if Classe.parartela == False:
+      if Classe.x and Classe2.x > Fase_Largura:
+         Classe.x = Fase_Largura
+         Classe2.x = Fase_Largura
+      if Classe.x and Classe2.x  <= startScrollingPosX:
+         Classe.x = Classe.x
+         Classe2.x = Classe2.x
+      elif Classe.x and Classe2.x > Fase_Largura - startScrollingPosX:
+         Classe.x = Classe.x - Fase_Largura + Largura
+         Classe2.x = Classe2.x - Fase_Largura + Largura
+      elif Classe.playerVelocityX >= 0 or Classe2.playerVelocityX >=0:
+         Classe.x = startScrollingPosX
+         Background_Fase_Posicao += -Classe.playerVelocityX
+         Background_Fase_Posicao_0 += -1
+         Classe2.x = startScrollingPosX
+         Background_Fase_Posicao += -Classe2.playerVelocityX
+         Background_Fase_Posicao_0 += -1
+      rel_x = Background_Fase_Posicao % Background_Largura
+      rel_x2 = Background_Fase_Posicao_0 % Background_Largura
 
 
 
