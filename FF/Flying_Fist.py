@@ -5,6 +5,7 @@ from operator import itemgetter
 import pickle
 import ptext
 import Tela_Inicial
+import compressao_save
 
 # Essa função define parametros da janela do windows que será aberta. Caso clique no X, ela irá fechar.
 def events():
@@ -162,8 +163,6 @@ class Player(object):
 
 
     def draw(self, Janela):
-
-
 
         if self.ContarPassos + 1 >= 27:
             self.ContarPassos = 0
@@ -584,6 +583,7 @@ def showPointFunc():
     pygame.mixer.music.set_endevent(SONG_END)
     pygame.mixer.music.load('Musica_SFX/Fanfare.mp3')
     pygame.mixer.music.play(1)
+    compressao_save.compressao()
 
 
 def mostrarPlacar(Pontos):
@@ -616,6 +616,10 @@ for key in Load_Top_Scores:
     print(key)
 
 textoPlacar = mostrarPlacar(Load_Top_Scores)
+
+compressao_save.compressao()
+
+
 print(textoPlacar)
 # Essa carrega uma fonte para o projeto do jogo, definindo seu tamanho
 fonte_small = pygame.font.Font("fontes/start.ttf", 18)
@@ -790,6 +794,7 @@ def redrawGameWindow():
             balau2.draw(Janela)
 
         if showPoints == True:
+            textoPlacar = mostrarPlacar(Load_Top_Scores)
             ptext.draw(str(textoPlacar), midtop=(Largura / 2, 175), fontname="fontes/start.ttf",
                        color=(255, 255, 255),
                        gcolor=(150, 150, 150),
@@ -841,7 +846,7 @@ def redrawGameWindow():
             balau2.draw(Janela)
 
         if showPoints == True:
-            ptext.draw(str(textoPlacar), center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf",
+            ptext.draw(str(compressao_save.umcompressed_string), center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf",
                        color=(255, 255, 255),
                        gcolor=(150, 150, 150),
                        shadow=(3, 3), scolor="#000000")
@@ -1141,6 +1146,7 @@ while run:
         #Esse comando reseta o scoreboard
         if keys[K_s]:
             pickle.dump(Leaderboard, open("top_scores", "wb"))
+            Load_Top_Scores = pickle.load(open("top_scores", "rb"))
 
         if keys[K_d]:
             Load_Top_Scores = pickle.load(open("top_scores", "rb"))
