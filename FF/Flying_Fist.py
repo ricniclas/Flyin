@@ -617,6 +617,8 @@ fonte_big = pygame.font.Font("fontes/start.ttf", 35)
 # Carrega as imagem do jogo em geral
 Background_Fase = pygame.image.load("images/Background_Fase.png").convert_alpha()
 Background_Fase_0 = pygame.image.load("images/Background_Fase_0.png").convert()
+Background_Fase2 = pygame.image.load("images/Background_Fase2.png").convert_alpha()
+Background_Fase2_0 = pygame.image.load("images/Background_Fase2_0.png").convert()
 Background_Tela_Inicial = pygame.image.load("images/Tela_Inicial/Tela_de_Titulo.png").convert()
 Personagem_HUD = pygame.image.load("images/Personagem_Vida.png").convert_alpha()
 
@@ -786,8 +788,52 @@ def redrawGameWindow():
                        shadow=(3, 3), scolor="#000000")
 
 
+
+
+
+
+
+
         pygame.display.update()
 
+    if Controlador_Jogo == 4:
+        Janela.blit(Background_Fase2_0, (rel_x2, 0))
+        Janela.blit(Background_Fase2, (rel_x, 0), )
+        Janela.blit(Background_Fase2_0, (rel_x2 - Background_Largura, 0))
+        Janela.blit(Background_Fase2, (rel_x - Background_Largura, 0))
+        # Janela.blit ( Texto_Timer , ((Largura / 2) - 17 , 10) )
+        # Janela.blit ( Texto_Placar , (190 , 30) )
+
+        Janela.blit(Personagem_HUD, (10, 10))
+        pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
+        Classe.draw(Janela)
+        Classe2.draw(Janela)
+        inimigo2.draw(Janela)
+        inimigo.draw(Janela)
+
+        seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
+
+
+        ptext.draw(str(Score), topleft=(190, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
+                   gcolor=(255, 200, 20), fontsize=19,
+                   shadow=(3, 1), scolor="#000000")
+        ptext.draw(str(Timer - seconds), center=(Largura / 2, 30), fontname="fontes/start.ttf", color=(255, 255, 255),
+                   gcolor=(150, 150, 150),
+                   shadow=(3, 3), scolor="#000000")
+
+        for balau in socobala:
+            balau.draw(Janela)
+
+        for balau2 in socobala2:
+            balau2.draw(Janela)
+
+        if showPoints == True:
+            ptext.draw(str(textoPlacar), center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf",
+                       color=(255, 255, 255),
+                       gcolor=(150, 150, 150),
+                       shadow=(3, 3), scolor="#000000")
+
+        pygame.display.update()
 
 while run:
     print(Controlador_Jogo)
@@ -836,6 +882,7 @@ while run:
                 Controlador_Jogo = 3
                 primeira_fase+=1
                 textnumber = 13
+                showPoints = False
 
 #Testa a colisão do soco do Player 1
     for bullet in socobala:
@@ -1318,10 +1365,18 @@ while run:
 
         if len(text12) == len(text_orig12):
             Janela.fill((0, 0, 0))
-            textnumber = 12
+            textnumber = 14
             time.sleep(2)
             text12 += " "
             Janela.fill((0, 0, 0))
+
+        if textnumber == 14:
+            Controlador_Jogo = 4
+            start_ticks = pygame.time.get_ticks()
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load('Musica_SFX\Musica_Fase.wav')
+            pygame.mixer.music.play(-1)
+            textnumber = 15
 
 
         # Teste de Leaderboards com valores atualizados
