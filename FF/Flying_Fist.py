@@ -558,7 +558,7 @@ Controlador_Jogo = 1
 # Essa variável define a pontuação do jogador, e o Timer da fase
 Score = 0
 Timer = 60
-Nome_do_player = ("AKI")
+Nome_do_player = ("JOG")
 
 
 # Scoreboard_Player = {'Nome':Nome_do_player, 'Pontos': Score}
@@ -606,9 +606,17 @@ def mostrarPlacar(Pontos):
 
 Load_Top_Scores = pickle.load(open("top_scores", "rb"))
 
+Scoreboard_Player = {'Nome': Nome_do_player, 'Pontos': Score}
+Load_Top_Scores.insert(0, Scoreboard_Player)
+pickle.dump(Load_Top_Scores, open("top_scores", "wb"))
+Load_Top_Scores = pickle.load(open("top_scores", "rb"))
+Load_Top_Scores.sort(key=itemgetter('Pontos'), reverse=True)
+
 for key in Load_Top_Scores:
     print(key)
 
+textoPlacar = mostrarPlacar(Load_Top_Scores)
+print(textoPlacar)
 # Essa carrega uma fonte para o projeto do jogo, definindo seu tamanho
 fonte_small = pygame.font.Font("fontes/start.ttf", 18)
 fonte_med = pygame.font.Font("fontes/start.ttf", 25)
@@ -782,10 +790,15 @@ def redrawGameWindow():
             balau2.draw(Janela)
 
         if showPoints == True:
-            ptext.draw(str(textoPlacar), center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf",
+            ptext.draw(str(textoPlacar), midtop=(Largura / 2, 175), fontname="fontes/start.ttf",
                        color=(255, 255, 255),
                        gcolor=(150, 150, 150),
                        shadow=(3, 3), scolor="#000000")
+
+            ptext.draw("FASE COMPLETA!!", center=(Largura / 2, 135), fontname="fontes/start.ttf",
+                       color=(255, 100, 0),
+                       gcolor=(255, 200, 20),
+                       shadow=(3, 3), scolor="#000000",fontsize=35)
 
 
 
@@ -836,7 +849,6 @@ def redrawGameWindow():
         pygame.display.update()
 
 while run:
-    print(Controlador_Jogo)
     apertou2=0
     keys = pygame.key.get_pressed()
 
@@ -912,11 +924,6 @@ while run:
         textoPlacar = mostrarPlacar(Load_Top_Scores)
         time.sleep(1)
 
-
-    if keys [pygame.K_t]:
-        ptext.draw(textoPlacar, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
-                   gcolor=(150, 150, 150),
-                   shadow=(3, 3), scolor="#000000")
 
 
     if keys[pygame.K_LEFT]:
