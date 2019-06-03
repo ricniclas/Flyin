@@ -115,7 +115,12 @@ DanoVirado2 = [pygame.image.load('images\Personagem_Sprites\L_Personagem__Dano_0
                  pygame.image.load('images\Personagem_Sprites\L_Personagem__Dano_2.png'),
                  ]
 
-parado = [pygame.image.load('images\inimiga snack beijin\D1.png'), pygame.image.load('images\inimiga snack beijin\D2.png')]
+parado = [pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_1.png'),
+          pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_2.png'),
+          pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_3.png'),
+          pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_3.png'),
+          pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_4.png')]
+
 
 #Classe do Personagem do Player 1
 class Player(object):
@@ -399,7 +404,8 @@ class InimigoBase(object):
                 pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Andando_4.png'), pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Andando_5.png'),
                 pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Andando_6.png')]
 
-    parado = [pygame.image.load('images\inimiga snack beijin\D1.png'), pygame.image.load('images\inimiga snack beijin\D2.png')]
+    parado = [pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_0.png'), pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_1.png'),
+              pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_2.png'), pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_3.png'), pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_4.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x
@@ -439,7 +445,7 @@ class InimigoBase(object):
 
             elif self.parado and self.vel == 0:
 
-                win.blit ( parado[self.walkCount // 20] , (self.x , self.y) )
+                win.blit ( parado[self.walkCount // 6] , (self.x , self.y) )
 
                 self.walkCount += 3
 
@@ -667,8 +673,10 @@ inimigo.y = 300
 # Musica é tocada assim que executa o jogo, mas não em loop
 # Musica_Fase = pygame.mixer.music.load('Musica_SFX\Musica_Fase.wav')
 SONG_END = pygame.USEREVENT + 1
-pygame.mixer.music.load('Musica_SFX\intro.mp3')
-pygame.mixer.music.play(1)
+
+
+SFX_Voice_Flying2 = pygame.mixer.Sound('Musica_SFX\SFX\Voice_Flying2.wav')
+SFX_Voice_Flying2.play(0)
 
 SFX_Punch1 = pygame.mixer.Sound('Musica_SFX\SFX\Punch_1.wav')
 SFX_Punch1.set_volume(0.5)
@@ -676,8 +684,8 @@ SFX_Punch2 = pygame.mixer.Sound('Musica_SFX\SFX\Punch_2.wav')
 SFX_Miss = pygame.mixer.Sound('Musica_SFX\SFX\Punch_miss.wav')
 SFX_Miss.set_volume(0.5)
 SFX_Death = pygame.mixer.Sound('Musica_SFX\SFX\Death.wav')
-SFX_Text = pygame.mixer.Sound('Musica_SFX\SFX\Death.wav')
-SFX_Text.set_volume(0.05)
+SFX_Text = pygame.mixer.Sound('Musica_SFX\SFX\Text_Sound.wav')
+SFX_Text.set_volume(0.07)
 
 Cutscene1 = pygame.image.load("images/Tela_Inicial/Cutscene1.jpg").convert()
 Cutscene2 = pygame.image.load("images/Tela_Inicial/Cutscene2.jpg").convert()
@@ -703,8 +711,8 @@ potencial, mas a fúria de
 Akira é seu maior inimigo. """
 
 text_orig6 = """Após a morte de seu
-mestre, Akira decide voltar
-Para seu vilarejo """
+mestre, Akira decide 
+voltar para seu vilarejo """
 
 text_orig7 = """Mas a raiva que banhava
 seu coração também era a
