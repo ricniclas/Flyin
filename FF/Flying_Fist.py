@@ -6,6 +6,9 @@ import pickle
 import ptext
 import Tela_Inicial
 import compressao_save
+import Cutscenes
+
+
 
 # Essa função define parametros da janela do windows que será aberta. Caso clique no X, ela irá fechar.
 def events():
@@ -13,6 +16,7 @@ def events():
         if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
             pygame.quit()
             sys.exit()
+
 
 #Carrega os Sprites que compoem o Personagem do Player 1
 AndarDireita = [pygame.image.load('images\Personagem_Sprites\Personagem__Andando_1.png'),
@@ -216,7 +220,7 @@ class Player(object):
 
         elif self.parado:
             Janela.blit(char[self.ContarPassos//10], (self.x, self.y))
-            self.ContarPassos += 3
+            self.ContarPassos += 2
 
 
         elif self.estado == True:
@@ -435,8 +439,6 @@ class InimigoBase(object):
 
 
 
-
-
         self.move ()
         if self.visible:
             if self.walkCount + 1 >= 33:
@@ -534,7 +536,7 @@ class InimigoBase(object):
 #Personagem possui x, y, largura, altura, playerVelocityX, playerVelocityY
 # Inimigo possui x, y, width, height, end
 Classe = Player(200, 410, 64, 64, 64, 64, 64)
-Classe2 = Player2(200, 410, 64, 64, 64, 64)
+Classe2 = Player2(200, 250, 64, 64, 64, 64)
 inimigo = InimigoBase(100, 410, 64, 64, 450)
 inimigo2 = InimigoBase(100, 410, 64, 64, 450)
 
@@ -546,7 +548,7 @@ socobala = []
 socobala2 = []
 
 # Propriedades da Janela a ser aberta
-Largura, Altura = 640, 448
+Largura, Altura = 640, 480
 HW, HH = Largura / 2, Altura / 2
 Area = Largura * Altura
 Nome_da_Janela = "FLYING FIST"
@@ -639,7 +641,8 @@ Background_Fase2 = pygame.image.load("images/Background_Fase2.png").convert_alph
 Background_Fase2_0 = pygame.image.load("images/Background_Fase2_0.png").convert()
 Background_Tela_Inicial = pygame.image.load("images/Tela_Inicial/Tela_de_Titulo.png").convert()
 Personagem_HUD = pygame.image.load("images/Personagem_Vida.png").convert_alpha()
-
+Go = pygame.image.load("images/Go.png").convert_alpha()
+Start = False
 # Define a Altura e Largura do background
 Background_Largura, Background_Altura = Background_Fase.get_rect().size
 
@@ -664,6 +667,7 @@ circleRadius = 25
 circlePosX = circleRadius
 Classe.x = circleRadius + 50
 Classe.y = 300
+Classe2.Y = 100
 Classe.playerVelocityX = 0
 Classe.playerVelocityY = 0
 
@@ -687,10 +691,11 @@ SFX_Death = pygame.mixer.Sound('Musica_SFX\SFX\Death.wav')
 SFX_Text = pygame.mixer.Sound('Musica_SFX\SFX\Text_Sound.wav')
 SFX_Text.set_volume(0.07)
 
-Cutscene1 = pygame.image.load("images/Tela_Inicial/Cutscene1.jpg").convert()
-Cutscene2 = pygame.image.load("images/Tela_Inicial/Cutscene2.jpg").convert()
-Cutscene3 = pygame.image.load("images/Tela_Inicial/Cutscene3.jpg").convert()
-
+Cutscene1 = pygame.image.load("images/Tela_Inicial/Cutscene_1.png").convert()
+Cutscene2 = pygame.image.load("images/Tela_Inicial/Cutscene_2.png").convert()
+Cutscene3 = pygame.image.load("images/Tela_Inicial/Cutscene_3.png").convert()
+Cutscene4 = pygame.image.load("images/Tela_Inicial/Cutscene_4.png").convert()
+Cutscene7 = pygame.image.load("images/Tela_Inicial/Cutscene_7_0.png").convert()
 text_orig = """O mundo já não é
 mais o mesmo """
 
@@ -768,8 +773,8 @@ def redrawGameWindow():
         Janela.blit(Background_Tela_Inicial, (0, -10))
         Tela_Inicial.Press_Start.blit(Janela, (110, 320))
         Tela_Inicial.Tela_de_titulo_animacao.blit(Janela, (0, -10))
-
         pygame.display.update()
+
     if Controlador_Jogo == 0:
         Janela.blit(Background_Fase_0, (rel_x2, 0))
         Janela.blit(Background_Fase, (rel_x, 0), )
@@ -813,13 +818,11 @@ def redrawGameWindow():
                        gcolor=(255, 200, 20),
                        shadow=(3, 3), scolor="#000000",fontsize=35)
 
+        if Classe.parartela == False and Start == False:
+            Cutscenes.Go.blit(Janela,(450,60))
 
 
-
-
-
-
-
+        Cutscenes.Start_Play.blit(Janela,(80, 100))
         pygame.display.update()
 
     if Controlador_Jogo == 4:
@@ -861,9 +864,25 @@ def redrawGameWindow():
 
         pygame.display.update()
 
+    if Controlador_Jogo == 3:
+        #Janela.blit(Background_Tela_Inicial, (0, -10))
+        #Tela_Inicial.Press_Start.blit(Janela, (110, 320))
+        if textnumber == 4:
+            Cutscenes.Cutscene_2.blit(Janela, (0,0))
+        #Tela_Inicial.Tela_de_titulo_animacao.blit(Janela, (0, -10))
+        if textnumber >= 6 and textnumber < 9:
+            Cutscenes.Cutscene_Kobra.blit(Janela,(0,0))
+
 while run:
     apertou2=0
     keys = pygame.key.get_pressed()
+    Cutscenes.Go.play()
+    if Start == True:
+        Cutscenes.Start_Play.play()
+    else:
+        Cutscenes.Start_Play.stop()
+    if Cutscenes.Start_Play.currentFrameNum == 18:
+        Start = False
 
     # Essa parte do código é referente ao SideScrolling e posição do personagem na tela. Para entender, ver https://www.youtube.com/watch?v=AX8YU2hLBUg&t=478s
     if Classe.parartela == False:
@@ -885,9 +904,6 @@ while run:
          Background_Fase_Posicao_0 += -1
       rel_x = Background_Fase_Posicao % Background_Largura
       rel_x2 = Background_Fase_Posicao_0 % Background_Largura
-
-
-
 
 
     clock.tick(27)
@@ -1148,6 +1164,7 @@ while run:
     if Controlador_Jogo == 1:
 
         Tela_Inicial.Press_Start.play()
+        #Cutscenes.Cutscene_5.play()
         if keys[K_RETURN]:
             Tela_Inicial.Tela_de_titulo_animacao.play()
 
@@ -1171,7 +1188,7 @@ while run:
 
     if Controlador_Jogo == 3:
         pygame.display.update()
-        Janela.fill((0, 0, 0))
+
 
         if keys[K_RETURN]:
             Controlador_Jogo = 0
@@ -1179,6 +1196,7 @@ while run:
             pygame.mixer.music.stop()
             pygame.mixer.music.load('Musica_SFX\Musica_Fase.wav')
             pygame.mixer.music.play(-1)
+            Start = True
 
         if textnumber == 1:
             Janela.blit(Cutscene1, (0, 0))
@@ -1186,7 +1204,7 @@ while run:
                 text += next(text_iterator)
                 SFX_Text.play(0)
 
-        ptext.draw(text, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
         if len(text) == len(text_orig):
@@ -1197,12 +1215,12 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 2:
-            Janela.blit(Cutscene2, (0, 0))
+            Janela.blit(Cutscene1, (0, 0))
             if len(text2) < len(text_orig2):
                 text2 += next(text_iterator2)
                 SFX_Text.play(0)
 
-        ptext.draw(text2, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text2, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1214,46 +1232,50 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 3:
-            Janela.blit(Cutscene3, (0, 0))
+            Janela.blit(Cutscene1, (0, 0))
             if len(text3) < len(text_orig3):
                 text3 += next(text_iterator3)
                 SFX_Text.play(0)
 
-        ptext.draw(text3, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text3, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
         if len(text3) == len(text_orig3):
-            Janela.fill((0, 0, 0))
+
+
             textnumber = 4
             time.sleep(3)
             text3 += " "
             Janela.fill((0, 0, 0))
 
         if textnumber == 4:
-            Janela.blit(Cutscene2, (0, 0))
+            Janela.fill((0, 0, 0))
+            ptext.draw(text4, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
+                       gcolor=(150, 150, 150),
+                       shadow=(3, 3), scolor="#000000")
+            Cutscenes.Cutscene_2.play()
+            #Janela.blit(Cutscene2, (0, 0))
             if len(text4) < len(text_orig4):
                 text4 += next(text_iterator4)
                 SFX_Text.play(0)
 
-        ptext.draw(text4, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
-                   gcolor=(150, 150, 150),
-                   shadow=(3, 3), scolor="#000000")
+
 
         if len(text4) == len(text_orig4):
             Janela.fill((0, 0, 0))
             textnumber = 5
-            time.sleep(2)
+            time.sleep(3)
             text4 += " "
             Janela.fill((0, 0, 0))
 
         if textnumber == 5:
-            Janela.blit(Cutscene1, (0, 0))
+            Janela.blit(Cutscene3, (0, 0))
             if len(text5) < len(text_orig5):
                 text5 += next(text_iterator5)
                 SFX_Text.play(0)
 
-        ptext.draw(text5, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text5, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1265,12 +1287,13 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 6:
-            Janela.blit(Cutscene1, (0, 0))
+            Janela.fill((0, 0, 0))
+            Janela.blit(Cutscene7, (0, 0))
             if len(text6) < len(text_orig6):
                 text6 += next(text_iterator6)
                 SFX_Text.play(0)
 
-        ptext.draw(text6, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text6, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1282,12 +1305,13 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 7:
-            Janela.blit(Cutscene2, (0, 0))
+            Janela.fill((0, 0, 0))
+            Janela.blit(Cutscene7, (0, 0))
             if len(text7) < len(text_orig7):
                 text7 += next(text_iterator7)
                 SFX_Text.play(0)
 
-        ptext.draw(text7, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text7, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1299,12 +1323,13 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 8:
-            Janela.blit(Cutscene3, (0, 0))
+            Janela.fill((0, 0, 0))
+            Cutscenes.Cutscene_Kobra.play()
             if len(text8) < len(text_orig8):
                 text8 += next(text_iterator8)
                 SFX_Text.play(0)
 
-        ptext.draw(text8, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text8, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1316,12 +1341,13 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 9:
-            Janela.blit(Cutscene2, (0, 0))
+            Janela.fill((0, 0, 0))
+            Cutscenes.Cutscene_Kobra.play()
             if len(text9) < len(text_orig9):
                 text9 += next(text_iterator9)
                 SFX_Text.play(0)
 
-        ptext.draw(text9, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text9, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1333,12 +1359,14 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 10:
-            Janela.blit(Cutscene1, (0, 0))
+
+            Janela.fill((0, 0, 0))
+            Janela.blit(Cutscene4, (0, 0))
             if len(text10) < len(text_orig10):
                 text10 += next(text_iterator10)
                 SFX_Text.play(0)
 
-        ptext.draw(text10, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text10, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1350,12 +1378,13 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 11:
-            Janela.blit(Cutscene2, (0, 0))
+            Janela.fill((0, 0, 0))
+            Janela.blit(Cutscene4, (0, 0))
             if len(text11) < len(text_orig11):
                 text11 += next(text_iterator11)
                 SFX_Text.play(0)
 
-        ptext.draw(text11, center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf", color=(255, 255, 255),
+        ptext.draw(text11, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
@@ -1367,6 +1396,8 @@ while run:
             Janela.fill((0, 0, 0))
 
         if textnumber == 12:
+            Janela.fill((0, 0, 0))
+            Janela.blit(Cutscene4, (0, 0))
             Controlador_Jogo = 0
             start_ticks = pygame.time.get_ticks()
             pygame.mixer.music.stop()
@@ -1374,8 +1405,11 @@ while run:
             pygame.mixer.music.play(-1)
             textnumber = 13
 
+            Start = True
+
         if textnumber == 13:
-            Janela.blit(Cutscene2, (0, 0))
+            Janela.fill((0, 0, 0))
+            Janela.blit(Cutscene4, (0, 0))
             if len(text12) < len(text_orig12):
                 text12 += next(text_iterator12)
                 SFX_Text.play(0)
@@ -1416,7 +1450,8 @@ while run:
     if keys[K_b] and Classe.HP >= 0.9:
         Classe.HP -= 0.2
         Score += 1
-
+    if keys[K_x]:
+        textnumber +=1
     redrawGameWindow()
 
 pygame.quit()
