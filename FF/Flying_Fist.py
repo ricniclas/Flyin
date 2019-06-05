@@ -8,7 +8,11 @@ import Tela_Inicial
 import compressao_save
 import Cutscenes
 
-
+LetraA = 0
+LetraB = 0
+LetraC = 0
+LetraAtual = 0
+Auxiliar = 0
 
 # Essa função define parametros da janela do windows que será aberta. Caso clique no X, ela irá fechar.
 def events():
@@ -69,54 +73,57 @@ DanoVirado = [pygame.image.load('images\Personagem_Sprites\L_Personagem__Dano_0.
                  ]
 
 #Carrega os Sprites que compoem o Personagem do Player 2
-AndarDireita2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Andando_1.png'),
-                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_2.png'),
-                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_3.png'),
-                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_4.png'),
-                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_5.png'),
-                pygame.image.load('images\Personagem_Sprites\Personagem__Andando_6.png'),
-                ]
-AndarEsquerda2 = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_1.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_2.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_3.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_4.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_5.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Andando_6.png'),
-                 ]
-Soco2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Soco_2.png'),
-        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_0.png'),
-        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_1.png'),
-        pygame.image.load('images\Personagem_Sprites\Personagem__Soco_4.png')
+AndarDireita2 = [pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_0.png'),
+                pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_1.png'),
+                pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_1.png'),
+                pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_2.png'),
+                pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_3.png'),
+                pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_4.png'),
+                pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_5.png'),
+                pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Andando_6.png')]
+AndarEsquerda2 = [pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Andando_0.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Andando_1.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Andando_2.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Andando_3.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Andando_4.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Andando_5.png'),
+                  pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Andando_6.png')]
+Soco2 =[pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Soco_0.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Soco_1.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Soco_2.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Soco_3.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Soco_4.png')
         ]
-SocoVirado2 =[pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_2.png'),
-        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_0.png'),
-        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_1.png'),
-        pygame.image.load('images\Personagem_Sprites\R_Personagem__Soco_4.png')
+SocoVirado2 =[pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Soco_0.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Soco_1.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Soco_2.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Soco_3.png'),
+        pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Soco_4.png')
         ]
-virado2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_R0.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_1.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_2.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_3.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_4.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Parado_5.png'),
+virado2 = [pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Parado_0.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Parado_1.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Parado_2.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Parado_3.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Parado_4.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Parado_5.png'),
                  ]
-char2 = [pygame.image.load('images\Personagem_Sprites\Personagem__Parado_0.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_1.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_2.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_3.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_4.png'),
-                 pygame.image.load('images\Personagem_Sprites\Personagem__Parado_5.png'),
-                 ]
-
-
-Dano2 = [pygame.image.load('images\Personagem_Sprites\R_Personagem__Dano_0.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Dano_1.png'),
-                 pygame.image.load('images\Personagem_Sprites\R_Personagem__Dano_2.png'),
+char2  = [pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Parado_0.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Parado_1.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Parado_2.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Parado_3.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Parado_4.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Parado_5.png'),
                  ]
 
-DanoVirado2 = [pygame.image.load('images\Personagem_Sprites\L_Personagem__Dano_0.png'),
-                 pygame.image.load('images\Personagem_Sprites\L_Personagem__Dano_1.png'),
-                 pygame.image.load('images\Personagem_Sprites\L_Personagem__Dano_2.png'),
+
+Dano2 = [pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Dano_0.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Dano_1.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_R__Dano_2.png'),
+                 ]
+
+DanoVirado2= [pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Dano_0.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Dano_1.png'),
+                 pygame.image.load('images\Personagem2_Sprites\Personagem2_L__Dano_2.png'),
                  ]
 
 parado = [pygame.image.load('images\Inimigo\Inimigo_1\Inimigo_L__Dano_1.png'),
@@ -239,7 +246,7 @@ class Player(object):
             else:
                 Janela.blit(AndarDireita[0], (self.x, self.y))
         self.hitbox = (self.x + 17, self.y + 11, 70, 90)
-        pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
+        #pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
 
 #Classe do Personagem do Player 2
 class Player2(object):
@@ -354,7 +361,7 @@ class Player2(object):
             else:
                 Janela.blit(AndarDireita[0], (self.x, self.y))
         self.hitbox = (self.x + 17, self.y + 11, 70, 90)
-        pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
+        #pygame.draw.rect(Janela, (255, 0, 0), self.hitbox, 2)
 
 
 #Classe do hitbox do Player 1
@@ -375,8 +382,8 @@ class projetosoco(object):
 
     def draw(self, Janela):
       if self.tavenon:
-        pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
-
+        #pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
+        pass
 #Classe do hitbox do Player 2
 class projetosoco2(object):
     def __init__(self, x, y, raio, cor, mira):
@@ -556,7 +563,7 @@ Nome_da_Janela = "FLYING FIST"
 # Esse código inicializa a Janela com as propriedades definidas nas variaveis
 pygame.init()
 clock = pygame.time.Clock()
-Janela = pygame.display.set_mode((Largura, Altura))
+Janela = pygame.display.set_mode((Largura, Altura), FULLSCREEN)
 pygame.display.set_caption(Nome_da_Janela)
 
 # Esta variável controlará as telas do jogo
@@ -629,10 +636,7 @@ compressao_save.compressao()
 
 
 print(textoPlacar)
-# Essa carrega uma fonte para o projeto do jogo, definindo seu tamanho
-fonte_small = pygame.font.Font("fontes/start.ttf", 18)
-fonte_med = pygame.font.Font("fontes/start.ttf", 25)
-fonte_big = pygame.font.Font("fontes/start.ttf", 35)
+
 
 # Carrega as imagem do jogo em geral
 Background_Fase = pygame.image.load("images/Background_Fase.png").convert_alpha()
@@ -651,7 +655,7 @@ Fase_Largura = Background_Largura * 10
 # Define a posicao do background da fase em relação a janela
 Background_Fase_Posicao = 0
 Background_Fase_Posicao_0 = 0
-startScrollingPosX = HW
+startScrollingPosX = HW+150
 
 # Propriedades da Janela a ser aberta
 Largura, Altura = 640, 448
@@ -818,7 +822,7 @@ def redrawGameWindow():
                        gcolor=(255, 200, 20),
                        shadow=(3, 3), scolor="#000000",fontsize=35)
 
-        if Classe.parartela == False and Start == False:
+        if Classe.parartela == False and Start == False and showPoints == False:
             Cutscenes.Go.blit(Janela,(450,60))
 
 
@@ -886,22 +890,27 @@ while run:
 
     # Essa parte do código é referente ao SideScrolling e posição do personagem na tela. Para entender, ver https://www.youtube.com/watch?v=AX8YU2hLBUg&t=478s
     if Classe.parartela == False:
-      if Classe.x and Classe2.x > Fase_Largura:
-         Classe.x = Fase_Largura
-         Classe2.x = Fase_Largura
-      if Classe.x and Classe2.x  <= startScrollingPosX:
-         Classe.x = Classe.x
+      #if Classe.x and Classe2.x > Fase_Largura:
+       #  Classe.x = Fase_Largura
+       #  Classe2.x = Fase_Largura
+      if Classe2.x  <= startScrollingPosX:
+        # Classe.x = Classe.x
          Classe2.x = Classe2.x
-      elif Classe.x and Classe2.x > Fase_Largura - startScrollingPosX:
-         Classe.x = Classe.x - Fase_Largura + Largura
-         Classe2.x = Classe2.x - Fase_Largura + Largura
-      elif Classe.playerVelocityX >= 0 or Classe2.playerVelocityX >=0:
-         Classe.x = startScrollingPosX
-         Background_Fase_Posicao += -Classe.playerVelocityX
-         Background_Fase_Posicao_0 += -1
+
+      #elif Classe.x and Classe2.x > Fase_Largura - startScrollingPosX:
+       #  Classe.x = Classe.x - Fase_Largura + Largura
+        # Classe2.x = Classe2.x - Fase_Largura + Larguraw
+      elif  Classe2.playerVelocityX >=0:
+        # Classe.x = startScrollingPosX
+         #Background_Fase_Posicao += -Classe.playerVelocityX
+         #Background_Fase_Posicao_0 += -1
          Classe2.x = startScrollingPosX
          Background_Fase_Posicao += -Classe2.playerVelocityX
          Background_Fase_Posicao_0 += -1
+         if Classe.direita == False:
+             Classe.playerVelocityX = -4
+             Classe.x += Classe.playerVelocityX
+             print("andando")
       rel_x = Background_Fase_Posicao % Background_Largura
       rel_x2 = Background_Fase_Posicao_0 % Background_Largura
 
@@ -955,7 +964,7 @@ while run:
 
 
 
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_LEFT] and Classe.x >5 and Start == False:
         if Classe.estado == False:
             if Classe.socoestado == False:
                 Classe.playerVelocityX=0
@@ -964,7 +973,7 @@ while run:
                 Classe.Virado=True
                 Classe.apertou1 = True
 
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_LEFT] and Classe.x > 5 and Start == False:
         if Classe.estado == False:
             if Classe.socoestado == False:
                 Classe.playerVelocityX = -4
@@ -975,7 +984,7 @@ while run:
                 Classe.apertou1 = False
 
 
-    elif keys[pygame.K_RIGHT]:
+    elif keys[pygame.K_RIGHT] and Classe.x <530 and Start == False:
         if Classe.estado == False:
             if Classe.socoestado == False:
                 Classe.playerVelocityX = 4
@@ -986,21 +995,30 @@ while run:
                 Classe.apertou1 = True
 
 
-    elif keys[pygame.K_UP]:
+    elif keys[pygame.K_UP] and Classe.y > 209 and Start == False:
         if Classe.estado == False:
             if Classe.socoestado == False:
                 Classe.playerVelocityY = -4
                 Classe.y += Classe.playerVelocityY
-                Classe.baixo = False
-                Classe.cima = True
+                if Classe.apertou1 == False:
+                    Classe.esquerda = True
+                    Classe.baixo = False
+                else:
+                    Classe.baixo = False
+                    Classe.cima = True
 
-    elif keys[pygame.K_DOWN]:
+    elif keys[pygame.K_DOWN] and Classe.y <380 and Start == False:
         if Classe.estado == False:
             if Classe.socoestado == False:
                 Classe.playerVelocityY = 4
                 Classe.y += Classe.playerVelocityY
-                Classe.cima = False
-                Classe.baixo = True
+                if Classe.apertou1 == False:
+                    Classe.esquerda = True
+                    Classe.baixo = False
+                else:
+                    Classe.baixo = True
+                    Classe.cima = False
+
 
 
     elif keys[pygame.K_x]:
@@ -1063,7 +1081,7 @@ while run:
         # Classe.y += Classe.playerVelocityY
 
 #Player2
-    if keys[pygame.K_a]:
+    if keys[pygame.K_a] and Classe2.x >5 and Start == False:
         if Classe2.estado == False:
             if Classe2.socoestado == False:
                 Classe2.playerVelocityX=0
@@ -1072,7 +1090,7 @@ while run:
                 Classe2.Virado= True
                 Classe2.apertou1 = True
 
-    if keys[pygame.K_a]:
+    if keys[pygame.K_a] and Classe2.x>5 and Start == False:
         if Classe2.estado == False:
             if Classe2.socoestado == False:
                 Classe2.playerVelocityX = -4
@@ -1083,7 +1101,7 @@ while run:
                 Classe2.apertou1 = False
 
 
-    elif keys[pygame.K_d]:
+    elif keys[pygame.K_d] and Classe2.x<530 and Start == False:
         if Classe2.estado == False:
             if Classe2.socoestado == False:
                 Classe2.playerVelocityX = 4
@@ -1094,21 +1112,30 @@ while run:
                 Classe2.apertou1 = True
 
 
-    elif keys[pygame.K_w]:
+    elif keys[pygame.K_w] and Classe2.y > 209 and Start == False:
         if Classe2.estado == False:
             if Classe2.socoestado == False:
                 Classe2.playerVelocityY = -4
                 Classe2.y += Classe2.playerVelocityY
-                Classe2.baixo = False
-                Classe2.cima = True
+                if Classe2.apertou1 == False:
+                    Classe2.esquerda = True
+                    Classe2.baixo = False
+                else:
+                    Classe2.baixo = False
+                    Classe2.cima = True
 
-    elif keys[pygame.K_s]:
+
+    elif keys[pygame.K_s] and Classe2.y <380 and Start == False:
         if Classe2.estado == False:
             if Classe2.socoestado == False:
                 Classe2.playerVelocityY = 4
                 Classe2.y += Classe2.playerVelocityY
-                Classe2.cima = False
-                Classe2.baixo = True
+                if Classe2.apertou1 == False:
+                    Classe2.esquerda = True
+                    Classe2.baixo = False
+                else:
+                    Classe2.baixo = True
+                    Classe2.cima = False
 
     elif keys[pygame.K_i]:
         if Classe2.estado == False:
@@ -1180,7 +1207,7 @@ while run:
 
 
         if Tela_Inicial.Tela_de_titulo_animacao.currentFrameNum == 9:
-            Controlador_Jogo = 3
+            Controlador_Jogo = 6
             start_ticks = pygame.time.get_ticks()
             pygame.mixer.music.stop()
             pygame.mixer.music.load('Musica_SFX\intro_akira.mp3')
@@ -1436,7 +1463,96 @@ while run:
 
         # Teste de Leaderboards com valores atualizados
 
-#Carrega o scoreboard
+    if Controlador_Jogo == 6:
+        Janela.fill((0, 0, 0))
+        Letra1 = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        if pygame.key.get_pressed()[pygame.K_RETURN] and LetraAtual <3:
+            time.sleep(0.2)
+            LetraAtual +=1
+            Auxiliar = 0
+            print (LetraAtual)
+            if LetraAtual == 3:
+                Nome_do_player = str(Letra1[LetraA])+str(Letra1[LetraB])+str(Letra1[LetraC])
+                print (Nome_do_player)
+                Controlador_Jogo = 3
+        if LetraAtual == 0:
+            if pygame.key.get_pressed()[pygame.K_UP]:
+                if Auxiliar >= 25:
+                    time.sleep(0.1)
+                    Auxiliar = 0
+                    LetraA = Auxiliar
+                    print("UP")
+                else:
+                    time.sleep(0.1)
+                    Auxiliar += 1
+                    LetraA = Auxiliar
+                    print("UP")
+            if pygame.key.get_pressed()[pygame.K_DOWN]:
+                time.sleep(0.1)
+                Auxiliar -=1
+                LetraA = Auxiliar
+                if Auxiliar < 0:
+                    Auxiliar = 25
+                    LetraA = Auxiliar
+                    print("DOWN")
+        if LetraAtual == 1:
+            if pygame.key.get_pressed()[pygame.K_UP]:
+                if Auxiliar >= 25:
+                    time.sleep(0.1)
+                    Auxiliar = 0
+                    LetraB = Auxiliar
+                    print("UP")
+                else:
+                    time.sleep(0.1)
+                    Auxiliar += 1
+                    LetraB = Auxiliar
+                    print("DOWN")
+            elif pygame.key.get_pressed()[pygame.K_DOWN]:
+                time.sleep(0.1)
+                Auxiliar -= 1
+                LetraB = Auxiliar
+                if Auxiliar < 0:
+                    Auxiliar = 25
+                    LetraB = Auxiliar
+        if LetraAtual == 2:
+            if pygame.key.get_pressed()[pygame.K_UP]:
+                if Auxiliar >= 25:
+                    time.sleep(0.1)
+                    Auxiliar = 0
+                    LetraC = Auxiliar
+                    print("UP")
+                else:
+                    time.sleep(0.1)
+                    Auxiliar += 1
+                    LetraC = Auxiliar
+                    print("DOWN")
+            elif pygame.key.get_pressed()[pygame.K_DOWN]:
+                time.sleep(0.1)
+                Auxiliar -= 1
+                LetraC=Auxiliar
+                if Auxiliar < 0:
+                    Auxiliar = 25
+                    LetraC = Auxiliar
+
+        ptext.draw("DIGITE SEU NOME", center=(Largura / 2, Altura / 2-60), fontname="fontes/start.ttf",
+                   color=(255, 255, 255),
+                   gcolor=(150, 150, 150),
+                   shadow=(3, 3), scolor="#000000")
+        ptext.draw(str(Letra1[LetraA]), center=(Largura / 2-27, Altura / 2), fontname="fontes/start.ttf",
+                   color=(255, 255, 255),
+                   gcolor=(150, 150, 150),
+                   shadow=(3, 3), scolor="#000000")
+        ptext.draw(str(Letra1[LetraB]), center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf",
+                   color=(255, 255, 255),
+                   gcolor=(150, 150, 150),
+                   shadow=(3, 3), scolor="#000000")
+        ptext.draw(str(Letra1[LetraC]), center=(Largura / 2+27, Altura / 2), fontname="fontes/start.ttf",
+                   color=(255, 255, 255),
+                   gcolor=(150, 150, 150),
+                   shadow=(3, 3), scolor="#000000")
+        pygame.display.update()
+
+    #Carrega o scoreboard
     if keys[K_l]:
         Scoreboard_Player = {'Nome': Nome_do_player, 'Pontos': Score}
         Load_Top_Scores.insert(0, Scoreboard_Player)
@@ -1452,6 +1568,9 @@ while run:
         Score += 1
     if keys[K_x]:
         textnumber +=1
+    if keys[K_r]:
+         Controlador_Jogo = 3
     redrawGameWindow()
-
+    if keys[K_z]:
+        Controlador_Jogo = 6
 pygame.quit()
