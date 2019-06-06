@@ -4,7 +4,6 @@
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Musica_SFX/SFX/Text_Sound.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Musica_SFX/SFX/Text_Sound.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/top_scores" beforeDir="false" afterPath="$PROJECT_DIR$/top_scores" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +14,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="677" column="73" lean-forward="true" selection-start-line="677" selection-start-column="73" selection-end-line="677" selection-end-column="73" />
+            <state relative-caret-position="18">
+              <caret line="999" column="3" selection-start-line="999" selection-start-column="3" selection-end-line="999" selection-end-column="3" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -30,17 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compressao_save.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../../compre/Compressao/Comp_Repet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="30" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -114,9 +109,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="633" />
-    <option name="width" value="654" />
-    <option name="height" value="1001" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="820" />
+    <option name="height" value="570" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -145,7 +141,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SMAUG-2-SEMESTRE/codigo de movimento simples/quadrado" />
+    <property name="last_opened_file_path" value="D:/Flyin-master" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -341,15 +337,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14228936" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14210178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.32839224" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3945268" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.31303117" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3937677" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -424,9 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -435,33 +428,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uh.py" />
-    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Minha_compressao.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Comp_Huffman.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-end-line="113" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/compression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
-          <folding>
-            <element signature="e#22#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/mixer_music.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="80" column="14" selection-start-line="80" selection-start-column="14" selection-end-line="80" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Minha_compressao.py" />
+    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Comp_Huffman.py" />
+    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/compression.py" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/mixer_music.py" />
     <entry file="file://$PROJECT_DIR$/ptext.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -469,27 +439,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="677" column="73" lean-forward="true" selection-start-line="677" selection-start-column="73" selection-end-line="677" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$USER_HOME$/compre/Compressao/Comp_Repet.py" />
+    <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/compressao_save.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../compre/Compressao/Comp_Repet.py">
+    <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="30" />
+        <state relative-caret-position="18">
+          <caret line="999" column="3" selection-start-line="999" selection-start-column="3" selection-end-line="999" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
