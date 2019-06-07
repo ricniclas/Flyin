@@ -431,7 +431,7 @@ class InimigoBase(object):
         self.pare= False
 
     def draw(self , win):
-     if Classe.andarcount >=200 or Classe2.andarcount >=200:
+     if Classe.andarcount >=400 or Classe2.andarcount >=400:
         Classe.parartela=True
         #print(Classe.parartela)
         self.move ()
@@ -529,10 +529,436 @@ class InimigoBase(object):
     def __del__(self):
         pass
 
+class Inimigo(object):
+        Direta = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_0.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_1.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_2.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_3.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_4.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_5.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_6.png')]
+        Esquerda = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_0.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_1.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_2.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_3.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_4.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_5.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_6.png')]
+
+        parado = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_0.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_1.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_2.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_3.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
+
+        def __init__(self, x, y, width, height, end):
+            self.x = x
+            self.y = y
+            self.width = width
+            self.height = height
+            self.end = end
+            self.path = [self.x, self.end]
+            self.walkCount = 0
+            self.vel = 3
+            self.hitbox = (self.x + 17, self.y + 2)
+            self.hitbox2 = (self.hitbox[0], self.y + 57)
+            self.health = 10
+            self.visible = True
+            self.aleatorio = random.randint(0, 3)
+            self.estado = 0
+            self.pare = False
+
+        def draw(self, win):
+            if Classe.andarcount >= 100 or Classe2.andarcount >= 100:
+                Classe.parartela = False
+                # print(Classe.parartela)
+                self.move()
+                if self.visible:
+                    if self.walkCount + 1 >= 33:
+                        self.walkCount = 0
+                    elif self.parado and self.vel == 0:
+
+                        win.blit(self.parado[self.walkCount // 6], (self.x, self.y))
+
+                        self.walkCount += 3
+
+                    elif self.vel > 0:
+                        win.blit(self.Direta[self.walkCount // 9], (self.x, self.y))
+                        self.walkCount += 1
+                    else:
+                        win.blit(self.Esquerda[self.walkCount // 9], (self.x, self.y))
+                        self.walkCount += 1
+
+                    pygame.draw.rect(win, (255, 0, 0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
+                    pygame.draw.rect(win, (0, 128, 0),
+                                     (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+                    self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+
+                    # pygame.draw.rect(win, (255,0,0), self.hitbox,2)
+            if inimigo.visible == False:
+                Classe.parartela = False
+                # print(Classe.parartela)
+                Classe.andarcount = 0
+                Classe2.andarcount = 0
+
+        def move(self):
+            if self.estado == 1:
+                self.vel = 0
+
+            if self.walkCount == 30:
+                self.estado = 0
+                self.vel = 3
+
+            if self.estado == 0:
+                if self.x + self.vel < self.path[1]:
+                    self.x += self.vel
+                else:
+                    self.vel = self.vel * -1
+                    self.walkCount = 0
+
+            else:
+                if self.x - self.vel > self.path[0]:
+                    self.x += self.vel
+                else:
+                    self.vel = self.vel * -1
+                    self.walkCount = 0
+
+            if self.x > Classe.x and Classe.x >= 400:
+                self.x -= self.vel
+            elif self.x < Classe.x:
+                self.x += self.vel
+            if self.y < Classe.y:
+                self.y += self.vel
+            elif self.y > Classe.y:
+                self.y -= self.vel
+            # print(self.x)
+
+        '''''''''''''''def Penis(self):
+         if self.x - self.vel > self.path[0]:
+            if self.aleatorio == 0:=
+                self.x += 0.1
+            elif self.aleatorio == 1:
+                self.y += 0.1
+            elif self.aleatorio == 2:
+                self.y -= 0.1
+            elif self.aleatorio == 3:
+                self.x -= 0.1
+            else:
+                self.walkCount = 0'''''''''''''''
+
+        def hit(self):
+            global showPoints
+            global Score
+            self.walkCount = 0
+            SFX_Punch1.play()
+            if self.health > 0:
+                self.health -= 1
+                self.estado = 1
+                self.vel = 3
+                self.pare = False
+            else:
+                self.visible = False
+                Score += 500
+                showPoints = True
+                showPointFunc()
+            print('miseravi', self.estado)
+
+
+
+class Fase(object):
+    Direta = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_0.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_1.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_2.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_3.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_4.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_5.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_6.png')]
+    Esquerda = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_0.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_1.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_2.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_3.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_4.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_5.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_6.png')]
+
+    parado = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_0.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_1.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_2.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_3.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
+
+    def __init__(self, x, y, width, height, end):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.end = end
+        self.path = [self.x, self.end]
+        self.walkCount = 0
+        self.vel = 3
+        self.hitbox = (self.x + 17, self.y + 2)
+        self.hitbox2 = (self.hitbox[0], self.y + 57)
+        self.health = 10
+        self.visible = True
+        self.aleatorio = random.randint(0, 3)
+        self.estado = 0
+        self.pare = False
+
+    def draw(self, win):
+        if Classe.andarcount >= 200 or Classe2.andarcount >= 200:
+            Classe.parartela = False
+            # print(Classe.parartela)
+            self.move()
+            if self.visible:
+                if self.walkCount + 1 >= 33:
+                    self.walkCount = 0
+                elif self.parado and self.vel == 0:
+
+                    win.blit(self.parado[self.walkCount // 6], (self.x, self.y))
+
+                    self.walkCount += 3
+
+                elif self.vel > 0:
+                    win.blit(self.Direta[self.walkCount // 9], (self.x, self.y))
+                    self.walkCount += 1
+                else:
+                    win.blit(self.Esquerda[self.walkCount // 9], (self.x, self.y))
+                    self.walkCount += 1
+
+                pygame.draw.rect(win, (255, 0, 0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
+                pygame.draw.rect(win, (0, 128, 0),
+                                 (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+                self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+
+                # pygame.draw.rect(win, (255,0,0), self.hitbox,2)
+        if inimigo.visible == False:
+            Classe.parartela = False
+            # print(Classe.parartela)
+            Classe.andarcount = 0
+            Classe2.andarcount = 0
+
+    def move(self):
+        if self.estado == 1:
+            self.vel = 0
+
+        if self.walkCount == 30:
+            self.estado = 0
+            self.vel = 3
+
+        if self.estado == 0:
+            if self.x + self.vel < self.path[1]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+
+        else:
+            if self.x - self.vel > self.path[0]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+
+        if self.x > Classe.x and Classe.x >= 400:
+            self.x -= self.vel
+        elif self.x < Classe.x:
+            self.x += self.vel
+        if self.y < Classe.y:
+            self.y += self.vel
+        elif self.y > Classe.y:
+            self.y -= self.vel
+        # print(self.x)
+
+    '''''''''''''''def Penis(self):
+       if self.x - self.vel > self.path[0]:
+          if self.aleatorio == 0:=
+              self.x += 0.1
+          elif self.aleatorio == 1:
+              self.y += 0.1
+          elif self.aleatorio == 2:
+              self.y -= 0.1
+          elif self.aleatorio == 3:
+              self.x -= 0.1
+          else:
+              self.walkCount = 0'''''''''''''''
+
+    def hit(self):
+        global showPoints
+        global Score
+        self.walkCount = 0
+        SFX_Punch1.play()
+        if self.health > 0:
+            self.health -= 1
+            self.estado = 1
+            self.vel = 3
+            self.pare = False
+        else:
+            self.visible = False
+            Score += 500
+            showPoints = True
+            showPointFunc()
+        print('miseravi', self.estado)
+
+    def __delete__(self, instance):
+        pass
+
+    def __del__(self):
+        pass
+
+class Boss(object):
+        Direta = [pygame.image.load('images/Inimigo/Inimigo_1/L1E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/L2E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/L3E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/L4E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/L5E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/L6E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/L7E.png')]
+        Esquerda = [pygame.image.load('images/Inimigo/Inimigo_1/L8E.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/L9E.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/L10E.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/R1E.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/R2E.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/R3E.png'),
+                    pygame.image.load('images/Inimigo/Inimigo_1/R4E.png')]
+        parado = [pygame.image.load('images/Inimigo/Inimigo_1/R5E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/R6E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/R7E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/R8E.png'),
+                  pygame.image.load('images/Inimigo/Inimigo_1/R9E.png')]
+
+
+
+        def __init__(self, x, y, width, height, end):
+            self.x = x
+            self.y = y
+            self.width = width
+            self.height = height
+            self.end = end
+            self.path = [self.x, self.end]
+            self.walkCount = 0
+            self.vel = 3
+            self.hitbox = (self.x + 17, self.y + 2)
+            self.hitbox2 = (self.hitbox[0], self.y + 57)
+            self.health = 10
+            self.visible = True
+            self.aleatorio = random.randint(0, 3)
+            self.estado = 0
+            self.pare = False
+
+        def draw(self, win):
+            if Classe.andarcount >= 300 or Classe2.andarcount >= 300:
+                Classe.parartela = False
+                # print(Classe.parartela)
+                self.move()
+                if self.visible:
+                    if self.walkCount + 1 >= 33:
+                        self.walkCount = 0
+                    elif self.parado and self.vel == 0:
+
+                        win.blit(self.parado[self.walkCount // 6], (self.x, self.y))
+
+                        self.walkCount += 3
+
+                    elif self.vel > 0:
+                        win.blit(self.Direta[self.walkCount // 9], (self.x, self.y))
+                        self.walkCount += 1
+                    else:
+                        win.blit(self.Esquerda[self.walkCount // 9], (self.x, self.y))
+                        self.walkCount += 1
+
+                    pygame.draw.rect(win, (255, 0, 0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
+                    pygame.draw.rect(win, (0, 128, 0),
+                                     (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+                    self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+
+                    # pygame.draw.rect(win, (255,0,0), self.hitbox,2)
+            if inimigo.visible == False:
+                Classe.parartela = False
+                # print(Classe.parartela)
+                Classe.andarcount = 0
+                Classe2.andarcount = 0
+
+        def move(self):
+            if self.estado == 1:
+                self.vel = 0
+
+            if self.walkCount == 30:
+                self.estado = 0
+                self.vel = 3
+
+            if self.estado == 0:
+                if self.x + self.vel < self.path[1]:
+                    self.x += self.vel
+                else:
+                    self.vel = self.vel * -1
+                    self.walkCount = 0
+
+            else:
+                if self.x - self.vel > self.path[0]:
+                    self.x += self.vel
+                else:
+                    self.vel = self.vel * -1
+                    self.walkCount = 0
+
+            if self.x > Classe.x and Classe.x >= 400:
+                self.x -= self.vel
+            elif self.x < Classe.x:
+                self.x += self.vel
+            if self.y < Classe.y:
+                self.y += self.vel
+            elif self.y > Classe.y:
+                self.y -= self.vel
+            # print(self.x)
+
+        '''''''''''''''def Penis(self):
+           if self.x - self.vel > self.path[0]:
+              if self.aleatorio == 0:=
+                  self.x += 0.1
+              elif self.aleatorio == 1:
+                  self.y += 0.1
+              elif self.aleatorio == 2:
+                  self.y -= 0.1
+              elif self.aleatorio == 3:
+                  self.x -= 0.1
+              else:
+                  self.walkCount = 0'''''''''''''''
+
+        def hit(self):
+            global showPoints
+            global Score
+            self.walkCount = 0
+            SFX_Punch1.play()
+            if self.health > 0:
+                self.health -= 1
+                self.estado = 1
+                self.vel = 3
+                self.pare = False
+            else:
+                self.visible = False
+                Score += 500
+                showPoints = True
+                showPointFunc()
+            print('miseravi', self.estado)
+
+        def __delete__(self, instance):
+            pass
+
+        def __del__(self):
+            pass
+
+
+
+
 Classe = Player(200, 410, 64, 64, 64, 64, 64)
 Classe2 = Player2(200, 250, 64, 64, 64, 64)
 inimigo = InimigoBase(100, 410, 64, 64, 450)
 inimigo2 = InimigoBase(100, 410, 64, 64, 450)
+inimigo3 = Inimigo(100, 410, 64, 64, 450)
+inimigo4 = Inimigo(100, 410, 64, 64, 450)
+inimigo5 = Fase(100, 410, 64, 64, 450)
+inimigo6 = Fase(100, 410, 64, 64, 450)
+boss=Boss(100,410,64,64,450)
+
 
 #Criação dos objetos de hitbox do soco dos Personagens
 soco=projetosoco(200, 410, 64, 64, 64)
@@ -660,6 +1086,21 @@ Classe2.Y = 100
 Classe.playerVelocityX = 0
 Classe.playerVelocityY = 0
 
+# Vraiaves de inimigos
+inimigo.y = 300
+inimigo.x=400
+inimigo2.y=200
+inimigo2.x=300
+inimigo3.x=400
+inimigo3.y=200
+inimigo4.x=400
+inimigo4.y=300
+inimigo5.y=400
+inimigo5.X=200
+inimigo6.y=400
+inimigo6.X=150
+boss.y=400
+boss.x=200
 
 
 # Musica é tocada assim que executa o jogo, mas não em loop
@@ -776,6 +1217,11 @@ def redrawGameWindow():
         Classe2.draw(Janela)
         inimigo2.draw(Janela)
         inimigo.draw(Janela)
+        inimigo3.draw(Janela)
+        inimigo4.draw(Janela)
+        inimigo5.draw(Janela)
+        inimigo6.draw(Janela)
+        boss.draw(Janela)
 
         seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
@@ -826,6 +1272,12 @@ def redrawGameWindow():
         Classe2.draw(Janela)
         inimigo2.draw(Janela)
         inimigo.draw(Janela)
+        inimigo3.draw(Janela)
+        inimigo4.draw(Janela)
+        inimigo5.draw(Janela)
+        inimigo6.draw(Janela)
+        boss.draw(Janela)
+
 
         seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
@@ -1086,6 +1538,26 @@ def Colisao_Soco_Personagem1():
             if bullet.y >= inimigo2.hitbox[1] and bullet.y <= inimigo2.hitbox[1] + 40:
                 inimigo2.hit()
                 socobala.pop(socobala.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo3.hitbox[0] and bullet.x + bullet.raio <= inimigo3.hitbox[0] + 30):
+            if bullet.y >= inimigo3.hitbox[1] and bullet.y <= inimigo3.hitbox[1] + 40:
+                inimigo3.hit()
+                socobala.pop(socobala.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo4.hitbox[0] and bullet.x + bullet.raio <= inimigo4.hitbox[0] + 30):
+            if bullet.y >= inimigo4.hitbox[1] and bullet.y <= inimigo4.hitbox[1] + 40:
+                inimigo4.hit()
+                socobala.pop(socobala.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo5.hitbox[0] and bullet.x + bullet.raio <= inimigo5.hitbox[0] + 30):
+            if bullet.y >= inimigo5.hitbox[1] and bullet.y <= inimigo5.hitbox[1] + 40:
+                inimigo5.hit()
+                socobala.pop(socobala.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo6.hitbox[0] and bullet.x + bullet.raio <= inimigo6.hitbox[0] + 30):
+            if bullet.y >= inimigo6.hitbox[1] and bullet.y <= inimigo6.hitbox[1] + 40:
+                inimigo6.hit()
+                socobala.pop(socobala.index(bullet))
+        elif (bullet.x + bullet.raio >= boss.hitbox[0] and bullet.x + bullet.raio <= boss.hitbox[0] + 30):
+                if bullet.y >= boss.hitbox[1] and bullet.y <= boss.hitbox[1] + 40:
+                    boss.hit()
+                    socobala.pop(socobala.index(bullet))
         else:
             socobala.pop(socobala.index(bullet))
 def Colisao_Soco_Personagem2():
@@ -1098,6 +1570,26 @@ def Colisao_Soco_Personagem2():
         elif (bullet.x + bullet.raio >= inimigo2.hitbox[0] and bullet.x + bullet.raio <= inimigo2.hitbox[0] + 30):
             if bullet.y >= inimigo2.hitbox[1] and bullet.y <= inimigo2.hitbox[1] + 40:
                 inimigo2.hit()
+                socobala2.pop(socobala2.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo3.hitbox[0] and bullet.x + bullet.raio <= inimigo3.hitbox[0] + 30):
+            if bullet.y >= inimigo3.hitbox[1] and bullet.y <= inimigo3.hitbox[1] + 40:
+                 inimigo3.hit()
+                 socobala2.pop(socobala2.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo4.hitbox[0] and bullet.x + bullet.raio <= inimigo4.hitbox[0] + 30):
+            if bullet.y >= inimigo4.hitbox[1] and bullet.y <= inimigo4.hitbox[1] + 40:
+                inimigo4.hit()
+                socobala2.pop(socobala2.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo5.hitbox[0] and bullet.x + bullet.raio <= inimigo5.hitbox[0] + 30):
+            if bullet.y >= inimigo5.hitbox[1] and bullet.y <= inimigo5.hitbox[1] + 40:
+                inimigo5.hit()
+                socobala2.pop(socobala2.index(bullet))
+        elif (bullet.x + bullet.raio >= inimigo6.hitbox[0] and bullet.x + bullet.raio <= inimigo6.hitbox[0] + 30):
+            if bullet.y >= inimigo6.hitbox[1] and bullet.y <= inimigo6.hitbox[1] + 40:
+                inimigo6.hit()
+                socobala2.pop(socobala2.index(bullet))
+        elif (bullet.x + bullet.raio >= boss.hitbox[0] and bullet.x + bullet.raio <= boss.hitbox[0] + 30):
+            if bullet.y >= boss.hitbox[1] and bullet.y <= boss.hitbox[1] + 40:
+                boss.hit()
                 socobala2.pop(socobala2.index(bullet))
         else:
             socobala2.pop(socobala2.index(bullet))
