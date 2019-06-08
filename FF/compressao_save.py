@@ -7,8 +7,10 @@ def compressao():
 
     Load_Top_Scores = Flying_Fist.Load_Top_Scores
 
-    Scoreboard_Player = {'Nome': Flying_Fist.Nome_do_player, 'Pontos': Flying_Fist.Score}
+    Scoreboard_Player = {'Nome': Flying_Fist.Classe.Nome_Player, 'Pontos': Flying_Fist.Classe.Score}
+    Scoreboard_Player2 = {'Nome': Flying_Fist.Classe2.Nome_Player, 'Pontos': Flying_Fist.Classe2.Score}
     Load_Top_Scores.insert(0, Scoreboard_Player)
+    Load_Top_Scores.insert(0, Scoreboard_Player2)
     Load_Top_Scores.sort(key=itemgetter('Pontos'), reverse=True)
     pickle.dump(Load_Top_Scores, open("top_scores", "wb"))
     Load_Top_Scores = pickle.load(open("top_scores", "rb"))

@@ -637,13 +637,15 @@ class InimigoBase(object):
             self.stop=True
             self.pare = False
         else:
+            if personagem_hit == "J1":
+                Classe.Score += 500
+
+            else:
+                Classe2.Score += 500
+
             self.visible = False
             showPoints = True
             showPointFunc()
-            if personagem_hit == "J1":
-                Classe.Score += 500
-            else:
-                Classe2.Score += 500
         print('miseravi', self.estado)
 
     def __delete__(self, instance):
@@ -765,6 +767,7 @@ Background_Fase2 = pygame.image.load("images/Background_Fase2.png").convert_alph
 Background_Fase2_0 = pygame.image.load("images/Background_Fase2_0.png").convert()
 Background_Tela_Inicial = pygame.image.load("images/Tela_Inicial/Tela_de_Titulo.png").convert()
 Personagem_HUD = pygame.image.load("images/Personagem_Vida.png").convert_alpha()
+Personagem_HUD2 = pygame.image.load("images/Personagem2_Vida.png").convert_alpha()
 Go = pygame.image.load("images/Go.png").convert_alpha()
 Start = False
 # Define a Altura e Largura do background
@@ -906,9 +909,9 @@ def redrawGameWindow():
         # Janela.blit ( Texto_Placar , (190 , 30) )
 
         Janela.blit(Personagem_HUD, (10, 10))
-        Janela.blit(Personagem_HUD, (392, 10))
+        Janela.blit(Personagem_HUD2, (392, 10))
         pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
-        pygame.draw.rect(Janela, (255, 255, 0), (460, 57, Classe2.HP, 19), 0)
+        pygame.draw.rect(Janela, (255, 255, 0), (555, 57, Classe2.HP*-1, 19), 0)
         Classe.draw(Janela)
         Classe2.draw(Janela)
         inimigo2.draw(Janela)
@@ -921,7 +924,7 @@ def redrawGameWindow():
                    gcolor=(255, 200, 20), fontsize=19,
                    shadow=(3, 1), scolor="#000000")
 
-        ptext.draw(str(Classe2.Score), topleft=(572, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
+        ptext.draw(str(Classe2.Score), topright=(450, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
                    gcolor=(255, 200, 20), fontsize=19,
                    shadow=(3, 1), scolor="#000000")
 
