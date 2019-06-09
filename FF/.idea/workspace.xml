@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Musica_SFX/SFX/Attack_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Musica_SFX/SFX/Attack_2.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Musica_SFX/SFX/Punch_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Musica_SFX/SFX/Punch_2.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/top_scores" beforeDir="false" afterPath="$PROJECT_DIR$/top_scores" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,33 +22,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="791" column="17" lean-forward="true" selection-start-line="791" selection-start-column="17" selection-end-line="791" selection-end-column="17" />
+            <state relative-caret-position="13379">
+              <caret line="804" column="61" selection-start-line="804" selection-start-column="61" selection-end-line="804" selection-end-column="61" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <element signature="e#5777#5885#0" />
                 <element signature="e#17433#17769#0" />
-                <element signature="e#17803#24885#0" />
-                <element signature="e#20169#20724#0" />
-                <element signature="e#20757#22149#0" />
-                <element signature="e#22179#23343#0" />
-                <element signature="e#23378#23841#0" />
-                <element signature="e#23847#24219#1" />
-                <element signature="e#24845#24849#0" />
-                <element signature="e#24881#24885#0" />
-                <element signature="e#24920#25466#0" />
-                <element signature="e#25482#26034#0" />
-                <element signature="e#26051#26338#0" />
-                <element signature="e#26356#26643#0" />
-                <element signature="e#26663#27022#0" />
-                <element signature="e#27042#27401#0" />
-                <element signature="e#27422#28195#0" />
-                <element signature="e#28216#28989#0" />
                 <element signature="e#40855#45723#0" />
                 <element signature="e#43762#45324#0" />
                 <element signature="e#45756#49799#0" />
                 <element signature="e#49832#53888#0" />
-                <element signature="e#53925#54943#0" />
                 <element signature="e#54980#56008#0" />
                 <element signature="e#56044#56715#0" />
               </folding>
@@ -86,7 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>maximo</find>
       <find>balau</find>
       <find>socobala</find>
       <find>projetosoco</find>
@@ -116,6 +97,7 @@
       <find>clock</find>
       <find>SlowMotion</find>
       <find>Estado</find>
+      <find>Boss</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -495,35 +477,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="791" column="17" lean-forward="true" selection-start-line="791" selection-start-column="17" selection-end-line="791" selection-end-column="17" />
+        <state relative-caret-position="13379">
+          <caret line="804" column="61" selection-start-line="804" selection-start-column="61" selection-end-line="804" selection-end-column="61" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <element signature="e#5777#5885#0" />
             <element signature="e#17433#17769#0" />
-            <element signature="e#17803#24885#0" />
-            <element signature="e#20169#20724#0" />
-            <element signature="e#20757#22149#0" />
-            <element signature="e#22179#23343#0" />
-            <element signature="e#23378#23841#0" />
-            <element signature="e#23847#24219#1" />
-            <element signature="e#24845#24849#0" />
-            <element signature="e#24881#24885#0" />
-            <element signature="e#24920#25466#0" />
-            <element signature="e#25482#26034#0" />
-            <element signature="e#26051#26338#0" />
-            <element signature="e#26356#26643#0" />
-            <element signature="e#26663#27022#0" />
-            <element signature="e#27042#27401#0" />
-            <element signature="e#27422#28195#0" />
-            <element signature="e#28216#28989#0" />
             <element signature="e#40855#45723#0" />
             <element signature="e#43762#45324#0" />
             <element signature="e#45756#49799#0" />
             <element signature="e#49832#53888#0" />
-            <element signature="e#53925#54943#0" />
             <element signature="e#54980#56008#0" />
             <element signature="e#56044#56715#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Flying Fist - Copia/Flyin/FF/Flying_Fist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="555" selection-start-line="555" selection-end-line="559" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
