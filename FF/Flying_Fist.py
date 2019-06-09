@@ -15,6 +15,8 @@ LetraC = 0
 LetraAtual = 0
 Auxiliar = 0
 
+SlowMotion = False
+
 # Essa função define parametros da janela do windows que será aberta. Caso clique no X, ela irá fechar.
 def events():
     for event in pygame.event.get():
@@ -104,7 +106,7 @@ class Player(object):
 
     def danoPlayer(self):
         if Classe.estado == False:
-            SFX_Punch1.play()
+            SFX_Punch2.play()
             Classe.estado = True
             Classe.ContarPassos = 0
             Classe.Virado = False
@@ -281,7 +283,7 @@ class Player2(object):
 
     def danoPlayer2(self):
         if Classe2.estado == False:
-            SFX_Punch1.play()
+            SFX_Punch2.play()
             Classe2.estado = True
             Classe2.ContarPassos = 0
             Classe2.Virado = False
@@ -633,25 +635,19 @@ class Boss(object):
                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_3.png'),
                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_5.png'),
                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_6.png')]
-
     IdleLeft = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_0.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_1.png'),
             pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_2.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_3.png'),]
-
     IdleRight = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_0.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_1.png'),
             pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_2.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_3.png'),]
-
     PrepararEsq = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_1.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_3.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
-
     PrepararDir = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_1.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_3.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
-
     DeathAnimDir = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_01.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_04.png'),
                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_06.png'),
                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_07.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_08.png'),
                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_09.png')]
-
     DeathAnimEsq = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_01.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_04.png'),
                  pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_06.png'),
@@ -680,6 +676,7 @@ class Boss(object):
 
 
     def draw(self, Janela):
+        global SlowMotion
         if self.visible == True:
             self.hitbox = (self.x + 20, self.y + 20, 31, 57)
             self.ataque()
@@ -720,6 +717,7 @@ class Boss(object):
 
                 if self.AniCount >= 25:
                     self.visible = False
+                    SlowMotion = False
 
 
             pygame.draw.rect(Janela, (255,0,0), self.hitbox,2)
@@ -742,6 +740,7 @@ class Boss(object):
                 if self.x >= 10 and self.Estado == 2:
                     self.x += -10
                     if self.x <= 10 and self.Estado == 2:
+                        SFX_KobraLaugh.play()
                         self.Estado = 1
                         self.lado = 2
                         self.timer = 0
@@ -751,6 +750,7 @@ class Boss(object):
                 if self.x <= 500 and self.Estado == 2:
                     self.x += 10
                     if self.x >= 500 and self.Estado == 2:
+                        SFX_KobraLaugh.play()
                         self.Estado = 1
                         self.lado = 1
                         self.timer = 0
@@ -765,6 +765,7 @@ class Boss(object):
                 self.y += 1
             elif self.y == self.Mira:
                 self.Estado = 2
+                SFX_Attack.play()
 
 
         if self.Estado == 2:
@@ -782,13 +783,16 @@ class Boss(object):
 
 
     def hit(self, personagem_hit):
-     #   if self.Estado != 6:
+        if self.HP >= 0:
             global Score
+            global SlowMotion
             SFX_Punch1.play()
-            print("Acertou Soco")
             if self.HP > 0:
                 self.HP -= 1
             else:
+                self.HP -= 1
+                SFX_Death.play()
+                SlowMotion = True
                 self.esquerda = False
                 self.direita = False
                 self.mirando = False
@@ -859,7 +863,6 @@ Leaderboard = [
 # Leaderboard.insert(0, Scoreboard_Player)
 # Leaderboard.sort(key=itemgetter('Pontos'), reverse=True)
 # sorted(Leaderboard, key=itemgetter('Pontos'), reverse=True)
-
 # pickle.dump(Leaderboard, open("top_scores", "wb"))
 
 showPoints = False
@@ -975,6 +978,8 @@ SFX_Miss.set_volume(0.5)
 SFX_Death = pygame.mixer.Sound('Musica_SFX/SFX/Death.wav')
 SFX_Text = pygame.mixer.Sound('Musica_SFX/SFX/Text_Sound.wav')
 SFX_Text.set_volume(0.07)
+SFX_KobraLaugh = pygame.mixer.Sound('Musica_SFX/SFX/Voice_KobraLaugh.wav')
+SFX_Attack = pygame.mixer.Sound('Musica_SFX/SFX/Attack_2.wav')
 
 Cutscene1 = pygame.image.load("images/Tela_Inicial/Cutscene_1.png").convert()
 Cutscene2 = pygame.image.load("images/Tela_Inicial/Cutscene_2.png").convert()
@@ -1451,7 +1456,10 @@ def Colisao_Soco_Inimigo():
 
 
 while run:
-    clock.tick(27)
+    if SlowMotion == False:
+        clock.tick(27)
+    else:
+        clock.tick(5)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -1527,9 +1535,7 @@ while run:
         if Tela_Inicial.Tela_de_titulo_animacao.currentFrameNum == 9:
             Controlador_Jogo = 6
             start_ticks = pygame.time.get_ticks()
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load('Musica_SFX/intro_akira.mp3')
-            pygame.mixer.music.play()
+
 
     if Controlador_Jogo == 3:
         pygame.display.update()
@@ -1784,16 +1790,21 @@ while run:
         Janela.fill((0, 0, 0))
         Letra1 = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
         if pygame.key.get_pressed()[pygame.K_RETURN] and LetraAtual <3:
+            SFX_Text.play()
             time.sleep(0.2)
             LetraAtual +=1
             Auxiliar = 0
             print (LetraAtual)
             if LetraAtual == 3:
                 Classe.Nome_Player = str(Letra1[LetraA])+str(Letra1[LetraB])+str(Letra1[LetraC])
-                print (Classe.Nome_Player)
+                print(Classe.Nome_Player)
                 Controlador_Jogo = 3
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load('Musica_SFX/intro_akira.mp3')
+                pygame.mixer.music.play()
         if LetraAtual == 0:
             if pygame.key.get_pressed()[pygame.K_UP]:
+                SFX_Text.play()
                 if Auxiliar >= 25:
                     time.sleep(0.1)
                     Auxiliar = 0
@@ -1805,6 +1816,7 @@ while run:
                     LetraA = Auxiliar
                     print("UP")
             if pygame.key.get_pressed()[pygame.K_DOWN]:
+                SFX_Text.play()
                 time.sleep(0.1)
                 Auxiliar -=1
                 LetraA = Auxiliar
@@ -1814,6 +1826,7 @@ while run:
                     print("DOWN")
         if LetraAtual == 1:
             if pygame.key.get_pressed()[pygame.K_UP]:
+                SFX_Text.play()
                 if Auxiliar >= 25:
                     time.sleep(0.1)
                     Auxiliar = 0
@@ -1825,6 +1838,7 @@ while run:
                     LetraB = Auxiliar
                     print("DOWN")
             elif pygame.key.get_pressed()[pygame.K_DOWN]:
+                SFX_Text.play()
                 time.sleep(0.1)
                 Auxiliar -= 1
                 LetraB = Auxiliar
@@ -1833,6 +1847,7 @@ while run:
                     LetraB = Auxiliar
         if LetraAtual == 2:
             if pygame.key.get_pressed()[pygame.K_UP]:
+                SFX_Text.play()
                 if Auxiliar >= 25:
                     time.sleep(0.1)
                     Auxiliar = 0
@@ -1844,6 +1859,7 @@ while run:
                     LetraC = Auxiliar
                     print("DOWN")
             elif pygame.key.get_pressed()[pygame.K_DOWN]:
+                SFX_Text.play()
                 time.sleep(0.1)
                 Auxiliar -= 1
                 LetraC=Auxiliar
