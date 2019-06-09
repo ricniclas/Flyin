@@ -381,8 +381,8 @@ class projetosoco(object):
 
     def draw(self, Janela):
       if self.tavenon:
-        #pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
-        pass
+        pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
+
 #Classe do hitbox do Player 2
 class projetosoco2(object):
     def __init__(self, x, y, raio, cor, mira):
@@ -407,15 +407,6 @@ class projetosoco2(object):
 
 
 
-
-
-
-
-
-
-
-
-
 class InimigoDano(object):
     def __init__(self, x, y, raio, cor, mira):
 
@@ -432,16 +423,6 @@ class InimigoDano(object):
     def draw(self, Janela):
       if self.tavenon:
         pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
-
-
-
-
-
-
-
-
-
-
 
 
 class InimigoBase(object):
@@ -665,6 +646,17 @@ class Boss(object):
     PrepararDir = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_1.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_3.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
 
+    DeathAnimDir = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_01.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_04.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_06.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_07.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_08.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_09.png')]
+
+    DeathAnimEsq = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_01.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_04.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_06.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_07.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_08.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_09.png')]
 
 
     def __init__(self, x, y, width, height):
@@ -675,7 +667,6 @@ class Boss(object):
         self.HP = 10
         self.Estado = 1
         self.lado = 1
-        #self.vel = 0
         self.timer = 0
         self.visible = True
         self.idle = True
@@ -683,44 +674,55 @@ class Boss(object):
         self.esquerda = False
         self.mirando = False
         self.AniCount = 0
+        self.visible = True
         self.Mira = random.randint (209,380)
         self.hitbox = (self.x + 17, self.y + 2)
 
 
     def draw(self, Janela):
-        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+        if self.visible == True:
+            self.hitbox = (self.x + 20, self.y + 20, 31, 57)
+            self.ataque()
+            if self.AniCount + 1 >= 27:
+                self.AniCount = 0
 
-        self.ataque()
-        if self.AniCount + 1 >= 27:
-            self.AniCount = 0
+            if self.idle == True:
+                if self.lado == 1:
+                    Janela.blit(self.IdleLeft[self.AniCount // 7], (self.x, self.y))
+                    self.AniCount += 3
+                else:
+                    Janela.blit(self.IdleRight[self.AniCount // 7], (self.x, self.y))
+                    self.AniCount += 3
 
-        if self.idle == True:
-            if self.lado == 1:
-                Janela.blit(self.IdleLeft[self.AniCount // 7], (self.x, self.y))
-                self.AniCount += 3
-            else:
-                Janela.blit(self.IdleRight[self.AniCount // 7], (self.x, self.y))
-                self.AniCount += 3
-
-        if self.esquerda == True:
-            Janela.blit(self.Direta[self.AniCount // 4], (self.x, self.y))
-            self.AniCount += 3
-
-        if self.direita == True:
-            Janela.blit(self.Esquerda[self.AniCount // 4], (self.x, self.y))
-            self.AniCount += 3
-
-        if self.mirando == True:
-            if self.lado == 1:
-                Janela.blit(self.PrepararEsq[self.AniCount // 7], (self.x, self.y))
-                self.AniCount += 3
-            else:
-                Janela.blit(self.PrepararDir[self.AniCount // 7], (self.x, self.y))
+            if self.esquerda == True:
+                Janela.blit(self.Direta[self.AniCount // 4], (self.x, self.y))
                 self.AniCount += 3
 
+            if self.direita == True:
+                Janela.blit(self.Esquerda[self.AniCount // 4], (self.x, self.y))
+                self.AniCount += 3
+
+            if self.mirando == True:
+                if self.lado == 1:
+                    Janela.blit(self.PrepararEsq[self.AniCount // 7], (self.x, self.y))
+                    self.AniCount += 3
+                else:
+                    Janela.blit(self.PrepararDir[self.AniCount // 7], (self.x, self.y))
+                    self.AniCount += 3
+
+            if self.Estado == 6:
+                if self.lado == 1:
+                    Janela.blit(self.DeathAnimEsq[self.AniCount // 3], (self.x, self.y))
+                    self.AniCount += 1
+                else:
+                    Janela.blit(self.DeathAnimDir[self.AniCount // 3], (self.x, self.y))
+                    self.AniCount += 1
+
+                if self.AniCount >= 25:
+                    self.visible = False
 
 
-        pygame.draw.rect(Janela, (255,0,0), self.hitbox,2)
+            pygame.draw.rect(Janela, (255,0,0), self.hitbox,2)
 
     def ataque(self):
         self.timer+=1
@@ -735,11 +737,10 @@ class Boss(object):
 
 
         if self.Estado == 2:
+            self.charge()
             if self.lado == 1:
                 if self.x >= 10 and self.Estado == 2:
-
                     self.x += -10
-
                     if self.x <= 10 and self.Estado == 2:
                         self.Estado = 1
                         self.lado = 2
@@ -754,7 +755,6 @@ class Boss(object):
                         self.lado = 1
                         self.timer = 0
                         self.AniCount = 0
-
 
         if self.Estado == 3:
             self.mirando = True
@@ -782,16 +782,32 @@ class Boss(object):
 
 
     def hit(self, personagem_hit):
-        global Score
-        SFX_Punch1.play()
-        print("Acertou Soco")
-        if self.HP > 0:
-            self.HP -= 1
-        else:
-            if personagem_hit == "J1":
-                Classe.Score += 500
+     #   if self.Estado != 6:
+            global Score
+            SFX_Punch1.play()
+            print("Acertou Soco")
+            if self.HP > 0:
+                self.HP -= 1
             else:
-                Classe2.Score += 500
+                self.esquerda = False
+                self.direita = False
+                self.mirando = False
+                self.idle = False
+                self.Estado = 6
+                if personagem_hit == "J1":
+                    Classe.Score += 500
+                else:
+                    Classe2.Score += 500
+
+    def charge(self):
+        if self.hitbox[0] >= Classe.hitbox[0] and self.hitbox[2] <= Classe.hitbox[2]:
+            if self.hitbox[1] >= Classe.hitbox[1] and self.hitbox[3] <= Classe.hitbox[3]:
+                Classe.danoPlayer()
+
+        if self.hitbox[0] >= Classe2.hitbox[0] and self.hitbox[2] <= Classe2.hitbox[2]:
+            if self.hitbox[1] >= Classe2.hitbox[1] and self.hitbox[3] <= Classe2.hitbox[3]:
+                Classe2.danoPlayer2()
+
 
 
 
@@ -851,7 +867,7 @@ primeira_fase = 0
 
 def showPointFunc():
     compressao_save.compressao()
-    pygame.mixer.fadeout(2)
+    pygame.mixer.fadeout(3000)
     pygame.mixer.music.set_endevent(SONG_END)
     pygame.mixer.music.load('Musica_SFX/Fanfare.mp3')
     pygame.mixer.music.play(1)

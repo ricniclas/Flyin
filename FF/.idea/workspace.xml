@@ -22,25 +22,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1136">
-              <caret line="753" column="37" lean-forward="true" selection-start-line="753" selection-start-column="37" selection-end-line="753" selection-end-column="37" />
+            <state relative-caret-position="283">
+              <caret line="1255" column="44" lean-forward="true" selection-start-line="1255" selection-start-column="44" selection-end-line="1255" selection-end-column="44" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
-                <element signature="e#614#7934#0" />
-                <element signature="e#4328#5097#0" />
-                <element signature="e#5133#5560#0" />
                 <element signature="e#5777#5885#0" />
                 <element signature="e#7998#16306#0" />
-                <element signature="e#17469#17805#0" />
-                <element signature="e#22225#23389#0" />
-                <element signature="e#23433#23896#0" />
-                <element signature="e#23902#24274#1" />
-                <element signature="e#24900#24904#0" />
-                <element signature="e#24936#24940#0" />
-                <element signature="e#25933#26130#0" />
-                <element signature="e#26414#26601#0" />
-                <element signature="e#26636#26952#0" />
-                <element signature="e#27014#27227#0" />
+                <element signature="e#17433#17769#0" />
+                <element signature="e#17803#24885#0" />
+                <element signature="e#20169#20724#0" />
+                <element signature="e#20757#22149#0" />
+                <element signature="e#22179#23343#0" />
+                <element signature="e#23378#23841#0" />
+                <element signature="e#23847#24219#1" />
+                <element signature="e#24845#24849#0" />
+                <element signature="e#24881#24885#0" />
+                <element signature="e#34623#34820#0" />
+                <element signature="e#35104#35294#0" />
               </folding>
             </state>
           </provider>
@@ -49,7 +47,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/draw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
+            <state relative-caret-position="1105">
               <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
             </state>
           </provider>
@@ -132,7 +130,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="820" />
@@ -362,14 +360,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14149444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920508" visible="true" weight="0.31242874" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.31242874" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3937677" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -465,15 +462,15 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/compre/Compressao/Comp_Repet.py" />
+    <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/draw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
+        <state relative-caret-position="1105">
           <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/compressao_save.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -484,25 +481,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1136">
-          <caret line="753" column="37" lean-forward="true" selection-start-line="753" selection-start-column="37" selection-end-line="753" selection-end-column="37" />
+        <state relative-caret-position="283">
+          <caret line="1255" column="44" lean-forward="true" selection-start-line="1255" selection-start-column="44" selection-end-line="1255" selection-end-column="44" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
-            <element signature="e#614#7934#0" />
-            <element signature="e#4328#5097#0" />
-            <element signature="e#5133#5560#0" />
             <element signature="e#5777#5885#0" />
             <element signature="e#7998#16306#0" />
-            <element signature="e#17469#17805#0" />
-            <element signature="e#22225#23389#0" />
-            <element signature="e#23433#23896#0" />
-            <element signature="e#23902#24274#1" />
-            <element signature="e#24900#24904#0" />
-            <element signature="e#24936#24940#0" />
-            <element signature="e#25933#26130#0" />
-            <element signature="e#26414#26601#0" />
-            <element signature="e#26636#26952#0" />
-            <element signature="e#27014#27227#0" />
+            <element signature="e#17433#17769#0" />
+            <element signature="e#17803#24885#0" />
+            <element signature="e#20169#20724#0" />
+            <element signature="e#20757#22149#0" />
+            <element signature="e#22179#23343#0" />
+            <element signature="e#23378#23841#0" />
+            <element signature="e#23847#24219#1" />
+            <element signature="e#24845#24849#0" />
+            <element signature="e#24881#24885#0" />
+            <element signature="e#34623#34820#0" />
+            <element signature="e#35104#35294#0" />
           </folding>
         </state>
       </provider>
