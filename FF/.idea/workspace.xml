@@ -4,7 +4,6 @@
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressao_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/compressao_save.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/top_scores" beforeDir="false" afterPath="$PROJECT_DIR$/top_scores" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,10 +22,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="927" column="54" lean-forward="true" selection-start-line="927" selection-start-column="54" selection-end-line="927" selection-end-column="54" />
+            <state relative-caret-position="1136">
+              <caret line="753" column="37" lean-forward="true" selection-start-line="753" selection-start-column="37" selection-end-line="753" selection-end-column="37" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#614#7934#0" />
+                <element signature="e#4328#5097#0" />
+                <element signature="e#5133#5560#0" />
+                <element signature="e#5777#5885#0" />
+                <element signature="e#7998#16306#0" />
+                <element signature="e#17469#17805#0" />
+                <element signature="e#22225#23389#0" />
+                <element signature="e#23433#23896#0" />
+                <element signature="e#23902#24274#1" />
+                <element signature="e#24900#24904#0" />
+                <element signature="e#24936#24940#0" />
+                <element signature="e#25933#26130#0" />
+                <element signature="e#26414#26601#0" />
+                <element signature="e#26636#26952#0" />
+                <element signature="e#27014#27227#0" />
               </folding>
             </state>
           </provider>
@@ -35,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/draw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="521">
               <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
             </state>
           </provider>
@@ -44,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compressao_save.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -61,8 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bala</find>
-      <find>projetoso</find>
       <find>C</find>
       <find>Fase_Largura</find>
       <find>sneak</find>
@@ -91,6 +103,8 @@
       <find>print</find>
       <find>Controlador</find>
       <find>center</find>
+      <find>Kobra</find>
+      <find>rand</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,7 +132,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="820" />
@@ -451,29 +465,44 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/compre/Compressao/Comp_Repet.py" />
-    <entry file="file://$PROJECT_DIR$/compressao_save.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/draw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        <state relative-caret-position="521">
+          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/draw.py">
+    <entry file="file://$PROJECT_DIR$/compressao_save.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="927" column="54" lean-forward="true" selection-start-line="927" selection-start-column="54" selection-end-line="927" selection-end-column="54" />
+        <state relative-caret-position="1136">
+          <caret line="753" column="37" lean-forward="true" selection-start-line="753" selection-start-column="37" selection-end-line="753" selection-end-column="37" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#614#7934#0" />
+            <element signature="e#4328#5097#0" />
+            <element signature="e#5133#5560#0" />
+            <element signature="e#5777#5885#0" />
+            <element signature="e#7998#16306#0" />
+            <element signature="e#17469#17805#0" />
+            <element signature="e#22225#23389#0" />
+            <element signature="e#23433#23896#0" />
+            <element signature="e#23902#24274#1" />
+            <element signature="e#24900#24904#0" />
+            <element signature="e#24936#24940#0" />
+            <element signature="e#25933#26130#0" />
+            <element signature="e#26414#26601#0" />
+            <element signature="e#26636#26952#0" />
+            <element signature="e#27014#27227#0" />
           </folding>
         </state>
       </provider>

@@ -402,8 +402,7 @@ class projetosoco2(object):
 
     def draw(self, Janela):
       if self.tavenon:
-        #pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
-        pass
+        pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
 
 
 
@@ -578,15 +577,6 @@ class InimigoBase(object):
 
 
 
-
-
-
-
-
-
-
-
-
     def atacar(self):
 
         if self.atacando==True:
@@ -653,10 +643,164 @@ class InimigoBase(object):
     def __del__(self):
         pass
 
+class Boss(object):
+    Direta = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_1.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_3.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_5.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_6.png')]
+    Esquerda = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_1.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_3.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_5.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_6.png')]
+
+    IdleLeft = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_0.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_1.png'),
+            pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_2.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Idle_3.png'),]
+
+    IdleRight = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_0.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_1.png'),
+            pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_2.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_3.png'),]
+
+    PrepararEsq = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_1.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_3.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
+
+    PrepararDir = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_1.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Dano_3.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
+
+
+
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.HP = 10
+        self.Estado = 1
+        self.lado = 1
+        #self.vel = 0
+        self.timer = 0
+        self.visible = True
+        self.idle = True
+        self.direita = False
+        self.esquerda = False
+        self.mirando = False
+        self.AniCount = 0
+        self.Mira = random.randint (209,380)
+        self.hitbox = (self.x + 17, self.y + 2)
+
+
+    def draw(self, Janela):
+        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+
+        self.ataque()
+        if self.AniCount + 1 >= 27:
+            self.AniCount = 0
+
+        if self.idle == True:
+            if self.lado == 1:
+                Janela.blit(self.IdleLeft[self.AniCount // 7], (self.x, self.y))
+                self.AniCount += 3
+            else:
+                Janela.blit(self.IdleRight[self.AniCount // 7], (self.x, self.y))
+                self.AniCount += 3
+
+        if self.esquerda == True:
+            Janela.blit(self.Direta[self.AniCount // 4], (self.x, self.y))
+            self.AniCount += 3
+
+        if self.direita == True:
+            Janela.blit(self.Esquerda[self.AniCount // 4], (self.x, self.y))
+            self.AniCount += 3
+
+        if self.mirando == True:
+            if self.lado == 1:
+                Janela.blit(self.PrepararEsq[self.AniCount // 7], (self.x, self.y))
+                self.AniCount += 3
+            else:
+                Janela.blit(self.PrepararDir[self.AniCount // 7], (self.x, self.y))
+                self.AniCount += 3
+
+
+
+        pygame.draw.rect(Janela, (255,0,0), self.hitbox,2)
+
+    def ataque(self):
+        self.timer+=1
+        if self.Estado == 1:
+            self.mirando = False
+            self.idle = True
+            if self.timer >= 30:
+                self.Mira = random.randint(209, 380)
+                self.timer = 0
+                self.AniCount = 0
+                self.Estado = 3
+
+
+        if self.Estado == 2:
+            if self.lado == 1:
+                if self.x >= 10 and self.Estado == 2:
+
+                    self.x += -10
+
+                    if self.x <= 10 and self.Estado == 2:
+                        self.Estado = 1
+                        self.lado = 2
+                        self.timer = 0
+                        self.AniCount = 0
+
+            else:
+                if self.x <= 500 and self.Estado == 2:
+                    self.x += 10
+                    if self.x >= 500 and self.Estado == 2:
+                        self.Estado = 1
+                        self.lado = 1
+                        self.timer = 0
+                        self.AniCount = 0
+
+
+        if self.Estado == 3:
+            self.mirando = True
+            self.idle = False
+            if self.y > self.Mira:
+                self.y -= 1
+            elif self.y < self.Mira:
+                self.y += 1
+            elif self.y == self.Mira:
+                self.Estado = 2
+
+
+        if self.Estado == 2:
+            self.idle = False
+            self.mirando = False
+            if self.lado == 1:
+                self.direita = True
+                self.esquerda = False
+            else:
+                self.esquerda = True
+                self.direita = False
+        else:
+            self.direita= False
+            self.esquerda = False
+
+
+    def hit(self, personagem_hit):
+        global Score
+        SFX_Punch1.play()
+        print("Acertou Soco")
+        if self.HP > 0:
+            self.HP -= 1
+        else:
+            if personagem_hit == "J1":
+                Classe.Score += 500
+            else:
+                Classe2.Score += 500
+
+
+
+
 Classe = Player(200, 410, 64, 64, 64, 64, 64)
 Classe2 = Player2(200, 250, 64, 64, 64, 64)
 inimigo = InimigoBase(100, 410, 64, 64, 450)
 inimigo2 = InimigoBase(100, 410, 64, 64, 450)
+Kobra = Boss(400, 300, 64, 64)
 
 #Criação dos objetos de hitbox do soco dos Personagens
 soco=projetosoco(200, 410, 64, 64, 64)
@@ -912,10 +1056,15 @@ def redrawGameWindow():
         Janela.blit(Personagem_HUD2, (392, 10))
         pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
         pygame.draw.rect(Janela, (255, 255, 0), (555, 57, Classe2.HP*-1, 19), 0)
-        Classe.draw(Janela)
-        Classe2.draw(Janela)
+        if Classe.y >= Classe2.y:
+            Classe2.draw(Janela)
+            Classe.draw(Janela)
+        else:
+            Classe.draw(Janela)
+            Classe2.draw(Janela)
         inimigo2.draw(Janela)
         inimigo.draw(Janela)
+        Kobra.draw(Janela)
 
         seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
@@ -976,7 +1125,6 @@ def redrawGameWindow():
         Classe2.draw(Janela)
         inimigo2.draw(Janela)
         inimigo.draw(Janela)
-
         seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
 
@@ -1236,6 +1384,12 @@ def Colisao_Soco_Personagem1():
             if bullet.y >= inimigo2.hitbox[1] and bullet.y <= inimigo2.hitbox[1] + 40:
                 inimigo2.hit("J1")
                 socobala.pop(socobala.index(bullet))
+
+        elif (bullet.x + bullet.raio >= Kobra.hitbox[0] and bullet.x + bullet.raio <= Kobra.hitbox[0] + 30):
+            if bullet.y >= Kobra.hitbox[1] and bullet.y <= Kobra.hitbox[1] + 40:
+                print("P1 ACERTOU BOSS")
+                Kobra.hit("J1")
+                socobala.pop(socobala.index(bullet))
         else:
             socobala.pop(socobala.index(bullet))
 def Colisao_Soco_Personagem2():
@@ -1249,6 +1403,13 @@ def Colisao_Soco_Personagem2():
             if bullet.y >= inimigo2.hitbox[1] and bullet.y <= inimigo2.hitbox[1] + 40:
                 inimigo2.hit("J2")
                 socobala2.pop(socobala2.index(bullet))
+
+        elif (bullet.x + bullet.raio >= Kobra.hitbox[0] and bullet.x + bullet.raio <= Kobra.hitbox[0] + 30):
+            if bullet.y >= Kobra.hitbox[1] and bullet.y <= Kobra.hitbox[1] + 40:
+                Kobra.hit("J2")
+                print("P2 ACERTOU BOSS")
+                socobala2.pop(socobala2.index(bullet))
+
         else:
             socobala2.pop(socobala2.index(bullet))
 
@@ -1319,7 +1480,6 @@ while run:
          if Classe.direita == False:
              Classe.playerVelocityX = -4
              Classe.x += Classe.playerVelocityX
-             print("andando")
 
       rel_x = Background_Fase_Posicao % Background_Largura
       rel_x2 = Background_Fase_Posicao_0 % Background_Largura
