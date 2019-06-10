@@ -1293,6 +1293,7 @@ def redrawGameWindow():
 
 
         if showPoints == True:
+            print("show")
             textoPlacar = mostrarPlacar(Load_Top_Scores)
             ptext.draw(str(textoPlacar), midtop=(Largura / 2, 175), fontname="fontes/start.ttf",
                        color=(255, 255, 255),
