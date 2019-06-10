@@ -16,7 +16,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="-390">
               <caret line="1249" column="33" lean-forward="true" selection-start-line="1249" selection-start-column="33" selection-end-line="1249" selection-end-column="33" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
@@ -33,7 +33,6 @@
                 <element signature="e#45756#49799#0" />
                 <element signature="e#49832#53888#0" />
                 <element signature="e#57500#58518#0" />
-                <element signature="e#54980#56008#0" />
                 <element signature="e#64939#65595#0" />
                 <element signature="e#62399#63109#0" />
                 <element signature="e#70647#70840#0" />
@@ -134,7 +133,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="820" />
@@ -363,7 +362,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1010" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14149444" />
@@ -512,7 +511,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="-390">
           <caret line="1249" column="33" lean-forward="true" selection-start-line="1249" selection-start-column="33" selection-end-line="1249" selection-end-column="33" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
@@ -529,7 +528,6 @@
             <element signature="e#45756#49799#0" />
             <element signature="e#49832#53888#0" />
             <element signature="e#57500#58518#0" />
-            <element signature="e#54980#56008#0" />
             <element signature="e#64939#65595#0" />
             <element signature="e#62399#63109#0" />
             <element signature="e#70647#70840#0" />
