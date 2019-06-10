@@ -24,9 +24,9 @@ def events():
             pygame.quit()
             sys.exit()
 
-#Classe do Personagem do Player 1
+
 class Player(object):
-    # Carrega os Sprites que compoem o Personagem do Player 1
+
     AndarDireita = [pygame.image.load('images/Personagem_Sprites/Personagem__Andando_1.png'),
                     pygame.image.load('images/Personagem_Sprites/Personagem__Andando_2.png'),
                     pygame.image.load('images/Personagem_Sprites/Personagem__Andando_3.png'),
@@ -142,15 +142,10 @@ class Player(object):
         elif self.direita:
             Janela.blit(self.AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
-            self.andarcount += 1
         elif self.cima:
             Janela.blit(self.AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
         elif self.baixo:
-            Janela.blit(self.AndarDireita[self.ContarPassos // 5], (self.x, self.y))
-            self.ContarPassos += 3
-
-        elif self.cimaEs:
             Janela.blit(self.AndarDireita[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
 
@@ -297,7 +292,7 @@ class Player2(object):
             Classe2.HP -= 10
 
     def draw(self, Janela):
-
+        print(self.andarcount)
 
 
         if self.ContarPassos + 1 >= 27:
@@ -316,7 +311,6 @@ class Player2(object):
         elif self.direita:
             Janela.blit(self.AndarDireita2[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
-            self.andarcount += 1
         elif self.cima:
             Janela.blit(self.AndarDireita2[self.ContarPassos // 5], (self.x, self.y))
             self.ContarPassos += 3
@@ -374,7 +368,7 @@ class projetosoco(object):
         self.cor = cor
         self.mira = mira
         self.vel = 0 * mira
-        self.tavenon=True
+        self.tavenon=False
 
         if Classe.apertou1 == False:
             self.x = self.x + (-73)
@@ -428,6 +422,20 @@ class InimigoDano(object):
 
 
 class InimigoBase(object):
+
+    Ataque =  [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_1.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_3.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_5.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_6.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_7.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_8.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_9.png')]
+
+    Ataque_Esquerda =  [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_1.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_3.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_5.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_6.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_7.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_8.png'),
+                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Atacando_9.png')]
+
+
     Direta = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_1.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_3.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Andando_5.png'),
@@ -436,12 +444,6 @@ class InimigoBase(object):
                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_3.png'),
                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_5.png'),
                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Andando_6.png')]
-
-    Ataque =  [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_1.png'),
-                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_3.png'),
-                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_4.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_5.png'),
-                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_6.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_7.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_8.png'),
-                pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_9.png')]
 
     Parado_Direita = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_0.png'),
                   pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Idle_1.png'),
@@ -480,7 +482,7 @@ class InimigoBase(object):
         self.hitbox2 = (self.hitbox[0], self.y + 57)
         self.health = 10
         self.visible = True
-        self.aleatorio = random.randint ( 0 , 3 )
+        self.aleatorio = random.randint (0,3)
         self.estado = 0
         self.pare= False
         self.atacando=False
@@ -490,11 +492,13 @@ class InimigoBase(object):
         self.Parado = True
         self.andando = False
         self.hitstun = False
+        self.balaInim = []
         self.timer = 0
         self.velX = 0
 
     def draw(self , win):
-     if Classe.andarcount >=0 or Classe2.andarcount >=200:
+     print(self.direita, self.esquerda)
+     if Classe.andarcount >=10 or Classe2.andarcount >=10:
         Classe.parartela=True
         self.move ()
         if self.visible:
@@ -509,7 +513,7 @@ class InimigoBase(object):
                     win.blit(self.Parado_Esquerda[self.walkCount // 7], (self.x, self.y))
                     self.walkCount += 3
 
-            if self.andando == True:
+            if self.andando == True and self.atacando == False:
                 if self.direita == True:
                     win.blit(self.Direta[self.walkCount // 7], (self.x, self.y))
                     self.walkCount += 3
@@ -523,6 +527,14 @@ class InimigoBase(object):
                     self.walkCount += 3
                 elif self.esquerda == True:
                     win.blit(self.Dano_Esquerda[self.walkCount // 6], (self.x, self.y))
+                    self.walkCount += 3
+
+            if self.atacando == True:
+                if self.direita == True:
+                    win.blit(self.Ataque[self.walkCount // 3], (self.x, self.y))
+                    self.walkCount += 3
+                elif self.esquerda == True:
+                    win.blit(self.Ataque_Esquerda[self.walkCount // 3], (self.x, self.y))
                     self.walkCount += 3
 
 
@@ -539,25 +551,38 @@ class InimigoBase(object):
          Classe2.andarcount = 0
 
     def move(self):
+        print(self.estado)
         if self.estado == 0:
             self.vel = 0
             self.Contador(27)
         if self.estado == 1:
-            #print ("X proprio: ",self.x, " X Caminho_X_Gerado  :", self.Caminho_X_Gerado , "Y atual: ", self.y, "Y Caminho: ", self.caminhoY, "Vel: ", self.velX, "Estado: ", self.estado, "pontoX: ", self.prontoX)
+            # print ("X proprio: ",self.x, " X Caminho_X_Gerado  :", self.Caminho_X_Gerado , "Y atual: ", self.y, "Y Caminho: ", self.caminhoY, "Vel: ", self.velX, "Estado: ", self.estado, "pontoX: ", self.prontoX)
             self.MoverX()
             self.MoverY()
             if self.prontoY == True and self.prontoX == True:
                 self.Contador(5)
-
         if self.estado == 2:
+            self.Achar_Personagem_X()
+            self.Achar_Personagem_Y()
+            if self.prontoX == True and self.prontoY == True:
+                self.atacando = True
+                self.atacar()
+                self.stop = False
+                self.vel = 0
+                self.andando = False
+                self.Parado = False
+                self.Contador(60)
+        if self.estado == 3:
             self.hitstun = True
             self.andando = False
             self.Parado = False
+            self.atacando = False
             self.vel = 0
             self.Contador(13)
 
     def Reset_Estados(self):
         self.hitstun = False
+        self.atacando = False
         self.andando = False
         self.prontoX = False
         self.prontoY = False
@@ -567,19 +592,63 @@ class InimigoBase(object):
         self.Caminho_X_Gerado = False
         self.troca_estado = False
         self.Parado = True
-        #self.direita = False
-        print ("Anim Parado", self.estado)
+
+
 
     def Contador(self, tempo):
         self.timer +=1
         if self.timer >= tempo:
             self.Reset_Estados()
-            self.estado = random.randint(0, 1)
+            self.estado = random.randint(0, 2)
             self.timer = 0
-    #    if self.timer >= tempo:
-    #        self.Reset_Estados()
-    #        self.estado = random.randint(0, 1)
-    #        self.timer = 0
+
+    def Achar_Personagem_X(self):
+        self.x += self.velX
+        if self.prontoX == False:
+            if self.Caminho_X_Gerado == False:
+                self.escolher_alvo = random.randint(0, 1)
+                if self.escolher_alvo == 0:
+                    self.caminhoX = Classe.x
+                else:
+                    self.caminhoX = Classe2.x
+                self.Caminho_X_Gerado = True
+            if self.x < self.caminhoX:
+                self.velX = 6
+                self.Parado = False
+                self.andando = True
+                self.esquerda = False
+                self.direita = True
+            if self.x > self.caminhoX:
+                self.Parado = False
+                self.andando = True
+                self.esquerda = True
+                self.direita = False
+                self.velX = -6
+            if self.x - 6 < self.caminhoX and self.x + 6 > self.caminhoX:
+                self.caminhoX = self.x
+                self.velX = 0
+                self.prontoX = True
+
+    def Achar_Personagem_Y(self):
+        self.y += self.vel
+        if self.prontoY == False:
+            if self.Caminho_Y_Gerado == False:
+                self.escolher_alvo = random.randint(0, 1)
+                if self.escolher_alvo == 0:
+                    self.caminhoY = Classe.y
+                else:
+                    self.caminhoY = Classe2.y
+                self.Caminho_Y_Gerado = True
+            if self.y < self.caminhoY:
+                self.vel = 3
+                self.andando = True
+            if self.y > self.caminhoY:
+                self.vel = -3
+                self.andando = True
+            if self.y - 5 < self.caminhoY and self.y + 5 > self.caminhoY:
+                self.caminhoY = self.y
+                self.vel = 0
+                self.prontoY = True
 
     def MoverX(self):
         self.x += self.velX
@@ -614,10 +683,8 @@ class InimigoBase(object):
                     self.caminhoY = random.randint(209, 380)
                 self.Caminho_Y_Gerado = True
             if self.y < self.caminhoY:
-                print("Anim Up")
                 self.vel = 3
             if self.y > self.caminhoY:
-                print("Anim Down")
                 self.vel =-3
             if self.y - 5 < self.caminhoY and self.y + 5 > self.caminhoY:
                 self.caminhoY = self.y
@@ -667,54 +734,64 @@ class InimigoBase(object):
 
       #       print ( "Oh CARALHIO " , self.vel, self.atacando )
 
-
+    def Colisao_Soco_Inimigo(self):
+        print("Batendo")
+        for bullet in self.balaInim:
+            if (bullet.x + bullet.raio >= Classe.hitbox[0] and bullet.x + bullet.raio <= Classe.hitbox[0] + 30):
+                if bullet.y >= Classe.hitbox[1] and bullet.y <= Classe.hitbox[1] + 40:
+                    Classe.danoPlayer()
+                    self.balaInim.pop(self.balaInim.index(bullet))
+            elif (bullet.x + bullet.raio >= Classe2.hitbox[0] and bullet.x + bullet.raio <= Classe2.hitbox[0] + 30):
+                if bullet.y >= Classe2.hitbox[1] and bullet.y <= Classe2.hitbox[1] + 40:
+                    Classe2.danoPlayer2()
+                    self.balaInim.pop(self.balaInim.index(bullet))
+            else:
+                self.balaInim.pop(self.balaInim.index(bullet))
 
     def atacar(self):
 
         if self.atacando==True:
-            mira3 = -1
-        else:
-            mira3 = 1
-        if len ( luis ) < 1:
-            luis.append (
-                InimigoDano ( round ( inimigo.x + inimigo.width // 2 ) , round ( inimigo.y + inimigo.height // 2 ) , 6 ,
-                              (0 , 0 , 0) ,
-                              mira3 ) )
+            self.Colisao_Soco_Inimigo()
+            if self.esquerda == True:
+                mira3 = -1
+            else:
+                mira3 = 1
+            if len(self.balaInim) <= 1:
+                self.balaInim.append (InimigoDano ( round ( inimigo.x + inimigo.width // 2 )
+                ,round ( inimigo.y + inimigo.height // 2 ) , 6 ,(0 , 0 , 0),mira3))
 
+            else:
+                self.atacando=False
+                self.Reset_Estados()
 
-
-
-
-        else:
-            self.atacando=False
-
-            print("Oh CARALHIO ",self.vel)
 
         #print(self.x)
 
     def hit(self, personagem_hit):
         global showPoints
         global Score
-        self.walkCount = 0
-        SFX_Punch1.play()
-        if self.health > 0 :
-            self.timer = 0
-            self.health -= 1
-            self.estado = 2
-            self.vel = 3
-            self.stop=True
-            self.pare = False
-        else:
-            if personagem_hit == "J1":
-                Classe.Score += 500
-
+        global InimigosVencidos
+        if self.health >=0:
+            self.walkCount = 0
+            SFX_Punch1.play()
+            if self.health > 0:
+                self.timer = 0
+                self.health -= 1
+                self.estado = 3
+                self.vel = 3
+                self.atacando = False
+                self.stop=True
+                self.pare = False
             else:
-                Classe2.Score += 500
+                if personagem_hit == "J1":
+                    Classe.Score += 500
 
-            self.visible = False
-            showPoints = True
-            showPointFunc()
-        print('miseravi', self.estado)
+                else:
+                    Classe2.Score += 500
+
+                self.visible = False
+                InimigosVencidos += 1
+                self.health -= 1
 
     def __delete__(self, instance):
         pass
@@ -780,7 +857,6 @@ class Boss(object):
         self.esquerda = False
         self.mirando = False
         self.AniCount = 0
-        self.visible = True
         self.Mira = random.randint (209,300)
         self.hitbox = (self.x + 17, self.y + 2)
 
@@ -830,7 +906,7 @@ class Boss(object):
                     SlowMotion = False
 
 
-            pygame.draw.rect(Janela, (255,0,0), self.hitbox,2)
+            #pygame.draw.rect(Janela, (255,0,0), self.hitbox,2)
 
     def ataque(self):
         self.timer+=1
@@ -933,12 +1009,9 @@ inimigo2 = InimigoBase(100, 410, 64, 64, 450)
 Kobra = Boss(400, 300, 64, 64)
 
 #Criação dos objetos de hitbox do soco dos Personagens
-soco=projetosoco(200, 410, 64, 64, 64)
-soco2=projetosoco2(200, 410, 64, 64, 64)
-loop = 0
 socobala = []
 socobala2 = []
-luis=[]
+balaInim=[]
 
 # Propriedades da Janela a ser aberta
 Largura, Altura = 640, 480
@@ -959,6 +1032,7 @@ Controlador_Jogo = 1
 Score = 0
 Timer = 60
 Nome_do_player = ("JOG")
+InimigosVencidos = 0
 
 
 # Scoreboard_Player = {'Nome':Nome_do_player, 'Pontos': Score}
@@ -967,13 +1041,8 @@ Leaderboard = [
     {'Nome': ("AAA"), 'Pontos': 4000},
     {'Nome': ("AAA"), 'Pontos': 5000},
     {'Nome': ("AAA"), 'Pontos': 2000},
-    {'Nome': ("AAA"), 'Pontos': 300},
-]
+    {'Nome': ("AAA"), 'Pontos': 300},]
 
-# Leaderboard.insert(0, Scoreboard_Player)
-# Leaderboard.sort(key=itemgetter('Pontos'), reverse=True)
-# sorted(Leaderboard, key=itemgetter('Pontos'), reverse=True)
-# pickle.dump(Leaderboard, open("top_scores", "wb"))
 
 showPoints = False
 primeira_fase = 0
@@ -988,22 +1057,18 @@ def showPointFunc():
 
 
 def mostrarPlacar(Pontos):
-    D = ""
+    resultado = ""
     for key in Pontos[:8]:
-        # print(key)
-        C = "Nome : "
-        A = (key['Nome'])
-        B = (key['Pontos'])
-        # C = ("Nome: ",A, "Pontos: ",B)
-        # print(A)
-        # print(B)
-        C += A
-        C += " Pontos: "
-        C += str(B)
-        D += C
-        D += "\n"
+        linha = "Nome : "
+        nome = (key['Nome'])
+        pontos = (key['Pontos'])
+        linha += nome
+        linha += " Pontos: "
+        linha += str(pontos)
+        resultado += linha
+        resultado += "\n"
 
-    return D
+    return resultado
 
 if os.path.exists("top_scores") == True:
     pass
@@ -1076,7 +1141,6 @@ Classe.playerVelocityY = 0
 # Musica é tocada assim que executa o jogo, mas não em loop
 # Musica_Fase = pygame.mixer.music.load('Musica_SFX/Musica_Fase.wav')
 SONG_END = pygame.USEREVENT + 1
-
 SFX_Voice_Flying2 = pygame.mixer.Sound('Musica_SFX/SFX/Voice_Flying2.wav')
 SFX_Voice_Flying2.play(0)
 
@@ -1169,6 +1233,8 @@ text12 = ''
 textnumber = 1
 
 def redrawGameWindow():
+    global InimigosVencidos
+    global showPoints
     if Controlador_Jogo == 1:
         Janela.blit(Background_Tela_Inicial, (0, -10))
         Tela_Inicial.Press_Start.blit(Janela, (110, 320))
@@ -1180,8 +1246,12 @@ def redrawGameWindow():
         Janela.blit(Background_Fase, (rel_x, 0), )
         Janela.blit(Background_Fase_0, (rel_x2 - Background_Largura, 0))
         Janela.blit(Background_Fase, (rel_x - Background_Largura, 0))
-        # Janela.blit ( Texto_Timer , ((Largura / 2) - 17 , 10) )
-        # Janela.blit ( Texto_Placar , (190 , 30) )
+
+        if InimigosVencidos == 1:
+            showPoints = True
+            showPointFunc()
+            InimigosVencidos = 2
+
 
         Janela.blit(Personagem_HUD, (10, 10))
         Janela.blit(Personagem_HUD2, (392, 10))
@@ -1193,9 +1263,8 @@ def redrawGameWindow():
         else:
             Classe.draw(Janela)
             Classe2.draw(Janela)
-        inimigo2.draw(Janela)
+        #inimigo2.draw(Janela)
         inimigo.draw(Janela)
-        Kobra.draw(Janela)
 
         seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
@@ -1218,7 +1287,7 @@ def redrawGameWindow():
         for balau2 in socobala2:
             balau2.draw(Janela)
 
-        for balau2 in luis:
+        for balau2 in balaInim:
             balau2.draw(Janela)
 
 
@@ -1251,17 +1320,28 @@ def redrawGameWindow():
         # Janela.blit ( Texto_Placar , (190 , 30) )
 
         Janela.blit(Personagem_HUD, (10, 10))
+        Janela.blit(Personagem_HUD2, (392, 10))
         pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
-        Classe.draw(Janela)
-        Classe2.draw(Janela)
-        inimigo2.draw(Janela)
-        inimigo.draw(Janela)
+        pygame.draw.rect(Janela, (255, 255, 0), (555, 57, Classe2.HP*-1, 19), 0)
+        if Classe.y >= Classe2.y:
+            Classe2.draw(Janela)
+            Classe.draw(Janela)
+        else:
+            Classe.draw(Janela)
+            Classe2.draw(Janela)
+        Kobra.draw(Janela)
+
         seconds = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
 
-        ptext.draw(str(Score), topleft=(190, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
+        ptext.draw(str(Classe.Score), topleft=(190, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
                    gcolor=(255, 200, 20), fontsize=19,
                    shadow=(3, 1), scolor="#000000")
+
+        ptext.draw(str(Classe2.Score), topright=(450, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
+                   gcolor=(255, 200, 20), fontsize=19,
+                   shadow=(3, 1), scolor="#000000")
+
         ptext.draw(str(Timer - seconds), center=(Largura / 2, 30), fontname="fontes/start.ttf", color=(255, 255, 255),
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
@@ -1272,13 +1352,31 @@ def redrawGameWindow():
         for balau2 in socobala2:
             balau2.draw(Janela)
 
+        for balau2 in balaInim:
+            balau2.draw(Janela)
+
+
+
         if showPoints == True:
-            ptext.draw(str(compressao_save.umcompressed_string), center=(Largura / 2, Altura / 2), fontname="fontes/start.ttf",
+            textoPlacar = mostrarPlacar(Load_Top_Scores)
+            ptext.draw(str(textoPlacar), midtop=(Largura / 2, 175), fontname="fontes/start.ttf",
                        color=(255, 255, 255),
                        gcolor=(150, 150, 150),
                        shadow=(3, 3), scolor="#000000")
 
+            ptext.draw("FASE COMPLETA!!", center=(Largura / 2, 135), fontname="fontes/start.ttf",
+                       color=(255, 100, 0),
+                       gcolor=(255, 200, 20),
+                       shadow=(3, 3), scolor="#000000",fontsize=35)
+
+        if Classe.parartela == False and Start == False and showPoints == False:
+            Cutscenes.Go.blit(Janela,(450,60))
+
+
+
+        Cutscenes.Start_Play.blit(Janela,(80, 100))
         pygame.display.update()
+
 
     if Controlador_Jogo == 3:
         #Janela.blit(Background_Tela_Inicial, (0, -10))
@@ -1470,7 +1568,6 @@ def MovimentoPersonagem2():
                         projetosoco2(round(Classe2.x + Classe2.largura // 2), round(Classe2.y + Classe2.altura // 2), 6,
                                      (0, 0, 0),
                                      mira2))
-
                 shootLoop = 1
                 if Classe2.apertou1 == True:
                     Classe2.soco = True
@@ -1524,7 +1621,7 @@ def Colisao_Soco_Personagem1():
         else:
             socobala.pop(socobala.index(bullet))
 def Colisao_Soco_Personagem2():
-    # Testa a colisão do soco do Player 2
+
     for bullet in socobala2:
         if (bullet.x + bullet.raio >= inimigo.hitbox[0] and bullet.x + bullet.raio <= inimigo.hitbox[0] + 30):
             if bullet.y >= inimigo.hitbox[1] and bullet.y <= inimigo.hitbox[1] + 40:
@@ -1538,30 +1635,25 @@ def Colisao_Soco_Personagem2():
         elif (bullet.x + bullet.raio >= Kobra.hitbox[0] and bullet.x + bullet.raio <= Kobra.hitbox[0] + 30):
             if bullet.y >= Kobra.hitbox[1] and bullet.y <= Kobra.hitbox[1] + 40:
                 Kobra.hit("J2")
-                print("P2 ACERTOU BOSS")
                 socobala2.pop(socobala2.index(bullet))
 
         else:
             socobala2.pop(socobala2.index(bullet))
 
 
-
 def Colisao_Soco_Inimigo():
-    # Testa a colisão do soco do Player 2
-    for bullet in luis:
-        if (bullet.x + bullet.raio >= inimigo.hitbox[0] and bullet.x + bullet.raio <= Classe.hitbox[0] + 30):
+
+    for bullet in balaInim:
+        if (bullet.x + bullet.raio >= Classe.hitbox[0] and bullet.x + bullet.raio <= Classe.hitbox[0] + 30):
             if bullet.y >= Classe.hitbox[1] and bullet.y <= Classe.hitbox[1] + 40:
                 Classe.danoPlayer()
-                luis.pop(luis.index(bullet))
+                balaInim.pop(balaInim.index(bullet))
         elif (bullet.x + bullet.raio >= Classe2.hitbox[0] and bullet.x + bullet.raio <= Classe2.hitbox[0] + 30):
             if bullet.y >= Classe2.hitbox[1] and bullet.y <= Classe2.hitbox[1] + 40:
                 Classe2.danoPlayer2()
-                luis.pop(luis.index(bullet))
+                balaInim.pop(balaInim.index(bullet))
         else:
-            luis.pop(luis.index(bullet))
-
-
-
+            balaInim.pop(balaInim.index(bullet))
 
 
 
@@ -1594,20 +1686,10 @@ while run:
 
     # Essa parte do código é referente ao SideScrolling e posição do personagem na tela. Para entender, ver https://www.youtube.com/watch?v=AX8YU2hLBUg&t=478s
     if Classe.parartela == False:
-      #if Classe.x and Classe2.x > Fase_Largura:
-       #  Classe.x = Fase_Largura
-       #  Classe2.x = Fase_Largura
       if Classe2.x <= startScrollingPosX:
-        # Classe.x = Classe.x
          Classe2.x = Classe2.x
-
-      #elif Classe.x and Classe2.x > Fase_Largura - startScrollingPosX:
-       #  Classe.x = Classe.x - Fase_Largura + Largura
-        # Classe2.x = Classe2.x - Fase_Largura + Larguraw
       elif  Classe2.playerVelocityX >=0:
-        # Classe.x = startScrollingPosX
-         #Background_Fase_Posicao += -Classe.playerVelocityX
-         #Background_Fase_Posicao_0 += -1
+         Classe.andarcount += 1
          Classe2.x = startScrollingPosX
          Background_Fase_Posicao += -Classe2.playerVelocityX
          Background_Fase_Posicao_0 += -1
@@ -1902,7 +1984,7 @@ while run:
         if pygame.key.get_pressed()[pygame.K_RETURN] and LetraAtual <3:
             SFX_Text.play()
             time.sleep(0.2)
-            LetraAtual +=1
+            LetraAtual += 1
             Auxiliar = 0
             print (LetraAtual)
             if LetraAtual == 3:
@@ -1919,12 +2001,10 @@ while run:
                     time.sleep(0.1)
                     Auxiliar = 0
                     LetraA = Auxiliar
-                    print("UP")
                 else:
                     time.sleep(0.1)
                     Auxiliar += 1
                     LetraA = Auxiliar
-                    print("UP")
             if pygame.key.get_pressed()[pygame.K_DOWN]:
                 SFX_Text.play()
                 time.sleep(0.1)
@@ -1933,7 +2013,6 @@ while run:
                 if Auxiliar < 0:
                     Auxiliar = 25
                     LetraA = Auxiliar
-                    print("DOWN")
         if LetraAtual == 1:
             if pygame.key.get_pressed()[pygame.K_UP]:
                 SFX_Text.play()
@@ -1941,12 +2020,10 @@ while run:
                     time.sleep(0.1)
                     Auxiliar = 0
                     LetraB = Auxiliar
-                    print("UP")
                 else:
                     time.sleep(0.1)
                     Auxiliar += 1
                     LetraB = Auxiliar
-                    print("DOWN")
             elif pygame.key.get_pressed()[pygame.K_DOWN]:
                 SFX_Text.play()
                 time.sleep(0.1)
@@ -1962,7 +2039,6 @@ while run:
                     time.sleep(0.1)
                     Auxiliar = 0
                     LetraC = Auxiliar
-                    print("UP")
                 else:
                     time.sleep(0.1)
                     Auxiliar += 1
