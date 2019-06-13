@@ -1,5 +1,4 @@
 
-
 def compressao():
     import Flying_Fist
     import pickle

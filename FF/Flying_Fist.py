@@ -407,7 +407,7 @@ class InimigoBase(object):
         self.velX = 0
 
     def draw(self , win):
-     if Classe.contador_de_passos >=10 or Classe2.contador_de_passos >=10:
+     if avanco_tela >= 20:
         Classe.parartela=True
         self.move ()
         if self.visible:
@@ -821,10 +821,35 @@ class Boss(object):
             if self.y+66 <= Classe2.y+23 and self.y+157 >= Classe2.y+68:
                 Classe2.danoPlayer2()
 
+def Criar_Inimigos(fase):
+    global avanco_tela
+    if fase == 1:
+        if avanco_tela == 50:
+            avanco_tela += 1
+
+            inimigo = InimigoBase(-10, 410, 64, 64)
+            inimigo2 = InimigoBase(660, 410, 64, 64)
+            inimigo3 = InimigoBase(-10, 410, 64, 64)
+            lista_inimigos.extend((inimigo, inimigo2, inimigo3))
+
+        if avanco_tela == 100:
+            avanco_tela += 1
+            inimigo4 = InimigoBase(-10, 410, 64, 64)
+            inimigo5 = InimigoBase(660, 410, 64, 64)
+            inimigo6 = InimigoBase(-10, 410, 64, 64)
+            lista_inimigos.extend((inimigo4, inimigo5, inimigo6))
+
+
 Classe = Player(30, 250, 64, 64, 64, 64, 64)
 Classe2 = Player2(40, 300, 64, 64, 64, 64)
 inimigo = InimigoBase(-10, 410, 64, 64)
-inimigo2 = InimigoBase(660, 410, 64, 64)
+
+
+avanco_tela = 0
+
+lista_inimigos = []
+
+
 Kobra = Boss(400, 230, 64, 64)
 
 Gerador_Soco_Player1 = []
@@ -990,6 +1015,10 @@ text11 = ''
 text12 = ''
 textnumber = 1
 
+
+
+
+
 def redrawGameWindow():
     global InimigosVencidos
     global showPoints
@@ -1003,10 +1032,10 @@ def redrawGameWindow():
         Janela.blit(Background_Fase, (rel_x, 0), )
         Janela.blit(Background_Fase_0, (rel_x2 - Background_Largura, 0))
         Janela.blit(Background_Fase, (rel_x - Background_Largura, 0))
-        if InimigosVencidos == 1:
+        if InimigosVencidos == 6:
             showPoints = True
             showPointFunc()
-            InimigosVencidos = 2
+            InimigosVencidos = 7
         Janela.blit(Personagem_HUD, (10, 10))
         Janela.blit(Personagem_HUD2, (392, 10))
         pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
@@ -1017,7 +1046,10 @@ def redrawGameWindow():
         else:
             Classe.draw(Janela)
             Classe2.draw(Janela)
-        inimigo.draw(Janela)
+        Criar_Inimigos(1)
+        for Inimigo_init in lista_inimigos:
+            Inimigo_init.draw(Janela)
+
         segundos = int((pygame.time.get_ticks() - start_ticks) / 1000)
         ptext.draw(str(Classe.Score), topleft=(190, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
                    gcolor=(255, 200, 20), fontsize=19,
@@ -1308,37 +1340,55 @@ def MovimentoPersonagem2():
 
 def Colisao_Soco_Personagem1():
     for soco in Gerador_Soco_Player1:
-        if (soco.x + soco.raio >= inimigo.x+26 and soco.x + soco.raio <= inimigo.x+60):
-            if soco.y >= inimigo.y+21 and soco.y <= inimigo.y+69:
-                inimigo.Hit_Inimigo("J1")
-                Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
-        elif (soco.x + soco.raio >= inimigo2.x+26 and soco.x + soco.raio <= inimigo2.x+60):
-            if soco.y >= inimigo2.y+21 and soco.y <= inimigo2.y+69:
-                inimigo2.Hit_Inimigo("J1")
-                Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
-        elif (soco.x + soco.raio >= Kobra.x+29 and soco.x + soco.raio <= Kobra.x+66):
-            if soco.y >= Kobra.y+54 and soco.y <= Kobra.y+146:
-                Kobra.Hit_Inimigo("J1")
-                Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
-        else:
-            Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+        for inim in lista_inimigos:
+            if (soco.x + soco.raio >= inim.x + 26 and soco.x + soco.raio <= inim.x + 60):
+                if soco.y >= inim.y + 21 and soco.y <= inim.y + 69:
+                    inim.Hit_Inimigo("J1")
+                    if inim.HP == 0:
+                        lista_inimigos.pop(lista_inimigos.index(inim))
+
+                    #Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+        Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+
+
+
+    #    if (soco.x + soco.raio >= inimigo.x+26 and soco.x + soco.raio <= inimigo.x+60):
+    #        if soco.y >= inimigo.y+21 and soco.y <= inimigo.y+69:
+    #            inimigo.Hit_Inimigo("J1")
+    #            Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+    #    elif (soco.x + soco.raio >= inimigo2.x+26 and soco.x + soco.raio <= inimigo2.x+60):
+    #        if soco.y >= inimigo2.y+21 and soco.y <= inimigo2.y+69:
+    #            inimigo2.Hit_Inimigo("J1")
+    #            Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+    #    elif (soco.x + soco.raio >= Kobra.x+29 and soco.x + soco.raio <= Kobra.x+66):
+    #        if soco.y >= Kobra.y+54 and soco.y <= Kobra.y+146:
+    #            Kobra.Hit_Inimigo("J1")
+    #            Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+    #    else:
+    #        Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
 
 def Colisao_Soco_Personagem2():
     for soco in Gerador_Soco_Player2:
-        if (soco.x + soco.raio >=  inimigo.x+26 and soco.x + soco.raio <= inimigo.x+60):
-            if soco.y >= inimigo.y+21 and soco.y <= inimigo.y+69:
-                inimigo.Hit_Inimigo("J2")
-                Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
-        elif (soco.x + soco.raio >= inimigo2.x+26 and soco.x + soco.raio <= inimigo2.x+60):
-            if soco.y >= inimigo2.y+21 and soco.y <= inimigo2.y+69:
-                inimigo2.Hit_Inimigo("J2")
-                Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
-        elif (soco.x + soco.raio >= Kobra.x+29 and soco.x + soco.raio <= Kobra.x+66):
-            if soco.y >= Kobra.y+54 and soco.y <= Kobra.y+146:
-                Kobra.Hit_Inimigo("J2")
-                Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
-        else:
-            Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
+        for inim in lista_inimigos:
+            if (soco.x + soco.raio >= inim.x + 26 and soco.x + soco.raio <= inim.x + 60):
+                if soco.y >= inim.y + 21 and soco.y <= inim.y + 69:
+                    inim.Hit_Inimigo("J2")
+                    if inim.HP == 0:
+                        lista_inimigos.pop(lista_inimigos.index(inim))
+
+                    #Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+        Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
+
+    #    elif (soco.x + soco.raio >= inimigo2.x+26 and soco.x + soco.raio <= inimigo2.x+60):
+    #        if soco.y >= inimigo2.y+21 and soco.y <= inimigo2.y+69:
+    #            inimigo2.Hit_Inimigo("J2")
+    #            Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
+    #    elif (soco.x + soco.raio >= Kobra.x+29 and soco.x + soco.raio <= Kobra.x+66):
+    #        if soco.y >= Kobra.y+54 and soco.y <= Kobra.y+146:
+    #            Kobra.Hit_Inimigo("J2")
+    #            Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
+    #    else:
+    #        Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
 
 def Colisao_Soco_Inimigo():
     for soco in gerar_soco:
@@ -1381,7 +1431,7 @@ while run:
       if Classe2.x <= Posicao_inicial_paralaxe:
          Classe2.x = Classe2.x
       elif  Classe2.velocidade_Personagem_X >=0:
-         Classe.contador_de_passos += 1
+         avanco_tela += 1
          Classe2.x = Posicao_inicial_paralaxe
          Background_Fase_Posicao += -Classe2.velocidade_Personagem_X
          Background_Fase_Posicao_0 += -1

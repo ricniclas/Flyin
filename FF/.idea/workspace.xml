@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compressao_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/compressao_save.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/top_scores" beforeDir="false" afterPath="$PROJECT_DIR$/top_scores" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,32 +18,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="1295" column="23" selection-start-line="1295" selection-start-column="23" selection-end-line="1295" selection-end-column="23" />
+            <state relative-caret-position="157">
+              <caret line="90" column="34" lean-forward="true" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="22" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
-                <element signature="e#614#7934#0" />
-                <element signature="e#7998#16306#0" />
-                <element signature="e#8076#8847#0" />
-                <element signature="e#12706#13444#0" />
-                <element signature="e#13962#16306#0" />
-                <element signature="e#16369#16850#0" />
-                <element signature="e#16914#17397#0" />
-                <element signature="e#17679#17769#0" />
-                <element signature="e#25567#26432#0" />
-                <element signature="e#27104#27123#0" />
-                <element signature="e#45756#49799#0" />
-                <element signature="e#49832#53888#0" />
-                <element signature="e#57500#58518#0" />
-                <element signature="e#64939#65595#0" />
-                <element signature="e#62399#63109#0" />
-                <element signature="e#70647#70840#0" />
-                <element signature="e#70776#70840#0" />
-                <element signature="e#71107#71244#0" />
-                <element signature="e#71287#71529#0" />
-                <element signature="e#72121#75932#0" />
-                <element signature="e#75981#76047#0" />
-                <element signature="e#76114#76483#0" />
+                <element signature="e#399#564#0" />
+                <element signature="e#8229#17017#0" />
+                <element signature="e#12570#13097#0" />
+                <element signature="e#13204#13983#0" />
+                <element signature="e#14028#14509#0" />
+                <element signature="e#14079#14509#0" />
+                <element signature="e#14547#17017#0" />
+                <element signature="e#17058#17622#0" />
+                <element signature="e#17663#18223#0" />
+                <element signature="e#18264#18683#0" />
+                <element signature="e#27371#27712#0" />
+                <element signature="e#27753#27929#0" />
+                <element signature="e#27973#28943#0" />
+                <element signature="e#29003#29749#0" />
+                <element signature="e#29781#30646#0" />
+                <element signature="e#30678#31242#0" />
+                <element signature="e#31288#32001#0" />
+                <element signature="e#32033#32594#0" />
+                <element signature="e#33315#42603#0" />
+                <element signature="e#42587#43149#0" />
+                <element signature="e#43244#43440#0" />
+                <element signature="e#43505#43695#0" />
+                <element signature="e#43728#44012#0" />
+                <element signature="e#44074#44287#0" />
+                <element signature="e#48053#48257#0" />
+                <element signature="e#50941#53410#0" />
+                <element signature="e#53688#58104#0" />
+                <element signature="e#58138#62536#0" />
+                <element signature="e#63248#64689#0" />
+                <element signature="e#65328#65966#0" />
+                <element signature="e#65984#82150#0" />
               </folding>
             </state>
           </provider>
@@ -49,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
+            <state relative-caret-position="255">
+              <caret line="15" column="76" lean-forward="true" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -58,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compressao_save.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="470">
+              <caret line="153" column="17" lean-forward="true" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -75,20 +87,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>px</find>
-      <find>Classe.x</find>
-      <find>Classe2</find>
-      <find>Virado</find>
-      <find>apertpu</find>
-      <find>apertou</find>
-      <find>apertou1</find>
       <find>event</find>
       <find>SocoVirado2</find>
       <find>inimigo</find>
       <find>print</find>
       <find>Controlador</find>
       <find>center</find>
-      <find>Kobra</find>
       <find>rand</find>
       <find>clock</find>
       <find>SlowMotion</find>
@@ -103,8 +107,16 @@
       <find>show</find>
       <find>estado == 3</find>
       <find>estado = 3</find>
-      <find>parartela</find>
       <find>Oh CARALHIO</find>
+      <find>Kobra</find>
+      <find>visible</find>
+      <find>segundos</find>
+      <find>compressao</find>
+      <find>return</find>
+      <find>econo</find>
+      <find>paralax</find>
+      <find>contador_de_passos</find>
+      <find>parartela</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -128,6 +140,7 @@
         <option value="$PROJECT_DIR$/Penis.py" />
         <option value="$PROJECT_DIR$/uh.py" />
         <option value="$PROJECT_DIR$/compressao_save.py" />
+        <option value="$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Minha_compressao.py" />
         <option value="$PROJECT_DIR$/Flying_Fist.py" />
       </list>
     </option>
@@ -144,6 +157,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,7 +174,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -229,6 +242,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Minha_compressao" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="quadrado" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Minha_compressao.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Penis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="quadrado" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -271,34 +305,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="player" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="quadrado" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/player.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Flying_Fist" />
+        <item itemvalue="Python.Minha_compressao" />
         <item itemvalue="Python.compressao_save" />
         <item itemvalue="Python.Penis" />
         <item itemvalue="Python.Control_test" />
-        <item itemvalue="Python.player" />
       </list>
     </recent_temporary>
   </component>
@@ -362,14 +375,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14149444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920508" visible="true" weight="0.31242874" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.31242874" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3937677" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -446,7 +458,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uh.py" />
-    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Minha_compressao.py" />
     <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Comp_Huffman.py" />
     <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/compression.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/215960098/pygame/mixer_music.py" />
@@ -491,51 +502,67 @@
     <entry file="file://$PROJECT_DIR$/Cutscenes.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Personagem_Animacao.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Aulas/Huffman-Compression-master/Huffman-Compression-master/Minha_compressao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1881">
+          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/compressao_save.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="470">
+          <caret line="153" column="17" lean-forward="true" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="76" lean-forward="true" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="1295" column="23" selection-start-line="1295" selection-start-column="23" selection-end-line="1295" selection-end-column="23" />
+        <state relative-caret-position="157">
+          <caret line="90" column="34" lean-forward="true" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="22" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
-            <element signature="e#614#7934#0" />
-            <element signature="e#7998#16306#0" />
-            <element signature="e#8076#8847#0" />
-            <element signature="e#12706#13444#0" />
-            <element signature="e#13962#16306#0" />
-            <element signature="e#16369#16850#0" />
-            <element signature="e#16914#17397#0" />
-            <element signature="e#17679#17769#0" />
-            <element signature="e#25567#26432#0" />
-            <element signature="e#27104#27123#0" />
-            <element signature="e#45756#49799#0" />
-            <element signature="e#49832#53888#0" />
-            <element signature="e#57500#58518#0" />
-            <element signature="e#64939#65595#0" />
-            <element signature="e#62399#63109#0" />
-            <element signature="e#70647#70840#0" />
-            <element signature="e#70776#70840#0" />
-            <element signature="e#71107#71244#0" />
-            <element signature="e#71287#71529#0" />
-            <element signature="e#72121#75932#0" />
-            <element signature="e#75981#76047#0" />
-            <element signature="e#76114#76483#0" />
+            <element signature="e#399#564#0" />
+            <element signature="e#8229#17017#0" />
+            <element signature="e#12570#13097#0" />
+            <element signature="e#13204#13983#0" />
+            <element signature="e#14028#14509#0" />
+            <element signature="e#14079#14509#0" />
+            <element signature="e#14547#17017#0" />
+            <element signature="e#17058#17622#0" />
+            <element signature="e#17663#18223#0" />
+            <element signature="e#18264#18683#0" />
+            <element signature="e#27371#27712#0" />
+            <element signature="e#27753#27929#0" />
+            <element signature="e#27973#28943#0" />
+            <element signature="e#29003#29749#0" />
+            <element signature="e#29781#30646#0" />
+            <element signature="e#30678#31242#0" />
+            <element signature="e#31288#32001#0" />
+            <element signature="e#32033#32594#0" />
+            <element signature="e#33315#42603#0" />
+            <element signature="e#42587#43149#0" />
+            <element signature="e#43244#43440#0" />
+            <element signature="e#43505#43695#0" />
+            <element signature="e#43728#44012#0" />
+            <element signature="e#44074#44287#0" />
+            <element signature="e#48053#48257#0" />
+            <element signature="e#50941#53410#0" />
+            <element signature="e#53688#58104#0" />
+            <element signature="e#58138#62536#0" />
+            <element signature="e#63248#64689#0" />
+            <element signature="e#65328#65966#0" />
+            <element signature="e#65984#82150#0" />
           </folding>
         </state>
       </provider>
