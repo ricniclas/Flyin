@@ -4,7 +4,6 @@
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressao_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/compressao_save.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/top_scores" beforeDir="false" afterPath="$PROJECT_DIR$/top_scores" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +17,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="90" column="34" lean-forward="true" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="22" />
+            <state relative-caret-position="395">
+              <caret line="868" lean-forward="true" selection-start-line="868" selection-end-line="868" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <element signature="e#399#564#0" />
+                <element signature="e#592#8200#0" />
+                <element signature="e#4429#5239#0" />
+                <element signature="e#5275#5744#0" />
+                <element signature="e#5782#8200#0" />
                 <element signature="e#8229#17017#0" />
                 <element signature="e#12570#13097#0" />
                 <element signature="e#13204#13983#0" />
@@ -32,27 +35,10 @@
                 <element signature="e#17058#17622#0" />
                 <element signature="e#17663#18223#0" />
                 <element signature="e#18264#18683#0" />
-                <element signature="e#27371#27712#0" />
-                <element signature="e#27753#27929#0" />
-                <element signature="e#27973#28943#0" />
-                <element signature="e#29003#29749#0" />
-                <element signature="e#29781#30646#0" />
-                <element signature="e#30678#31242#0" />
-                <element signature="e#31288#32001#0" />
-                <element signature="e#32033#32594#0" />
-                <element signature="e#33315#42603#0" />
-                <element signature="e#42587#43149#0" />
-                <element signature="e#43244#43440#0" />
-                <element signature="e#43505#43695#0" />
-                <element signature="e#43728#44012#0" />
-                <element signature="e#44074#44287#0" />
-                <element signature="e#48053#48257#0" />
-                <element signature="e#50941#53410#0" />
-                <element signature="e#53688#58104#0" />
-                <element signature="e#58138#62536#0" />
-                <element signature="e#63248#64689#0" />
-                <element signature="e#65328#65966#0" />
-                <element signature="e#65984#82150#0" />
+                <element signature="e#18716#35633#0" />
+                <element signature="e#34945#35633#0" />
+                <element signature="e#35590#44878#0" />
+                <element signature="e#44910#45515#0" />
               </folding>
             </state>
           </provider>
@@ -62,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="76" lean-forward="true" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+              <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -70,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compressao_save.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="153" column="17" lean-forward="true" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
+            <state relative-caret-position="2601">
+              <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -87,10 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>event</find>
-      <find>SocoVirado2</find>
-      <find>inimigo</find>
-      <find>print</find>
       <find>Controlador</find>
       <find>center</find>
       <find>rand</find>
@@ -116,7 +98,11 @@
       <find>econo</find>
       <find>paralax</find>
       <find>contador_de_passos</find>
+      <find>lista_inimigos</find>
+      <find>HP</find>
       <find>parartela</find>
+      <find>inimigosVencidos</find>
+      <find>deathanim</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -375,13 +361,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14149444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.31242874" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920508" visible="true" weight="0.31242874" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3937677" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -512,27 +499,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compressao_save.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="153" column="17" lean-forward="true" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="76" lean-forward="true" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="90" column="34" lean-forward="true" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="22" />
+        <state relative-caret-position="395">
+          <caret line="868" lean-forward="true" selection-start-line="868" selection-end-line="868" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <element signature="e#399#564#0" />
+            <element signature="e#592#8200#0" />
+            <element signature="e#4429#5239#0" />
+            <element signature="e#5275#5744#0" />
+            <element signature="e#5782#8200#0" />
             <element signature="e#8229#17017#0" />
             <element signature="e#12570#13097#0" />
             <element signature="e#13204#13983#0" />
@@ -542,28 +519,25 @@
             <element signature="e#17058#17622#0" />
             <element signature="e#17663#18223#0" />
             <element signature="e#18264#18683#0" />
-            <element signature="e#27371#27712#0" />
-            <element signature="e#27753#27929#0" />
-            <element signature="e#27973#28943#0" />
-            <element signature="e#29003#29749#0" />
-            <element signature="e#29781#30646#0" />
-            <element signature="e#30678#31242#0" />
-            <element signature="e#31288#32001#0" />
-            <element signature="e#32033#32594#0" />
-            <element signature="e#33315#42603#0" />
-            <element signature="e#42587#43149#0" />
-            <element signature="e#43244#43440#0" />
-            <element signature="e#43505#43695#0" />
-            <element signature="e#43728#44012#0" />
-            <element signature="e#44074#44287#0" />
-            <element signature="e#48053#48257#0" />
-            <element signature="e#50941#53410#0" />
-            <element signature="e#53688#58104#0" />
-            <element signature="e#58138#62536#0" />
-            <element signature="e#63248#64689#0" />
-            <element signature="e#65328#65966#0" />
-            <element signature="e#65984#82150#0" />
+            <element signature="e#18716#35633#0" />
+            <element signature="e#34945#35633#0" />
+            <element signature="e#35590#44878#0" />
+            <element signature="e#44910#45515#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressao_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2601">
+          <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
         </state>
       </provider>
     </entry>

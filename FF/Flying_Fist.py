@@ -383,6 +383,16 @@ class InimigoBase(object):
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_2.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_3.png'),
               pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Dano_4.png')]
+    DeathAnimDir = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_01.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_04.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_06.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_07.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_08.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_09.png')]
+    DeathAnimEsq = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_01.png'),
+              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_04.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_06.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_07.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_08.png'),
+                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_09.png')]
 
     def __init__(self, x, y, largura, altura):
         self.x = x
@@ -402,13 +412,14 @@ class InimigoBase(object):
         self.Parado = True
         self.andando = False
         self.hitstun = False
+        self.morrendo = False
         self.gerar_soco = []
         self.timer = 0
         self.velX = 0
 
     def draw(self , win):
      if avanco_tela >= 20:
-        Classe.parartela=True
+        #Classe.parartela=True
         self.move ()
         if self.visible:
             if self.contador_de_frames_animacao + 1 >= 27:
@@ -441,12 +452,25 @@ class InimigoBase(object):
                 elif self.esquerda == True:
                     win.blit(self.Ataque_Esquerda_Animacao[self.contador_de_frames_animacao // 3], (self.x, self.y))
                     self.contador_de_frames_animacao += 3
+
+
+            if self.morrendo == True:
+                if self.direita == True:
+                    Janela.blit(self.DeathAnimDir[self.contador_de_frames_animacao // 3], (self.x, self.y))
+                    self.contador_de_frames_animacao += 1
+                else:
+                    Janela.blit(self.DeathAnimEsq[self.contador_de_frames_animacao // 3], (self.x, self.y))
+                    self.contador_de_frames_animacao += 1
+                if self.contador_de_frames_animacao >= 25:
+                    self.HP -= 1
+
+
             pygame.draw.rect ( win , (255 , 0 , 0) , (self.hitbox[0] , self.hitbox[1] - 20 , 50 , 10) )
             pygame.draw.rect ( win , (0 , 128 , 0) , (self.hitbox[0] , self.hitbox[1] - 20 , 50 - (5 * (10 - self.HP)) , 10) )
             self.hitbox = (self.x + 17 , self.y + 2 , 31 , 57)
 
      if inimigo.visible==False:
-         Classe.parartela = False
+         #Classe.parartela = False
          Classe.contador_de_passos = 0
          Classe2.contador_de_passos = 0
 
@@ -476,6 +500,12 @@ class InimigoBase(object):
             self.atacando = False
             self.vel = 0
             self.Contador(13)
+        if self.verificar_hitstun == 4:
+            self.hitstun = False
+            self.andando = False
+            self.Parado = False
+            self.atacando = False
+            self.vel = 0
 
     def Reset_Variaveis_de_Estado(self):
         self.hitstun = False
@@ -617,10 +647,8 @@ class InimigoBase(object):
 
 
     def Hit_Inimigo(self, personagem_hit):
-        global showPoints
-        global Score
         global InimigosVencidos
-        if self.HP >=0:
+        if self.morrendo == False:
             self.contador_de_frames_animacao = 0
             SFX_Punch1.play()
             if self.HP > 0:
@@ -635,9 +663,9 @@ class InimigoBase(object):
 
                 else:
                     Classe2.Score += 500
-                self.visible = False
+                self.morrendo = True
+                self.verificar_hitstun = 4
                 InimigosVencidos += 1
-                self.HP -= 1
 
 class Boss(object):
     Andar_Direita_Animacao = [pygame.image.load('images/Inimigo/Boss/Boss_R_Ataque_0.png'),
@@ -796,7 +824,7 @@ class Boss(object):
             global Score
             global SlowMotion
             SFX_Punch1.play()
-            if self.HP > 0:
+            if self.HP > 1:
                 self.HP -= 1
             else:
                 self.HP -= 1
@@ -1049,6 +1077,8 @@ def redrawGameWindow():
         Criar_Inimigos(1)
         for Inimigo_init in lista_inimigos:
             Inimigo_init.draw(Janela)
+            if Inimigo_init.HP == -1:
+                lista_inimigos.pop(lista_inimigos.index(Inimigo_init))
 
         segundos = int((pygame.time.get_ticks() - start_ticks) / 1000)
         ptext.draw(str(Classe.Score), topleft=(190, 28), fontname="fontes/start.ttf", color=(255, 100, 0),
@@ -1076,7 +1106,7 @@ def redrawGameWindow():
                        color=(255, 100, 0),
                        gcolor=(255, 200, 20),
                        shadow=(3, 3), scolor="#000000",fontsize=35)
-        if Classe.parartela == False and Start == False and showPoints == False:
+        if len(lista_inimigos) == 0 and Start == False and showPoints == False:
             Cutscenes.Go.blit(Janela,(450,60))
         Cutscenes.Start_Play.blit(Janela,(80, 100))
         pygame.display.update()
@@ -1135,7 +1165,7 @@ def redrawGameWindow():
                        gcolor=(255, 200, 20),
                        shadow=(3, 3), scolor="#000000",fontsize=35)
 
-        if Classe.parartela == False and Start == False and showPoints == False:
+        if len(lista_inimigos) == 0 and Start == False and showPoints == False:
             Cutscenes.Go.blit(Janela,(450,60))
 
 
@@ -1344,7 +1374,7 @@ def Colisao_Soco_Personagem1():
             if (soco.x + soco.raio >= inim.x + 26 and soco.x + soco.raio <= inim.x + 60):
                 if soco.y >= inim.y + 21 and soco.y <= inim.y + 69:
                     inim.Hit_Inimigo("J1")
-                    if inim.HP == 0:
+                    if inim.HP == -1:
                         lista_inimigos.pop(lista_inimigos.index(inim))
 
                     #Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
@@ -1373,7 +1403,7 @@ def Colisao_Soco_Personagem2():
             if (soco.x + soco.raio >= inim.x + 26 and soco.x + soco.raio <= inim.x + 60):
                 if soco.y >= inim.y + 21 and soco.y <= inim.y + 69:
                     inim.Hit_Inimigo("J2")
-                    if inim.HP == 0:
+                    if inim.HP == -1:
                         lista_inimigos.pop(lista_inimigos.index(inim))
 
                     #Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
@@ -1427,7 +1457,7 @@ while run:
     if Cutscenes.Start_Play.currentFrameNum == 18:
         Start = False
 
-    if Classe.parartela == False:
+    if len(lista_inimigos) == 0:
       if Classe2.x <= Posicao_inicial_paralaxe:
          Classe2.x = Classe2.x
       elif  Classe2.velocidade_Personagem_X >=0:
