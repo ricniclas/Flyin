@@ -77,8 +77,10 @@ class Player(object):
         self.altura = altura
         self.velocidade_Personagem_X = velocidade_Personagem_X
         self.velocidade_Personagem_Y = velocidade_Personagem_Y
+        self.Xhitbox = [37,56]
+        self.Yhitbox = [13,69]
         self.esquerda = False
-        self.verificador_de_lado_esquerdo=True
+        self.verificador_de_lado_esquerdo = True
         self.direita = False
         self.baixo = False
         self.cima = False
@@ -219,6 +221,8 @@ class Player2(object):
         self.altura = altura
         self.velocidade_Personagem_X = velocidade_Personagem_X
         self.velocidade_Personagem_Y = velocidade_Personagem_Y
+        self.Xhitbox = [37,56]
+        self.Yhitbox = [13,69]
         self.esquerda = False
         self.verificador_de_lado_esquerdo=True
         self.direita = False
@@ -345,6 +349,7 @@ class Classe_Dano_Inimigo(object):
       if self.mostrar_hitbox:
         pygame.draw.circle(Janela, self.cor, (self.x, self.y), self.raio)
 
+
 class InimigoBase(object):
     Ataque_Animacao =  [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_0.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_1.png'),
                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_2.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Atacando_3.png'),
@@ -402,6 +407,8 @@ class InimigoBase(object):
         self.contador_de_frames_animacao = 0
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 2)
+        self.Xhitbox = [20,65]
+        self.Yhitbox = [21,69]
         self.HP = 10
         self.visible = True
         self.aleatorio = random.randint (0,3)
@@ -418,8 +425,6 @@ class InimigoBase(object):
         self.velX = 0
 
     def draw(self , win):
-     if avanco_tela >= 20:
-        #Classe.parartela=True
         self.move ()
         if self.visible:
             if self.contador_de_frames_animacao + 1 >= 27:
@@ -468,11 +473,6 @@ class InimigoBase(object):
             pygame.draw.rect ( win , (255 , 0 , 0) , (self.hitbox[0] , self.hitbox[1] - 20 , 50 , 10) )
             pygame.draw.rect ( win , (0 , 128 , 0) , (self.hitbox[0] , self.hitbox[1] - 20 , 50 - (5 * (10 - self.HP)) , 10) )
             self.hitbox = (self.x + 17 , self.y + 2 , 31 , 57)
-
-     if inimigo.visible==False:
-         #Classe.parartela = False
-         Classe.contador_de_passos = 0
-         Classe2.contador_de_passos = 0
 
     def move(self):
         if self.verificar_hitstun == 0:
@@ -618,11 +618,11 @@ class InimigoBase(object):
 
     def Colisao_Soco_Inimigo(self):
         for soco in self.gerar_soco:
-            if (soco.x + soco.raio >= Classe.hitbox[0] and soco.x + soco.raio <= Classe.hitbox[0] + 30):
-                if soco.y >= Classe.hitbox[1] and soco.y <= Classe.hitbox[1] + 40:
+            if (soco.x + soco.raio >= Classe.x + Classe.Xhitbox[0] and soco.x + soco.raio <= Classe.x + Classe.Xhitbox[1]):
+                if soco.y >= Classe.y + Classe.Yhitbox[0] and soco.y <= Classe.y + Classe.Yhitbox[1]:
                     Classe.danoPlayer()
                     self.gerar_soco.pop(self.gerar_soco.index(soco))
-            elif (soco.x + soco.raio >= Classe2.hitbox[0] and soco.x + soco.raio <= Classe2.hitbox[0] + 30):
+            elif (soco.x + soco.raio >= Classe2.x + Classe2.Xhitbox[0] and soco.x + soco.raio <= Classe2.x + Classe2.Xhitbox[1]):
                 if soco.y >= Classe2.hitbox[1] and soco.y <= Classe2.hitbox[1] + 40:
                     Classe2.danoPlayer2()
                     self.gerar_soco.pop(self.gerar_soco.index(soco))
@@ -636,9 +636,9 @@ class InimigoBase(object):
                 verificador_de_direcao3 = -1
             else:
                 verificador_de_direcao3 = 1
-            if len(self.gerar_soco) <= 1:
-                self.gerar_soco.append (Classe_Dano_Inimigo ( round ( inimigo.x + inimigo.largura // 2 )
-                ,round ( inimigo.y + inimigo.altura // 2 ) , 6 ,(0 , 0 , 0),verificador_de_direcao3))
+            if len(self.gerar_soco) < 1:
+                self.gerar_soco.append (Classe_Dano_Inimigo ( round ( self.x + self.largura // 2 )
+                ,round ( self.y + self.altura // 2 ) , 6 ,(0 , 0 , 0),verificador_de_direcao3))
 
             else:
                 self.atacando=False
@@ -704,6 +704,8 @@ class Boss(object):
     def __init__(self, x, y, largura, altura):
         self.x = x
         self.y = y
+        self.Xhitbox = [20,100]
+        self.Yhitbox = [40,150]
         self.largura = largura
         self.altura = altura
         self.HP = 10
@@ -722,6 +724,7 @@ class Boss(object):
 
     def draw(self, Janela):
         global SlowMotion
+        global InimigosVencidos
         if self.visible == True:
             self.hitbox = (self.x + 20, self.y + 20, 31, 57)
             self.ataque()
@@ -757,6 +760,7 @@ class Boss(object):
                     self.contador_de_frames_animacao += 1
 
                 if self.contador_de_frames_animacao >= 25:
+                    InimigosVencidos +=1
                     self.visible = False
                     SlowMotion = False
 
@@ -873,7 +877,8 @@ def Criar_Inimigos(fase):
             inimigo7 = InimigoBase(-10, 410, 64, 64)
             inimigo8 = InimigoBase(660, 410, 64, 64)
             inimigo9 = InimigoBase(-10, 410, 64, 64)
-            lista_inimigos.extend((inimigo7, inimigo8, inimigo9))
+            Kobra = Boss(400, 230, 64, 64)
+            lista_inimigos.extend((inimigo7, inimigo8, Kobra))
 
 Classe = Player(30, 250, 64, 64, 64, 64, 64)
 Classe2 = Player2(40, 300, 64, 64, 64, 64)
@@ -1057,6 +1062,7 @@ textnumber = 1
 def redrawGameWindow():
     global InimigosVencidos
     global showPoints
+    print(primeira_fase)
     if Controlador_Jogo == "Tela_de_Titulo":
         Janela.blit(Background_Tela_Inicial, (0, -10))
         Tela_Inicial.Press_Start.blit(Janela, (110, 320))
@@ -1070,7 +1076,7 @@ def redrawGameWindow():
         if InimigosVencidos == 6:
             showPoints = True
             showPointFunc()
-            InimigosVencidos = 7
+            InimigosVencidos = 0
         Janela.blit(Personagem_HUD, (10, 10))
         Janela.blit(Personagem_HUD2, (392, 10))
         pygame.draw.rect(Janela, (255, 255, 0), (78, 57, Classe.HP, 19), 0)
@@ -1139,6 +1145,10 @@ def redrawGameWindow():
             if Inimigo_init.HP == -1:
                 lista_inimigos.pop(lista_inimigos.index(Inimigo_init))
         #Kobra.draw(Janela)
+        if InimigosVencidos == 3:
+            showPoints = True
+            showPointFunc()
+            InimigosVencidos = 4
 
         segundos = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
@@ -1185,6 +1195,7 @@ def redrawGameWindow():
 
         Cutscenes.Start_Play.blit(Janela,(80, 100))
         pygame.display.update()
+
     if Controlador_Jogo == "Tela_de_Cutscenes":
         if textnumber == 4:
             Cutscenes.Cutscene_2.blit(Janela, (0,0))
@@ -1212,7 +1223,7 @@ def MovimentoPersonagem1():
                 if Botao_Pressionado[pygame.K_UP] and Classe.y > 209:
                     Classe.velocidade_Personagem_Y = -4
                     Classe.y += Classe.velocidade_Personagem_Y
-                if Botao_Pressionado[pygame.K_DOWN] and Classe.y > 209:
+                if Botao_Pressionado[pygame.K_DOWN] and Classe.y < 380:
                     Classe.velocidade_Personagem_Y = 4
                     Classe.y += Classe.velocidade_Personagem_Y
 
@@ -1228,7 +1239,7 @@ def MovimentoPersonagem1():
                 if Botao_Pressionado[pygame.K_UP] and Classe.y > 209:
                     Classe.velocidade_Personagem_Y = -4
                     Classe.y += Classe.velocidade_Personagem_Y
-                if Botao_Pressionado[pygame.K_DOWN] and Classe.y > 209:
+                if Botao_Pressionado[pygame.K_DOWN] and Classe.y < 380:
                     Classe.velocidade_Personagem_Y = 4
                     Classe.y += Classe.velocidade_Personagem_Y
 
@@ -1413,54 +1424,30 @@ def MovimentoPersonagem2():
 def Colisao_Soco_Personagem1():
     for soco in Gerador_Soco_Player1:
         for inim in lista_inimigos:
-            if (soco.x + soco.raio >= inim.x + 26 and soco.x + soco.raio <= inim.x + 60):
-                if soco.y >= inim.y + 21 and soco.y <= inim.y + 69:
+            if (soco.x + soco.raio >= inim.x + inim.Xhitbox[0] and soco.x + soco.raio <= inim.x + inim.Xhitbox[1]):
+                if soco.y >= inim.y + inim.Yhitbox[0] and soco.y <= inim.y + inim.Yhitbox[1]:
                     inim.Hit_Inimigo("J1")
                     if inim.HP == -1:
                         lista_inimigos.pop(lista_inimigos.index(inim))
 
-                    #Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+
         Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
 
 
 
-    #    if (soco.x + soco.raio >= inimigo.x+26 and soco.x + soco.raio <= inimigo.x+60):
-    #        if soco.y >= inimigo.y+21 and soco.y <= inimigo.y+69:
-    #            inimigo.Hit_Inimigo("J1")
-    #            Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
-    #    elif (soco.x + soco.raio >= inimigo2.x+26 and soco.x + soco.raio <= inimigo2.x+60):
-    #        if soco.y >= inimigo2.y+21 and soco.y <= inimigo2.y+69:
-    #            inimigo2.Hit_Inimigo("J1")
-    #            Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
-    #    elif (soco.x + soco.raio >= Kobra.x+29 and soco.x + soco.raio <= Kobra.x+66):
-    #        if soco.y >= Kobra.y+54 and soco.y <= Kobra.y+146:
-    #            Kobra.Hit_Inimigo("J1")
-    #            Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
-    #    else:
-    #        Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
 
 def Colisao_Soco_Personagem2():
     for soco in Gerador_Soco_Player2:
         for inim in lista_inimigos:
-            if (soco.x + soco.raio >= inim.x + 26 and soco.x + soco.raio <= inim.x + 60):
-                if soco.y >= inim.y + 21 and soco.y <= inim.y + 69:
+            if (soco.x + soco.raio >= inim.x + inim.Xhitbox[0] and soco.x + soco.raio <= inim.x + inim.Xhitbox[1]):
+                if soco.y >= inim.y + inim.Yhitbox[0] and soco.y <= inim.y + inim.Yhitbox[1]:
                     inim.Hit_Inimigo("J2")
                     if inim.HP == -1:
                         lista_inimigos.pop(lista_inimigos.index(inim))
 
-                    #Gerador_Soco_Player1.pop(Gerador_Soco_Player1.index(soco))
+
         Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
 
-    #    elif (soco.x + soco.raio >= inimigo2.x+26 and soco.x + soco.raio <= inimigo2.x+60):
-    #        if soco.y >= inimigo2.y+21 and soco.y <= inimigo2.y+69:
-    #            inimigo2.Hit_Inimigo("J2")
-    #            Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
-    #    elif (soco.x + soco.raio >= Kobra.x+29 and soco.x + soco.raio <= Kobra.x+66):
-    #        if soco.y >= Kobra.y+54 and soco.y <= Kobra.y+146:
-    #            Kobra.Hit_Inimigo("J2")
-    #            Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
-    #    else:
-    #        Gerador_Soco_Player2.pop(Gerador_Soco_Player2.index(soco))
 
 def Colisao_Soco_Inimigo():
     for soco in gerar_soco:
@@ -1476,7 +1463,6 @@ def Colisao_Soco_Inimigo():
             gerar_soco.pop(gerar_soco.index(soco))
 
 while run:
-
     if SlowMotion == False:
         clock.tick(27)
     else:
@@ -1487,9 +1473,15 @@ while run:
         if event.type == SONG_END:
             if primeira_fase == 0:
                 Controlador_Jogo = "Tela_de_Cutscenes"
+                primeira_fase +=1
+                textnumber = 13
+                showPoints = False
+            elif primeira_fase == 1:
+                Controlador_Jogo = "Tela_de_Cutscenes"
                 primeira_fase+=1
                 textnumber = 13
                 showPoints = False
+
     Botao_Pressionado = pygame.key.get_pressed()
     Cutscenes.Go.play()
     if Start == True:
@@ -1781,6 +1773,8 @@ while run:
 
         if textnumber == 14:
             Controlador_Jogo = "Tela_da_Fase_2"
+            Classe.HP = 155
+            Classe2.HP = 155
             avanco_tela = 0
             start_ticks = pygame.time.get_ticks()
             pygame.mixer.music.stop()
