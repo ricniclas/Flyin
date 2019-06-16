@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8f712df-252b-489b-a1e5-51bed36fbc77" name="Default Changelist" comment="pasta">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Flying_Fist.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flying_Fist.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/top_scores" beforeDir="false" afterPath="$PROJECT_DIR$/top_scores" afterDir="false" />
     </list>
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="1475" column="33" lean-forward="true" selection-start-line="1475" selection-start-column="33" selection-end-line="1475" selection-end-column="33" />
+            <state relative-caret-position="514">
+              <caret line="1944" column="63" lean-forward="true" selection-start-line="1944" selection-start-column="63" selection-end-line="1944" selection-end-column="63" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <element signature="e#399#564#0" />
@@ -27,8 +26,21 @@
                 <element signature="e#17184#17748#0" />
                 <element signature="e#17789#18349#0" />
                 <element signature="e#18390#18809#0" />
-                <element signature="e#18843#35593#0" />
+                <element signature="e#18843#35571#0" />
                 <element signature="e#25640#28493#0" />
+                <element signature="e#45054#46000#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../Flying Master - Copia/Flyin/FF/Flying_Fist.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="1550" column="12" lean-forward="true" selection-start-line="1550" selection-start-column="12" selection-end-line="1550" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compressao_save.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2601">
-              <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -63,17 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>estado == 3</find>
-      <find>estado = 3</find>
-      <find>Oh CARALHIO</find>
-      <find>segundos</find>
-      <find>compressao</find>
-      <find>return</find>
-      <find>econo</find>
-      <find>paralax</find>
-      <find>contador_de_passos</find>
-      <find>lista_inimigos</find>
-      <find>HP</find>
       <find>parartela</find>
       <find>inimigosVencidos</find>
       <find>deathanim</find>
@@ -90,9 +91,20 @@
       <find>Slow</find>
       <find>SlowMotion</find>
       <find>endevent</find>
-      <find>SONG_END</find>
       <find>primeira_fase</find>
       <find>primeira</find>
+      <find>SFX</find>
+      <find>Botao_Pressionado[pygame.K_return</find>
+      <find>SFX_Voice_Start</find>
+      <find>Botao_Pressionado[pygame.K_R</find>
+      <find>Botao_Pressionado[K_RETURN]</find>
+      <find>Controlador_Jogo = &quot;Tela_da_Fase_1&quot;</find>
+      <find>verificar</find>
+      <find>textnumber = 14</find>
+      <find>InimigosVencid</find>
+      <find>SONG_END</find>
+      <find>textnumber = 13</find>
+      <find>&quot;Area&quot;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,7 +145,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,6 +161,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,8 +363,28 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
-    <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.14149444" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.31242874" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3937677" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007949" side_tool="true" weight="0.3295325" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
+    </layout>
+    <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14149444" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -372,7 +404,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -453,16 +485,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../Flying Fist - Copia/Flyin/FF/Flying_Fist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="555" selection-start-line="555" selection-end-line="559" selection-end-column="86" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Flying Fist - Copia/Flyin/FF/Flying_Fist.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/operator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -496,10 +519,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Flying Master - Copia/Flyin/FF/Flying_Fist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="1550" column="12" lean-forward="true" selection-start-line="1550" selection-start-column="12" selection-end-line="1550" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressao_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="1475" column="33" lean-forward="true" selection-start-line="1475" selection-start-column="33" selection-end-line="1475" selection-end-column="33" />
+        <state relative-caret-position="514">
+          <caret line="1944" column="63" lean-forward="true" selection-start-line="1944" selection-start-column="63" selection-end-line="1944" selection-end-column="63" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <element signature="e#399#564#0" />
@@ -508,23 +555,10 @@
             <element signature="e#17184#17748#0" />
             <element signature="e#17789#18349#0" />
             <element signature="e#18390#18809#0" />
-            <element signature="e#18843#35593#0" />
+            <element signature="e#18843#35571#0" />
             <element signature="e#25640#28493#0" />
+            <element signature="e#45054#46000#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tela_Inicial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compressao_save.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
         </state>
       </provider>
     </entry>

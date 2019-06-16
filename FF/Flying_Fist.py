@@ -690,16 +690,18 @@ class Boss(object):
     PrepararDir = [pygame.image.load('images/Inimigo/Boss/Boss_R_Andando_1.png'),
                    pygame.image.load('images/Inimigo/Boss/Boss_R_Andando_2.png'),
                    pygame.image.load('images/Inimigo/Boss/Boss_R_Andando_3.png'),]
-    DeathAnimDir = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_01.png'),
-              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_04.png'),
-                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_06.png'),
-                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_07.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_08.png'),
-                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_R__Morte_09.png')]
-    DeathAnimEsq = [pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_00.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_01.png'),
-              pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_02.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_03.png'), pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_04.png'),
-                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_05.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_06.png'),
-                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_07.png'),pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_08.png'),
-                 pygame.image.load('images/Inimigo/Inimigo_1/Inimigo_L__Morte_09.png')]
+    DeathAnimDir = [pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_00.png'), pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_01.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_02.png'), pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_03.png'), pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_04.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_05.png'),pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_06.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_07.png'),pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_08.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_09.png'),pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_10.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_R_Morrendo_11.png')]
+    DeathAnimEsq = [pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_00.png'), pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_01.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_02.png'), pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_03.png'), pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_04.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_05.png'),pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_06.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_07.png'),pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_08.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_09.png'),pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_10.png'),
+                 pygame.image.load('images/Inimigo/Boss/Boss_L_Morrendo_11.png')]
 
     def __init__(self, x, y, largura, altura):
         self.x = x
@@ -824,25 +826,24 @@ class Boss(object):
             self.esquerda = False
 
     def Hit_Inimigo(self, personagem_hit):
-        if self.HP >= 0:
+        if self.HP >= 0 and self.verificar_hitstun != 6:
             global Score
             global SlowMotion
             SFX_Punch1.play()
             if self.HP > 1:
                 self.HP -= 1
             else:
-                self.HP -= 1
+                self.verificar_hitstun = 6
                 SFX_Death.play()
                 SlowMotion = True
                 self.esquerda = False
                 self.direita = False
                 self.verificador_de_esquerda = False
                 self.idle = False
-                self.verificar_hitstun = 6
                 if personagem_hit == "J1":
-                    Classe.Score += 500
+                    Classe.Score += 2000
                 else:
-                    Classe2.Score += 500
+                    Classe2.Score += 2000
 
     def Personagem_Parado_Direita_Animacaoge(self):
         if self.x <= Classe.x+28 and self.x+100 >= Classe.x+ 64:
@@ -876,7 +877,6 @@ def Criar_Inimigos(fase):
             avanco_tela +=1
             inimigo7 = InimigoBase(-10, 410, 64, 64)
             inimigo8 = InimigoBase(660, 410, 64, 64)
-            inimigo9 = InimigoBase(-10, 410, 64, 64)
             Kobra = Boss(400, 230, 64, 64)
             lista_inimigos.extend((inimigo7, inimigo8, Kobra))
 
@@ -983,6 +983,7 @@ run = True
 SONG_END = pygame.USEREVENT + 1
 SFX_Voice_Flying2 = pygame.mixer.Sound('Musica_SFX/SFX/Voice_Flying2.wav')
 SFX_Voice_Flying2.play(0)
+SFX_Voice_Start = pygame.mixer.Sound('Musica_SFX/SFX/Voice_Start.wav')
 SFX_Punch1 = pygame.mixer.Sound('Musica_SFX/SFX/Punch_1.wav')
 SFX_Punch1.set_volume(0.5)
 SFX_Punch2 = pygame.mixer.Sound('Musica_SFX/SFX/Punch_2.wav')
@@ -1029,6 +1030,9 @@ text_orig11 = """E com suas próprias
 mãos! """
 text_orig12 = """Você enfrentara o
 Kobra! """
+text_orig15 = """Akira concluiu sua 
+missão!"""
+
 
 text_iterator = iter(text_orig)
 text_iterator2 = iter(text_orig2)
@@ -1042,6 +1046,7 @@ text_iterator9 = iter(text_orig9)
 text_iterator10 = iter(text_orig10)
 text_iterator11 = iter(text_orig11)
 text_iterator12 = iter(text_orig12)
+text_iterator15 = iter(text_orig15)
 
 text = ''
 text2 = ''
@@ -1055,6 +1060,7 @@ text9 = ''
 text10 = ''
 text11 = ''
 text12 = ''
+text15 = ''
 textnumber = 1
 
 
@@ -1489,7 +1495,7 @@ while run:
             elif primeira_fase == 1:
                 Controlador_Jogo = "Tela_de_Cutscenes"
                 primeira_fase+=1
-                textnumber = 13
+                textnumber = 15
                 showPoints = False
 
     Botao_Pressionado = pygame.key.get_pressed()
@@ -1566,6 +1572,7 @@ while run:
             pygame.mixer.music.load('Musica_SFX/Musica_Fase.wav')
             pygame.mixer.music.play(-1)
             Start = True
+            SFX_Voice_Start.play()
 
         if textnumber == 1:
             Janela.blit(Cutscene1, (0, 0))
@@ -1778,6 +1785,25 @@ while run:
                    gcolor=(150, 150, 150),
                    shadow=(3, 3), scolor="#000000")
 
+
+        if textnumber == 15:
+            Janela.fill((0, 0, 0))
+            Janela.blit(Cutscene4, (0, 0))
+            if len(text15) < len(text_orig15):
+                text15 += next(text_iterator15)
+                SFX_Text.play(0)
+
+        ptext.draw(text15, center=(Largura / 2, 350), fontname="fontes/start.ttf", color=(255, 255, 255),
+                   gcolor=(150, 150, 150),
+                   shadow=(3, 3), scolor="#000000")
+
+        if len(text11) == len(text_orig11):
+            Janela.fill((0, 0, 0))
+            textnumber = 12
+            time.sleep(5)
+            text11 += " "
+            Janela.fill((0, 0, 0))
+
         if len(text12) == len(text_orig12):
             Janela.fill((0, 0, 0))
             textnumber = 14
@@ -1896,14 +1922,16 @@ while run:
             pygame.mixer.music.stop()
             pygame.mixer.music.load('Musica_SFX/Musica_Fase.wav')
             pygame.mixer.music.play(-1)
-            textnumber = 13
+            textnumber = 14
             Start = True
             Controlador_Jogo = "Tela_da_Fase_1"
+            SFX_Voice_Start.play()
         else:
             Janela.blit(Area_1_2, (0,0))
-            time.sleep(4)
             pygame.display.update()
-            Conntrolador_Jogo = "Tela_de_Cutscenes"
+            time.sleep(4)
+            Controlador_Jogo = "Tela_de_Cutscenes"
+            textnumber = 14
         print("Primeira Fase", primeira_fase)
 
     if Botao_Pressionado[pygame.K_r]:
