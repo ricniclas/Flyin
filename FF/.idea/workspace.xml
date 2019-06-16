@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="868" lean-forward="true" selection-start-line="868" selection-end-line="868" />
+            <state relative-caret-position="423">
+              <caret line="1128" column="80" lean-forward="true" selection-start-line="1128" selection-start-column="80" selection-end-line="1128" selection-end-column="80" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <element signature="e#399#564#0" />
@@ -35,10 +35,14 @@
                 <element signature="e#17058#17622#0" />
                 <element signature="e#17663#18223#0" />
                 <element signature="e#18264#18683#0" />
-                <element signature="e#18716#35633#0" />
-                <element signature="e#34945#35633#0" />
-                <element signature="e#35590#44878#0" />
-                <element signature="e#44910#45515#0" />
+                <element signature="e#18716#35563#0" />
+                <element signature="e#24811#25415#0" />
+                <element signature="e#25448#28509#0" />
+                <element signature="e#73153#81561#0" />
+                <element signature="e#81619#86416#0" />
+                <element signature="e#86465#86531#0" />
+                <element signature="e#86572#86941#0" />
+                <element signature="e#87003#87074#0" />
               </folding>
             </state>
           </provider>
@@ -73,7 +77,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Controlador</find>
       <find>center</find>
       <find>rand</find>
       <find>clock</find>
@@ -90,7 +93,6 @@
       <find>estado == 3</find>
       <find>estado = 3</find>
       <find>Oh CARALHIO</find>
-      <find>Kobra</find>
       <find>visible</find>
       <find>segundos</find>
       <find>compressao</find>
@@ -103,6 +105,8 @@
       <find>parartela</find>
       <find>inimigosVencidos</find>
       <find>deathanim</find>
+      <find>print</find>
+      <find>Kobra</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,7 +147,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,6 +163,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -501,8 +505,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Flying_Fist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="868" lean-forward="true" selection-start-line="868" selection-end-line="868" />
+        <state relative-caret-position="423">
+          <caret line="1128" column="80" lean-forward="true" selection-start-line="1128" selection-start-column="80" selection-end-line="1128" selection-end-column="80" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <element signature="e#399#564#0" />
@@ -519,10 +523,14 @@
             <element signature="e#17058#17622#0" />
             <element signature="e#17663#18223#0" />
             <element signature="e#18264#18683#0" />
-            <element signature="e#18716#35633#0" />
-            <element signature="e#34945#35633#0" />
-            <element signature="e#35590#44878#0" />
-            <element signature="e#44910#45515#0" />
+            <element signature="e#18716#35563#0" />
+            <element signature="e#24811#25415#0" />
+            <element signature="e#25448#28509#0" />
+            <element signature="e#73153#81561#0" />
+            <element signature="e#81619#86416#0" />
+            <element signature="e#86465#86531#0" />
+            <element signature="e#86572#86941#0" />
+            <element signature="e#87003#87074#0" />
           </folding>
         </state>
       </provider>

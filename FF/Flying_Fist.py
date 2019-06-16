@@ -867,6 +867,13 @@ def Criar_Inimigos(fase):
             inimigo6 = InimigoBase(-10, 410, 64, 64)
             lista_inimigos.extend((inimigo4, inimigo5, inimigo6))
 
+    if fase == 2:
+        if avanco_tela == 0:
+            avanco_tela +=1
+            inimigo7 = InimigoBase(-10, 410, 64, 64)
+            inimigo8 = InimigoBase(660, 410, 64, 64)
+            inimigo9 = InimigoBase(-10, 410, 64, 64)
+            lista_inimigos.extend((inimigo7, inimigo8, inimigo9))
 
 Classe = Player(30, 250, 64, 64, 64, 64, 64)
 Classe2 = Player2(40, 300, 64, 64, 64, 64)
@@ -878,7 +885,7 @@ avanco_tela = 0
 lista_inimigos = []
 
 
-Kobra = Boss(400, 230, 64, 64)
+#Kobra = Boss(400, 230, 64, 64)
 
 Gerador_Soco_Player1 = []
 Gerador_Soco_Player2 = []
@@ -1110,6 +1117,7 @@ def redrawGameWindow():
             Cutscenes.Go.blit(Janela,(450,60))
         Cutscenes.Start_Play.blit(Janela,(80, 100))
         pygame.display.update()
+
     if Controlador_Jogo == "Tela_da_Fase_2":
         Janela.blit(Background_Fase2_0, (rel_x2, 0))
         Janela.blit(Background_Fase2, (rel_x, 0), )
@@ -1125,7 +1133,12 @@ def redrawGameWindow():
         else:
             Classe.draw(Janela)
             Classe2.draw(Janela)
-        Kobra.draw(Janela)
+        Criar_Inimigos(2)
+        for Inimigo_init in lista_inimigos:
+            Inimigo_init.draw(Janela)
+            if Inimigo_init.HP == -1:
+                lista_inimigos.pop(lista_inimigos.index(Inimigo_init))
+        #Kobra.draw(Janela)
 
         segundos = int((pygame.time.get_ticks() - start_ticks) / 1000)
 
@@ -1196,6 +1209,13 @@ def MovimentoPersonagem1():
                 Classe.direita = False
                 Classe.Virado=False
                 Classe.verificador_de_lado_esquerdo = False
+                if Botao_Pressionado[pygame.K_UP] and Classe.y > 209:
+                    Classe.velocidade_Personagem_Y = -4
+                    Classe.y += Classe.velocidade_Personagem_Y
+                if Botao_Pressionado[pygame.K_DOWN] and Classe.y > 209:
+                    Classe.velocidade_Personagem_Y = 4
+                    Classe.y += Classe.velocidade_Personagem_Y
+
     elif Botao_Pressionado[pygame.K_RIGHT] and Classe.x <530 and Start == False:
         if Classe.verificar_hitstun == False:
             if Classe.esta_atacando == False:
@@ -1205,6 +1225,14 @@ def MovimentoPersonagem1():
                 Classe.esquerda = False
                 Classe.Virado=False
                 Classe.verificador_de_lado_esquerdo = True
+                if Botao_Pressionado[pygame.K_UP] and Classe.y > 209:
+                    Classe.velocidade_Personagem_Y = -4
+                    Classe.y += Classe.velocidade_Personagem_Y
+                if Botao_Pressionado[pygame.K_DOWN] and Classe.y > 209:
+                    Classe.velocidade_Personagem_Y = 4
+                    Classe.y += Classe.velocidade_Personagem_Y
+
+
     elif Botao_Pressionado[pygame.K_UP] and Classe.y > 209 and Start == False:
         if Classe.verificar_hitstun == False:
             if Classe.esta_atacando == False:
@@ -1293,6 +1321,13 @@ def MovimentoPersonagem2():
                 Classe2.direita = False
                 Classe2.Virado = False
                 Classe2.verificador_de_lado_esquerdo = False
+                if Botao_Pressionado[pygame.K_w] and Classe2.y > 209:
+                    Classe2.velocidade_Personagem_Y = -4
+                    Classe2.y += Classe2.velocidade_Personagem_Y
+                if Botao_Pressionado[pygame.K_s] and Classe2.y < 380:
+                    Classe2.velocidade_Personagem_Y = 4
+                    Classe2.y += Classe2.velocidade_Personagem_Y
+
     elif Botao_Pressionado[pygame.K_d] and Classe2.x < 530 and Start == False:
         if Classe2.verificar_hitstun == False:
             if Classe2.esta_atacando == False:
@@ -1302,6 +1337,13 @@ def MovimentoPersonagem2():
                 Classe2.esquerda = False
                 Classe2.Virado = False
                 Classe2.verificador_de_lado_esquerdo = True
+                if Botao_Pressionado[pygame.K_w] and Classe2.y > 209:
+                    Classe2.velocidade_Personagem_Y = -4
+                    Classe2.y += Classe2.velocidade_Personagem_Y
+                if Botao_Pressionado[pygame.K_s] and Classe2.y < 380:
+                    Classe2.velocidade_Personagem_Y = 4
+                    Classe2.y += Classe2.velocidade_Personagem_Y
+
     elif Botao_Pressionado[pygame.K_w] and Classe2.y > 209 and Start == False:
         if Classe2.verificar_hitstun == False:
             if Classe2.esta_atacando == False:
@@ -1739,6 +1781,7 @@ while run:
 
         if textnumber == 14:
             Controlador_Jogo = "Tela_da_Fase_2"
+            avanco_tela = 0
             start_ticks = pygame.time.get_ticks()
             pygame.mixer.music.stop()
             pygame.mixer.music.load('Musica_SFX/Musica_Fase.wav')
