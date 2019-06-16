@@ -533,9 +533,9 @@ class InimigoBase(object):
             if self.Caminho_X_Gerado == False:
                 self.escolher_alvo = random.randint(0, 1)
                 if self.escolher_alvo == 0:
-                    self.caminhoX = Classe.x
+                    self.caminhoX = Classe.x+50
                 else:
-                    self.caminhoX = Classe2.x
+                    self.caminhoX = Classe2.x+50
                 self.Caminho_X_Gerado = True
             if self.x < self.caminhoX:
                 self.velX = 6
@@ -618,11 +618,11 @@ class InimigoBase(object):
 
     def Colisao_Soco_Inimigo(self):
         for soco in self.gerar_soco:
-            if (soco.x + soco.raio >= Classe.x + Classe.Xhitbox[0] and soco.x + soco.raio <= Classe.x + Classe.Xhitbox[1]):
+            if (soco.x - 27 >= Classe.x + Classe.Xhitbox[0] and soco.x - 27 <= Classe.x + Classe.Xhitbox[1]):
                 if soco.y >= Classe.y + Classe.Yhitbox[0] and soco.y <= Classe.y + Classe.Yhitbox[1]:
                     Classe.danoPlayer()
                     self.gerar_soco.pop(self.gerar_soco.index(soco))
-            elif (soco.x + soco.raio >= Classe2.x + Classe2.Xhitbox[0] and soco.x + soco.raio <= Classe2.x + Classe2.Xhitbox[1]):
+            elif (soco.x - 27 >= Classe2.x + Classe2.Xhitbox[0] and soco.x - 27 <= Classe2.x + Classe2.Xhitbox[1]):
                 if soco.y >= Classe2.hitbox[1] and soco.y <= Classe2.hitbox[1] + 40:
                     Classe2.danoPlayer2()
                     self.gerar_soco.pop(self.gerar_soco.index(soco))
@@ -902,7 +902,7 @@ Area = Largura * Altura
 Nome_da_Janela = "FLYING FIST"
 pygame.init()
 clock = pygame.time.Clock()
-Janela = pygame.display.set_mode((Largura, Altura),)
+Janela = pygame.display.set_mode((Largura, Altura))
 pygame.display.set_caption(Nome_da_Janela)
 Controlador_Jogo = "Tela_de_Titulo"
 Score = 0
@@ -961,6 +961,8 @@ Background_Fase2_0 = pygame.image.load("images/Background_Fase2_0.png").convert(
 Background_Tela_Inicial = pygame.image.load("images/Tela_Inicial/Tela_de_Titulo.png").convert()
 Personagem_HUD = pygame.image.load("images/Personagem_Vida.png").convert_alpha()
 Personagem_HUD2 = pygame.image.load("images/Personagem2_Vida.png").convert_alpha()
+Area_1_1 = pygame.image.load("images/area1_1.png").convert()
+Area_1_2 = pygame.image.load("images/area1_2.png").convert()
 Go = pygame.image.load("images/Go.png").convert_alpha()
 Start = False
 
@@ -1025,8 +1027,8 @@ Akira irá pulverizar todos
 que ameacem o seu povo! """
 text_orig11 = """E com suas próprias
 mãos! """
-text_orig12 = """Você zerou o
-jogo! """
+text_orig12 = """Você enfrentara o
+Kobra! """
 
 text_iterator = iter(text_orig)
 text_iterator2 = iter(text_orig2)
@@ -1062,7 +1064,7 @@ textnumber = 1
 def redrawGameWindow():
     global InimigosVencidos
     global showPoints
-    print(primeira_fase)
+    print(avanco_tela)
     if Controlador_Jogo == "Tela_de_Titulo":
         Janela.blit(Background_Tela_Inicial, (0, -10))
         Tela_Inicial.Press_Start.blit(Janela, (110, 320))
@@ -1201,7 +1203,15 @@ def redrawGameWindow():
             Cutscenes.Cutscene_2.blit(Janela, (0,0))
         if textnumber >= 6 and textnumber < 9:
             Cutscenes.Cutscene_Kobra.blit(Janela,(0,0))
-            
+
+    if Controlador_Jogo == "Area":
+        if primeira_fase == 0:
+            Janela.blit(Area_1_1, (0,0))
+        else:
+            Janela.blit(Area_1_2, (0,0))
+    pygame.display.update()
+
+
 def MovimentoPersonagem1():
     if Botao_Pressionado[pygame.K_LEFT] and Classe.x >5 and Start == False:
         if Classe.verificar_hitstun == False:
@@ -1472,7 +1482,7 @@ while run:
             run = False
         if event.type == SONG_END:
             if primeira_fase == 0:
-                Controlador_Jogo = "Tela_de_Cutscenes"
+                Controlador_Jogo = "Area"
                 primeira_fase +=1
                 textnumber = 13
                 showPoints = False
@@ -1502,8 +1512,19 @@ while run:
          if Classe.direita == False:
              Classe.velocidade_Personagem_X = -4
              Classe.x += Classe.velocidade_Personagem_X
+      rel_x = Background_Fase_Posicao % Background_Largura
+      rel_x2 = Background_Fase_Posicao_0 % Background_Largura
 
-
+      if Classe.x <= Posicao_inicial_paralaxe:
+         Classe.x = Classe.x
+      elif  Classe.velocidade_Personagem_X >=0:
+         avanco_tela += 1
+         Classe.x = Posicao_inicial_paralaxe
+         Background_Fase_Posicao += -Classe.velocidade_Personagem_X
+         Background_Fase_Posicao_0 += -1
+         if Classe2.direita == False:
+             Classe2.velocidade_Personagem_X = -4
+             Classe2.x += Classe2.velocidade_Personagem_X
       rel_x = Background_Fase_Posicao % Background_Largura
       rel_x2 = Background_Fase_Posicao_0 % Background_Largura
 
@@ -1744,14 +1765,7 @@ while run:
         if textnumber == 12:
             Janela.fill((0, 0, 0))
             Janela.blit(Cutscene4, (0, 0))
-            Controlador_Jogo = "Tela_da_Fase_1"
-            start_ticks = pygame.time.get_ticks()
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load('Musica_SFX/Musica_Fase.wav')
-            pygame.mixer.music.play(-1)
-            textnumber = 13
-
-            Start = True
+            Controlador_Jogo = "Area"
 
         if textnumber == 13:
             Janela.fill((0, 0, 0))
@@ -1873,6 +1887,24 @@ while run:
                    shadow=(3, 3), scolor="#000000")
         pygame.display.update()
 
+    if Controlador_Jogo == "Area":
+        if primeira_fase == 0:
+            Janela.blit(Area_1_1,(0,0))
+            pygame.display.update()
+            time.sleep(4)
+            start_ticks = pygame.time.get_ticks()
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load('Musica_SFX/Musica_Fase.wav')
+            pygame.mixer.music.play(-1)
+            textnumber = 13
+            Start = True
+            Controlador_Jogo = "Tela_da_Fase_1"
+        else:
+            Janela.blit(Area_1_2, (0,0))
+            time.sleep(4)
+            pygame.display.update()
+            Conntrolador_Jogo = "Tela_de_Cutscenes"
+        print("Primeira Fase", primeira_fase)
 
     if Botao_Pressionado[pygame.K_r]:
         textoPlacar = mostrarPlacar(Load_Top_Scores)
@@ -1891,7 +1923,12 @@ while run:
         Classe.HP -= 0.2
         Classe.Score += 10
         Classe2.Score += 10
-
+    if Botao_Pressionado[K_z]:
+        textnumber +=1
+        time.sleep(0.1)
+    if Botao_Pressionado[K_p]:
+        Controlador_Jogo = "Area"
+        time.sleep(0.1)
     redrawGameWindow()
 
 pygame.quit()
