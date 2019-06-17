@@ -902,11 +902,11 @@ Area = Largura * Altura
 Nome_da_Janela = "FLYING FIST"
 pygame.init()
 clock = pygame.time.Clock()
-Janela = pygame.display.set_mode((Largura, Altura))
+Janela = pygame.display.set_mode((Largura, Altura),FULLSCREEN)
 pygame.display.set_caption(Nome_da_Janela)
 Controlador_Jogo = "Tela_de_Titulo"
 Score = 0
-Timer = 60
+Timer = 90
 Nome_do_player = ("RIC")
 InimigosVencidos = 0
 
